@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 13 — The Art of Prompting | Tech for Life</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../index.html" class="site-logo">
+      <span class="site-logo__icon">💡</span>
+      <span>Tech for Life<span class="site-logo__sub">A course for 60+ learners</span></span>
+    </a>
+    <nav class="site-nav">
+      <a href="../index.html" data-page="home">Home</a>
+      <a href="../index.html#modules" data-page="modules">All Modules</a>
+    </nav>
+  </div>
+</header>
+
+<div class="module-progress">
+  <div class="module-progress__inner">
+    <span class="module-progress__label">Course Progress</span>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" style="width: 87%"></div>
+    </div>
+    <span class="module-progress__fraction">Module 13 of 15</span>
+  </div>
+</div>
+
+<div class="module-hero module-hero--advanced">
+  <div class="module-hero__number">Module 13 · AI in Practice</div>
+  <span class="module-hero__icon">🎯</span>
+  <h1>The Art of Prompting</h1>
+  <p class="module-hero__tagline">The difference between a mediocre AI response and a genuinely useful one often comes down to how you ask. This is the skill that separates occasional users from confident ones.</p>
+  <div class="module-hero__chips">
+    <span class="chip">🟣 AI in Practice</span>
+    <span class="chip">⏱ 20 minutes</span>
+    <span class="chip">📖 Skills + Templates</span>
+  </div>
+</div>
+
+<div class="module-body">
+  <div class="module-content">
+
+    <div class="objectives-box">
+      <h3>What You'll Learn</h3>
+      <ul>
+        <li>The CRAFT framework — a 5-part structure for excellent prompts</li>
+        <li>Role prompting — giving the AI a persona to improve its responses</li>
+        <li>Few-shot prompting — showing AI examples of what you want</li>
+        <li>Chain-of-thought prompting — making AI reason more carefully</li>
+        <li>How to handle AI mistakes and push back effectively</li>
+        <li>20 ready-to-use prompt templates for common situations</li>
+        <li>Advanced techniques: negative prompting, format control, iteration</li>
+      </ul>
+    </div>
+
+    <section>
+      <h2>Why Prompting Is a Skill Worth Learning</h2>
+      <p>
+        AI language models are extraordinarily capable — but that capability is only accessible if
+        you communicate with them effectively. The same underlying model can produce a vague,
+        unhelpful paragraph or a precisely targeted, detailed response depending entirely on how
+        you frame your request.
+      </p>
+      <p>
+        This isn't about memorising secret codes or using special syntax. It's about applying
+        principles of clear communication that you already understand — being specific, providing
+        context, stating what you want clearly. The difference is that you're directing one of
+        the most powerful information tools ever built, so the returns on good communication
+        are unusually high.
+      </p>
+
+      <div class="callout callout--analogy">
+        <div class="callout__icon">🍴</div>
+        <div class="callout__body">
+          <h4>The Restaurant Analogy</h4>
+          <p>
+            Imagine going to a high-quality restaurant. You could say "I'll have something to eat" — and the waiter would bring you something. Or you could say "I'd like the salmon, grilled rather than pan-fried, with the dressing on the side, and could you let the kitchen know I'm allergic to nuts?" The kitchen has the same skill in both cases. The quality of your experience depends entirely on how clearly you communicated.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>The CRAFT Framework</h2>
+      <p>
+        A reliable structure for strong prompts can be remembered as <strong>CRAFT</strong>:
+        <strong>C</strong>ontext, <strong>R</strong>ole, <strong>A</strong>ction, <strong>F</strong>ormat,
+        <strong>T</strong>one. You don't need all five elements every time — a simple question doesn't
+        need a full framework. But for anything important or complex, running through CRAFT produces
+        dramatically better results.
+      </p>
+
+      <div class="visual-card">
+        <h4>🔨 The CRAFT Framework Explained</h4>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num" style="font-size:0.85rem;font-weight:800">C</div>
+            <div class="step-body">
+              <h4>Context — Set the Scene</h4>
+              <p>Who are you? What is your situation? What does the AI need to know to help you well? <em>"I'm a 70-year-old retired schoolteacher with a lifelong interest in history…"</em> or <em>"I'm writing a complaint about my broadband provider after repeated outages…"</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="font-size:0.85rem;font-weight:800">R</div>
+            <div class="step-body">
+              <h4>Role — Give the AI a Persona</h4>
+              <p>Tell the AI what expert to be. <em>"Act as an experienced pharmacist"</em> or <em>"You are a patient, experienced GP"</em> or <em>"Act as a knowledgeable financial planner specialising in retirement"</em>. This frames the entire response appropriately.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="font-size:0.85rem;font-weight:800">A</div>
+            <div class="step-body">
+              <h4>Action — Be Specific About the Task</h4>
+              <p>Exactly what do you want produced or answered? <em>"Write a letter"</em> is weak. <em>"Write a 3-paragraph formal letter requesting a refund"</em> is much better. Include specific details: names, dates, amounts, addresses.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="font-size:0.85rem;font-weight:800">F</div>
+            <div class="step-body">
+              <h4>Format — Specify the Output Structure</h4>
+              <p>How should the response be presented? <em>"Give me a numbered list"</em> / <em>"Write this as a formal letter with standard letterhead format"</em> / <em>"Present this as a table with pros and cons in two columns"</em> / <em>"Keep it under 150 words"</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="font-size:0.85rem;font-weight:800">T</div>
+            <div class="step-body">
+              <h4>Tone — Set the Register</h4>
+              <p>How should the response sound? <em>"Use plain English, no jargon"</em> / <em>"Be warm and encouraging"</em> / <em>"Be direct and professional"</em> / <em>"Use a light, friendly tone with occasional humour"</em> / <em>"I understand the technical terms — don't simplify"</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="visual-card" style="margin-top:16px">
+        <h4>✍️ CRAFT in Action — A Complete Example</h4>
+        <p style="background:#f3f4f6; padding:16px; border-radius:8px; font-size:0.95rem; line-height:1.7; border-left:4px solid var(--primary);">
+          <strong>[Context]</strong> I'm a 68-year-old retired nurse. I have a follow-up appointment with my cardiologist next week to review my atrial fibrillation management. I currently take warfarin and bisoprolol.<br><br>
+          <strong>[Role]</strong> Act as a knowledgeable patient advocate who helps people prepare for medical appointments.<br><br>
+          <strong>[Action]</strong> Help me prepare a list of questions to ask my cardiologist, focusing on: whether my current medication is still optimal, what lifestyle changes might help, and what warning signs I should watch for.<br><br>
+          <strong>[Format]</strong> Present this as a numbered list of 8–10 questions, grouped by topic.<br><br>
+          <strong>[Tone]</strong> Use clear, direct language. I have a medical background so you don't need to avoid technical terms.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Role Prompting — Activating Expertise</h2>
+      <p>
+        Assigning the AI a role or persona is one of the single most effective prompting techniques.
+        It shifts the model's "posture" — the vocabulary it uses, the assumptions it makes, the level
+        of detail it provides, and the perspective it takes.
+      </p>
+
+      <div class="visual-card">
+        <h4>🎭 Useful Role Prompts by Domain</h4>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num">🏥</div>
+            <div class="step-body">
+              <h4>Medical</h4>
+              <p><em>"Act as an experienced GP explaining a diagnosis to a patient in plain English"</em> · <em>"Act as a knowledgeable pharmacist advising on medications"</em> · <em>"Act as a patient advocate helping me prepare for a specialist appointment"</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">⚖️</div>
+            <div class="step-body">
+              <h4>Legal and Consumer</h4>
+              <p><em>"Act as a consumer rights adviser helping me understand my options"</em> · <em>"Act as an experienced solicitor explaining a clause in plain English (not as legal advice)"</em> · <em>"Act as a citizens advice bureau adviser helping with a benefits question"</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">💰</div>
+            <div class="step-body">
+              <h4>Financial</h4>
+              <p><em>"Act as an independent financial adviser helping me understand pension options (not as regulated advice)"</em> · <em>"Act as an accountant explaining a tax form"</em> · <em>"Act as a knowledgeable friend who understands personal finance"</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">✍️</div>
+            <div class="step-body">
+              <h4>Writing</h4>
+              <p><em>"Act as a professional copywriter"</em> · <em>"Act as a skilled editor improving the clarity of my writing"</em> · <em>"Act as a formal business letter writer"</em> · <em>"Act as a friendly, warm tone-of-voice expert"</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">🎓</div>
+            <div class="step-body">
+              <h4>Learning and Explaining</h4>
+              <p><em>"Act as a patient teacher explaining this to someone with no technical background"</em> · <em>"Act as a historian specialising in this period"</em> · <em>"Act as a science communicator making complex ideas accessible"</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout--warning">
+        <div class="callout__icon">⚠️</div>
+        <div class="callout__body">
+          <h4>Role ≠ Professional Qualification</h4>
+          <p>When you ask AI to "act as a GP" or "act as a solicitor," you're getting the AI's best attempt to communicate in that style — not regulated professional advice. Always add the caveat <em>"not as actual legal/medical advice"</em> to keep the AI appropriately cautious, and always consult real professionals for decisions with real consequences.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Few-Shot Prompting — Teaching by Example</h2>
+      <p>
+        One of the most powerful techniques is to show the AI exactly what you want by giving it
+        examples before making your request. This is called <strong>few-shot prompting</strong>
+        ("few shots" = a few examples).
+      </p>
+
+      <div class="visual-card">
+        <h4>📋 Few-Shot Example: Consistent Style</h4>
+        <p style="background:#f3f4f6; padding:16px; border-radius:8px; font-size:0.93rem; line-height:1.7;">
+          <em>"I'm writing entries for my family history project. I want each entry to follow this format:<br><br>
+          <strong>[Example Entry]</strong><br>
+          THOMAS WILLIAM HARRIS (1891–1954). Born in Stoke-on-Trent, the second of six children. Served as a coal miner for 30 years before moving to Birmingham in 1932. Known for his dry wit and expert dominoes playing. Married Dorothy (née Evans) in 1920. Three children: Ethel, Frank, and Vera.<br><br>
+          Please write a similar entry for my grandmother ELEANOR GRACE STANTON (1918–2003). She was born in Norwich, trained as a seamstress, married my grandfather Frederick in 1940 during the war, had four children, and was famous for her embroidery and Victoria sponge."</em>
+        </p>
+      </div>
+
+      <p>
+        By giving an example of the exact format you want, the AI will match it closely — including
+        length, style, the kind of detail included, and even the voice. This is far more reliable than
+        describing the format in abstract terms.
+      </p>
+    </section>
+
+    <section>
+      <h2>Chain-of-Thought Prompting — Better Reasoning</h2>
+      <p>
+        For complex questions that require reasoning — comparing options, working through a problem,
+        making a recommendation — asking the AI to "think step by step" produces markedly better
+        results. This is called <strong>chain-of-thought prompting</strong>.
+      </p>
+
+      <div class="comparison-grid">
+        <div class="comparison-item">
+          <div class="ci-icon">❌</div>
+          <h4>Without Chain-of-Thought</h4>
+          <p><em>"Which is better — fixed or variable rate mortgage?"</em><br><br>Gets a generic comparison that doesn't engage with your situation.</p>
+        </div>
+        <div class="comparison-item">
+          <div class="ci-icon">✅</div>
+          <h4>With Chain-of-Thought</h4>
+          <p><em>"I'm considering remortgaging. Think through this step by step: what are the key factors that determine whether a fixed or variable rate is better for someone in my situation (retired, fixed income, risk-averse, 5 years left on mortgage)? Then give me your recommendation and reasoning."</em></p>
+        </div>
+      </div>
+
+      <p>Useful chain-of-thought phrases to add to any prompt:</p>
+      <ul>
+        <li><em>"Think through this step by step before giving your answer."</em></li>
+        <li><em>"First analyse the pros and cons, then give me your recommendation."</em></li>
+        <li><em>"Walk me through your reasoning."</em></li>
+        <li><em>"Consider this from multiple angles before answering."</em></li>
+        <li><em>"What information would you need to give a better answer? Then answer with what you have."</em></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Negative Prompting — Saying What You Don't Want</h2>
+      <p>
+        Equally important as stating what you want is stating what you <em>don't</em> want.
+        Negative instructions often have an immediate and dramatic effect on AI output quality.
+      </p>
+      <ul>
+        <li><em>"Do not use any medical jargon — plain English only."</em></li>
+        <li><em>"Don't start with a preamble — go straight to the content."</em></li>
+        <li><em>"Avoid bullet points — write in flowing prose."</em></li>
+        <li><em>"Don't hedge everything with 'it depends' — give me your best recommendation."</em></li>
+        <li><em>"Don't repeat back what I've told you — just produce the output."</em></li>
+        <li><em>"Avoid clichés and corporate language — write naturally."</em></li>
+      </ul>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon">💡</div>
+        <div class="callout__body">
+          <h4>Taming AI Verbosity</h4>
+          <p>AI models often produce long-winded responses by default. If you want brevity, say so explicitly: <em>"Answer in no more than 3 sentences"</em> or <em>"Give me the key point only — one paragraph maximum."</em> Adding a word limit is one of the most reliably effective prompt additions.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Handling AI Mistakes and Pushing Back</h2>
+      <p>
+        AI will sometimes give you an incorrect, incomplete, or off-target response. Knowing how to
+        handle this gracefully is part of the skill of prompting.
+      </p>
+
+      <h3>When the AI Gets a Fact Wrong</h3>
+      <p>
+        Don't accept it. Challenge it: <em>"I don't think that's correct — I believe [your understanding].
+        Can you reconsider and cite your reasoning?"</em> A well-designed AI will acknowledge uncertainty
+        and revise. Be aware of sycophancy though — if you push back firmly on something that was
+        actually correct, a poorly calibrated model may agree with you anyway. Check with authoritative
+        sources for anything important.
+      </p>
+
+      <h3>When the Response Misses Your Point</h3>
+      <p>
+        Clarify directly: <em>"That's not quite what I was asking. Let me be more specific: [clarified
+        version]."</em> The AI uses everything in the conversation to understand you — being precise
+        about the gap between what you got and what you needed almost always produces a much better
+        second attempt.
+      </p>
+
+      <h3>When You Need a Different Perspective</h3>
+      <ul>
+        <li><em>"What's the strongest argument against what you just said?"</em></li>
+        <li><em>"What are the risks or downsides you haven't mentioned?"</em></li>
+        <li><em>"If you had to give contrary advice, what would it be?"</em></li>
+        <li><em>"What would a sceptic say about this recommendation?"</em></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>20 Ready-to-Use Prompt Templates</h2>
+      <p>
+        Copy, adapt, and personalise these templates. Replace the parts in [brackets] with your
+        own details.
+      </p>
+
+      <div class="visual-card">
+        <h4>✍️ Writing Templates</h4>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Formal Complaint</h4>
+              <p><em>"Write a formal complaint letter to [company name] about [specific issue — e.g., 'incorrect billing of £X on [date]']. I want the letter to be firm but polite, request [specific outcome — e.g., 'a full refund and written explanation'], and make clear I will escalate to [Ofgem / the Financial Ombudsman / Trading Standards] if not resolved within [14 days]. My name is [name] and my account/reference number is [number]."</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Personal Letter or Card</h4>
+              <p><em>"Help me write a [type: condolence / congratulations / thank-you / birthday] message for [relationship: my neighbour / my niece / an old friend]. They are [brief relevant detail about them]. I want the tone to be [warm / formal / humorous / heartfelt]. Keep it to [2–3 sentences / a short paragraph / about 100 words]."</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Speech or Toast</h4>
+              <p><em>"I need to give a [2-minute / 5-minute] speech at [occasion: a wedding / birthday / retirement party]. The person being honoured is [name], who is [brief description — relationship to you, personality, achievements]. I want the speech to be [warm and funny / touching and heartfelt / brief and elegant]. Please draft something I can adapt."</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h4>Email to a Professional</h4>
+              <p><em>"Help me write an email to my [GP / solicitor / accountant / landlord] about [specific topic]. I want to [explain my situation / request a specific action / ask a question about]. The tone should be [polite and professional / direct / friendly but formal]. Keep it concise."</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="visual-card" style="margin-top:16px">
+        <h4>🏥 Health Templates</h4>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-body">
+              <h4>Prepare for a Medical Appointment</h4>
+              <p><em>"I have a [GP / consultant / physiotherapy] appointment about [condition/issue]. I currently take [medications if relevant]. Help me prepare: (1) a brief, clear description of my symptoms to describe to the doctor, and (2) a list of the most important questions to ask. Keep the symptom description under 100 words."</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">6</div>
+            <div class="step-body">
+              <h4>Understand a Diagnosis</h4>
+              <p><em>"My doctor has told me I have [condition]. Please explain: (1) what this condition actually is in plain English, (2) how it typically progresses, (3) the main treatment approaches, and (4) five questions I should ask my specialist. Note: I have a [science/medical/non-technical] background, so [adjust/don't adjust] your language accordingly."</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">7</div>
+            <div class="step-body">
+              <h4>Understand a Medication</h4>
+              <p><em>"I've been prescribed [medication name and dose] for [condition]. Please explain: what it does, how it works, the most common side effects to watch for in the first few weeks, any important food or drink interactions, and what I should tell my pharmacist I'm already taking. (I will confirm this with my pharmacist.)"</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="visual-card" style="margin-top:16px">
+        <h4>💰 Finance and Admin Templates</h4>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num">8</div>
+            <div class="step-body">
+              <h4>Understand a Document</h4>
+              <p><em>"Here is an extract from [type of document: my insurance policy / a letter from my solicitor / my pension statement]. [Paste the text.] Please explain in plain English: (1) what this section means, (2) what action (if any) it requires from me, and (3) any important details I should be aware of."</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">9</div>
+            <div class="step-body">
+              <h4>Explore Financial Options</h4>
+              <p><em>"I am [age] and am [retired / approaching retirement]. I have [brief description of financial situation — savings, pension, property]. I am considering [specific decision: drawing down my pension / remortgaging / releasing equity]. Can you explain my main options, the key factors to weigh, and the questions I should ask a financial adviser? (Not as regulated advice.)"</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">10</div>
+            <div class="step-body">
+              <h4>Benefits and Entitlements</h4>
+              <p><em>"I am [age], [employed/retired/caring for someone], and my household income is approximately [range]. Can you give me an overview of the main government benefits and entitlements I might be eligible for in the UK, and point me toward the official services where I can check and apply?"</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="visual-card" style="margin-top:16px">
+        <h4>🏡 Home, Learning &amp; Life Templates</h4>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num">11</div>
+            <div class="step-body">
+              <h4>DIY Guidance</h4>
+              <p><em>"I want to [specific task — e.g., 'bleed my radiators / fix a dripping tap / re-grout my bathroom tiles']. I'm a [complete beginner / reasonably handy] and have [list any tools you have]. Please give me step-by-step instructions, a list of what I need to buy, and any safety precautions. Also tell me at what point I should call a professional instead."</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">12</div>
+            <div class="step-body">
+              <h4>Travel Planning</h4>
+              <p><em>"I am planning a [X-day] trip to [destination] in [month]. There are [number] of us, aged [ages], and we enjoy [types of activity: gentle walks / culture / good food / gardens]. We prefer [accommodation type]. Budget is approximately [range]. Please suggest a day-by-day itinerary with accommodation areas and practical tips."</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">13</div>
+            <div class="step-body">
+              <h4>Learning About a Topic</h4>
+              <p><em>"I want to learn about [topic]. I'm a complete beginner / I know [X] about it already. Please give me: (1) a clear overview for someone new to this, (2) the 5 most important things to understand, (3) three book or documentary recommendations for going deeper, and (4) any common misconceptions I should be aware of."</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">14</div>
+            <div class="step-body">
+              <h4>Cooking and Recipes</h4>
+              <p><em>"Please create a recipe for [dish] that serves [number] people. I prefer [cooking style / dietary notes — e.g., 'not too spicy / low salt / vegetarian']. I have [list main ingredients you want to use or want to avoid]. Give me: ingredients list, step-by-step method, and any advance preparation I can do the day before."</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">15</div>
+            <div class="step-body">
+              <h4>Helping Grandchildren with Schoolwork</h4>
+              <p><em>"My [age]-year-old grandchild is struggling with [topic: fractions / the causes of World War One / writing paragraphs]. Please explain this at a level appropriate for a [age]-year-old, using clear examples and an analogy if possible. Then give me 3 practice questions I could use to test their understanding."</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">16</div>
+            <div class="step-body">
+              <h4>Technology Help</h4>
+              <p><em>"I'm having a problem with [device / app / website]. Specifically: [describe what's happening, what you expected, what you've already tried]. Please walk me through the most likely solutions step by step, starting with the simplest fix."</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">17</div>
+            <div class="step-body">
+              <h4>Summarise a Long Article or Document</h4>
+              <p><em>"Here is a [news article / letter / report]. [Paste the text.] Please: (1) summarise the key points in 3–5 bullet points, (2) identify any action required of me, and (3) highlight anything surprising or important I might have missed in a quick read."</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">18</div>
+            <div class="step-body">
+              <h4>Debate and Explore an Opinion</h4>
+              <p><em>"I think [your opinion on a topic]. Please give me: (1) the strongest arguments in favour of this view, (2) the strongest arguments against it, and (3) what evidence or considerations would be most relevant to forming a well-informed view. Present both sides fairly."</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">19</div>
+            <div class="step-body">
+              <h4>Personal Writing — Memoir or Story</h4>
+              <p><em>"I want to write about a memory from my life: [brief description of the memory or event]. Please help me turn this into a short piece of writing (about [200–500] words) that is [reflective / humorous / descriptive]. Use first person. I want it to capture [specific feeling or detail I care about]."</em></p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">20</div>
+            <div class="step-body">
+              <h4>Comparison and Decision Support</h4>
+              <p><em>"I am deciding between [option A] and [option B] for [purpose]. My priorities are [list 2–3 things most important to you]. Please compare them across these priorities, then give me your recommendation with reasoning. If there's important information you'd need from me to give a better answer, ask first."</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>System Prompts — Setting Persistent Instructions</h2>
+      <p>
+        Some AI tools allow you to set a "system prompt" or "custom instructions" that apply to every
+        conversation. This is like giving the AI standing orders about who you are and how it should
+        communicate with you. If your tool supports it (ChatGPT's custom instructions, Claude's Projects
+        feature), this saves you from repeating context every time.
+      </p>
+      <p>A useful system prompt might say:</p>
+      <p style="background:#f3f4f6; padding:16px; border-radius:8px; font-size:0.93rem; line-height:1.7; border-left:4px solid var(--primary); margin: 16px 0;">
+        <em>"I am a 71-year-old retired teacher based in the UK. I'm intelligent and curious and don't need things over-simplified, but I'm not a medical, legal, or financial professional. Please always use British English, be direct rather than hedging, and when discussing health topics always remind me to confirm with my GP. Keep responses concise unless I ask for detail."</em>
+      </p>
+    </section>
+
+    <div class="key-takeaways">
+      <h3>Key Takeaways</h3>
+      <ul>
+        <li><span class="kt-check">✓</span> CRAFT (Context, Role, Action, Format, Tone) is a reliable framework for high-quality prompts</li>
+        <li><span class="kt-check">✓</span> Role prompting — "Act as an experienced pharmacist" — dramatically changes the quality and focus of responses</li>
+        <li><span class="kt-check">✓</span> Few-shot prompting shows the AI an example of exactly what you want — more reliable than abstract description</li>
+        <li><span class="kt-check">✓</span> Chain-of-thought ("think step by step") produces better reasoning on complex questions</li>
+        <li><span class="kt-check">✓</span> Negative instructions ("no jargon", "under 100 words") are equally powerful as positive ones</li>
+        <li><span class="kt-check">✓</span> Push back when the AI is wrong or misses your point — clarity and iteration produce great results</li>
+        <li><span class="kt-check">✓</span> The 20 templates in this module are yours to copy, personalise, and use immediately</li>
+      </ul>
+    </div>
+
+    <div class="quiz-section">
+      <h3>Check Your Understanding</h3>
+      <p class="quiz-subtitle">Three questions testing what you can apply.</p>
+
+      <div class="quiz-question">
+        <p>1. What does the "R" in the CRAFT framework stand for, and why does it improve AI responses?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Result — specifying the end result you want
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> Role — assigning the AI a persona (e.g. "Act as a knowledgeable pharmacist") to focus its response
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Relevance — filtering out irrelevant information
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Correct! Role prompting shifts how the AI communicates — the vocabulary, assumptions, level of detail, and perspective all change when you assign an appropriate expert persona."
+          data-incorrect="Role (R in CRAFT) means assigning the AI a persona — 'Act as an experienced GP' or 'Act as a consumer rights adviser.' This focuses the vocabulary, depth, and perspective of the response significantly.">
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <p>2. You ask AI to explain the pros and cons of equity release, and it gives a generic response that doesn't engage with your specific situation (70 years old, mortgage-free, looking for extra income). What's the best fix?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Start a new conversation and ask the same question again
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> Reply with more context: "I should have mentioned — I'm 70, mortgage-free, and looking for supplemental income. Can you revisit your answer with that in mind?"
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Accept the generic answer and research it yourself elsewhere
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Exactly! Iterating with additional context in the same conversation is usually far more effective than starting over. The AI builds on everything already said."
+          data-incorrect="Adding context in the same conversation is the most effective approach. The AI builds on everything said so far and can revise its previous response with the new information you've provided.">
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <p>3. Why is "think step by step" a useful addition to complex prompts?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> It makes the AI respond faster
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> It forces the AI to search the internet for information
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> It encourages the model to reason more carefully, reducing errors on multi-step problems
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Correct. Research has consistently shown that asking AI to reason step by step reduces errors, particularly on problems requiring multiple reasoning steps."
+          data-incorrect="'Think step by step' encourages the model to work through a problem methodically rather than jumping to a conclusion — which research shows significantly reduces reasoning errors.">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="module-nav">
+  <div class="module-nav__inner">
+    <a href="module-12.html" class="btn btn--outline">← Previous</a>
+    <button id="mark-complete-btn" class="mark-complete-btn" data-module="13">Mark as Complete ✓</button>
+    <a href="module-14.html" class="btn btn--primary">Next: Tokens &amp; Context →</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>💡 <strong>Tech for Life</strong> — Designed with care for 60+ learners</p>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

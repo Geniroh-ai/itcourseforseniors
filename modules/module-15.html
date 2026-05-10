@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 15 — 25 Ways AI Can Transform Your Daily Life | Tech for Life</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    .use-case-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin: 24px 0;
+    }
+    .use-case-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+    }
+    .use-case-card__header {
+      padding: 16px 22px 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .use-case-card__num {
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 99px;
+      flex-shrink: 0;
+    }
+    .use-case-card__title {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+    .use-case-card__body { padding: 16px 22px 20px; }
+    .use-case-card__scenario {
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+    .prompt-box {
+      background: #f8f6f2;
+      border-left: 4px solid var(--primary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 14px 16px;
+      font-size: 0.91rem;
+      font-style: italic;
+      line-height: 1.65;
+      color: var(--text);
+    }
+    .prompt-box strong { font-style: normal; font-size: 0.78rem; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 6px; }
+    .use-case-tip {
+      margin-top: 12px;
+      font-size: 0.87rem;
+      color: #059669;
+      font-weight: 600;
+    }
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin: 40px 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--primary);
+    }
+    .category-header span { font-size: 1.5rem; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../index.html" class="site-logo">
+      <span class="site-logo__icon">💡</span>
+      <span>Tech for Life<span class="site-logo__sub">A course for 60+ learners</span></span>
+    </a>
+    <nav class="site-nav">
+      <a href="../index.html" data-page="home">Home</a>
+      <a href="../index.html#modules" data-page="modules">All Modules</a>
+    </nav>
+  </div>
+</header>
+
+<div class="module-progress">
+  <div class="module-progress__inner">
+    <span class="module-progress__label">Course Progress</span>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" style="width: 100%"></div>
+    </div>
+    <span class="module-progress__fraction">Module 15 of 15 — Final Module!</span>
+  </div>
+</div>
+
+<div class="module-hero module-hero--advanced">
+  <div class="module-hero__number">Module 15 · AI in Practice</div>
+  <span class="module-hero__icon">✨</span>
+  <h1>25 Ways AI Can Transform Your Daily Life</h1>
+  <p class="module-hero__tagline">Real scenarios. Real prompts. Real results. Keep this module as your personal reference guide — return to it whenever you need inspiration.</p>
+  <div class="module-hero__chips">
+    <span class="chip">🟣 AI in Practice</span>
+    <span class="chip">⏱ 20 minutes</span>
+    <span class="chip">🎓 Course Capstone</span>
+  </div>
+</div>
+
+<div class="module-body">
+  <div class="module-content">
+
+    <div class="objectives-box">
+      <h3>What You'll Find Here</h3>
+      <ul>
+        <li>25 concrete, real-world AI use cases — one for every situation type you're likely to encounter</li>
+        <li>A ready-to-use example prompt for each scenario — copy, adapt, and send</li>
+        <li>Practical tips and cautions for each use case</li>
+        <li>Coverage across: health, family, writing, finance, home, learning, and travel</li>
+        <li>A reminder of when to verify and when to trust</li>
+      </ul>
+    </div>
+
+    <div class="callout callout--info">
+      <div class="callout__icon">📌</div>
+      <div class="callout__body">
+        <h4>How to Use This Module</h4>
+        <p>Don't try to absorb all 25 at once. Scan the categories to find what's relevant to your life right now, read those cases, and try the prompts. Return to this page as a reference whenever you need inspiration. Every prompt here can be adapted — change the specific details to match your own situation.</p>
+      </div>
+    </div>
+
+    <!-- ─── HEALTH ─── -->
+    <div class="category-header"><span>🏥</span> Health &amp; Medical (Cases 1–6)</div>
+
+    <div class="use-case-grid">
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">01</span>
+          <span class="use-case-card__title">Preparing for a Specialist Appointment</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">You've been referred to a cardiologist and want to make the most of your 20 minutes with them. Walking in prepared with good questions transforms specialist appointments.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "I have my first appointment with a cardiologist next Thursday. I was referred because my GP heard an irregular heartbeat and suspects atrial fibrillation. I'm 72, currently on bisoprolol 5mg for blood pressure, and have no history of heart disease. Please help me prepare: (1) a clear 3-sentence summary of my situation to open with, (2) 8 important questions to ask, grouped by topic — diagnosis, treatment options, lifestyle, and monitoring."
+          </div>
+          <p class="use-case-tip">✅ Bring the printed list. Specialists appreciate prepared patients and you'll get far more from the appointment.</p>
+        </div>
+      </div>
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">02</span>
+          <span class="use-case-card__title">Understanding a Prescription or Medication Change</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">Your GP has started you on a new medication, changed your dose, or combined two medications. You want to understand what you're taking before you pick it up from the pharmacy.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "My GP has just prescribed me atorvastatin 20mg for high cholesterol. I'm already taking lisinopril 10mg for blood pressure and omeprazole for acid reflux. Please explain: (1) what atorvastatin does and how it works, (2) the most common side effects to watch for, especially in the first few weeks, (3) whether there are any known interactions with my existing medications, and (4) what questions I should confirm with my pharmacist when I collect it."
+          </div>
+          <p class="use-case-tip">⚠️ Always confirm drug interactions with your pharmacist — they have access to your full medication record and can give definitive advice.</p>
+        </div>
+      </div>
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">03</span>
+          <span class="use-case-card__title">Interpreting a Medical Test Result</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">You've received blood test results through the NHS App or a letter, and the numbers mean nothing to you. Understanding what they mean before your follow-up appointment is genuinely helpful.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "I've just received my blood test results and I'm trying to understand them before I discuss them with my GP. Here are the flagged values: HbA1c 48 mmol/mol (reference range: below 42), eGFR 62 mL/min (reference: above 60), LDL cholesterol 3.8 mmol/L (reference: below 3.0). Can you explain what each of these tests measures, what my results might suggest, and what the most important follow-up questions would be?"
+          </div>
+          <p class="use-case-tip">✅ AI excels at translating medical jargon. Go into your appointment informed — you'll have a much better conversation with your GP.</p>
+        </div>
+      </div>
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">04</span>
+          <span class="use-case-card__title">Finding NHS Support and Services</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">You're looking for support services, community programmes, or specialist help beyond what your GP can provide.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "My mother is 84 and lives alone in Edinburgh. She was recently diagnosed with mild vascular dementia. We're looking for support beyond just her GP — things like day centres, memory cafés, carer support groups, and home visits. Can you explain what types of services exist for this situation in the UK, who provides them (NHS, council, charities), and how we would typically access them? I'll then contact the specific local organisations directly."
+          </div>
+          <p class="use-case-tip">✅ AI gives you the landscape of what's available. For specific local services, contact your GP surgery, the local council's adult social services team, or the Alzheimer's Society helpline.</p>
+        </div>
+      </div>
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">05</span>
+          <span class="use-case-card__title">Understanding a Surgical Procedure</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">You or a family member has been told you need an operation. The surgeon explained it briefly, but you'd like to understand the procedure, the risks, and the recovery in more depth.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "My husband (74, otherwise fit) has been told he needs a total knee replacement. He's been on the waiting list for 8 months and the operation is scheduled for next month. Can you explain: (1) what the operation involves at a general level, (2) what the typical recovery timeline looks like, (3) the main risks, (4) how we should prepare the home beforehand, and (5) the signs of complications to watch for post-surgery?"
+          </div>
+          <p class="use-case-tip">✅ Knowing what to expect reduces anxiety. Bring specific questions from your reading to the pre-operative assessment.</p>
+        </div>
+      </div>
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">06</span>
+          <span class="use-case-card__title">Mental Health and Wellbeing Support</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">Loneliness, bereavement, anxiety, or low mood are common challenges. AI can help you find resources, understand options, or even just organise your thoughts — though human connection remains irreplaceable.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "I lost my wife eight months ago and I'm still struggling much more than I expected. I don't feel comfortable talking to friends about it, and I don't know what support is available. Can you: (1) explain the types of grief support available in the UK (counselling, support groups, charities), (2) describe what bereavement counselling actually involves so I know what to expect, and (3) suggest some practical ways people find helpful for managing grief day to day?"
+          </div>
+          <p class="use-case-tip">⚠️ For emotional crises, please contact a human — Samaritans (116 123, free, 24 hours) is excellent. AI is a good starting point for finding resources but not a substitute for human support.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ─── WRITING & ADMIN ─── -->
+    <div class="category-header"><span>✍️</span> Writing &amp; Administration (Cases 7–11)</div>
+
+    <div class="use-case-grid">
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">07</span>
+          <span class="use-case-card__title">Writing a Formal Complaint That Gets Results</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">A complaint letter that is specific, calm, documents the facts clearly, and makes the desired outcome explicit gets results far better than an emotional one. AI excels at this.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "I need to write a formal complaint letter to British Gas. Background: I have been incorrectly billed for £892 for a property I moved out of 14 months ago. I have contacted them by phone four times (dates: March 4, March 19, April 2, and April 28) and each time I was promised the matter would be resolved, but nothing has happened. I want the letter to: (1) state the facts clearly in chronological order, (2) request a zero-balance bill and written confirmation within 14 working days, (3) state I will refer the matter to the Energy Ombudsman if not resolved. My name is David Harrison, account number 123456789. Tone: firm, professional, unemotional."
+          </div>
+          <p class="use-case-tip">✅ Always keep a copy of any complaint letter and note the date sent. If sending by post, consider recorded delivery.</p>
+        </div>
+      </div>
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">08</span>
+          <span class="use-case-card__title">Appealing a Rejected Claim or Decision</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">Whether it's an insurance claim, a PIP (Personal Independence Payment) decision, or a council tax appeal, AI can help you draft a focused, evidence-based appeal.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "My Personal Independence Payment claim was rejected. The decision letter says my 'daily living' component was not awarded because the assessor concluded I can prepare a simple meal unaided. However, this is inaccurate — due to my rheumatoid arthritis, I cannot stand for more than 10 minutes, cannot grip a saucepan handle safely, and have dropped and burned myself twice in the past year. I have a letter from my rheumatologist confirming these limitations. Help me draft a clear, factual appeal letter that: (1) challenges the specific assessment point, (2) presents my evidence, and (3) requests a mandatory reconsideration."
+          </div>
+          <p class="use-case-tip">✅ Citizens Advice offers free help with benefit appeals and can review your letter before you send it.</p>
+        </div>
+      </div>
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">09</span>
+          <span class="use-case-card__title">Decoding Confusing Official Documents</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">Legal, financial, and government documents are often written in language that is deliberately or unnecessarily impenetrable. AI translates them instantly.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "Here is an extract from a letter I've received from HMRC about my Self Assessment tax return. [Paste the text.] I don't understand what they are asking me to do or by when. Can you: (1) explain in plain English what this section means, (2) identify what specific action — if any — I need to take and by what deadline, and (3) flag any phrases that suggest there are consequences if I don't act?"
+          </div>
+          <p class="use-case-tip">✅ For genuine HMRC queries, call the HMRC helpline (0300 200 3300) or use a qualified accountant. AI clarifies the language — professionals handle the action.</p>
+        </div>
+      </div>
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">10</span>
+          <span class="use-case-card__title">Writing a Lasting Power of Attorney Overview</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">Understanding the LPA process before speaking to a solicitor can save money and ensure you ask the right questions. AI is excellent for this kind of orientation.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "I'm 74 and want to understand Lasting Powers of Attorney before I meet with a solicitor next month. Can you explain: (1) the difference between a Property &amp; Financial Affairs LPA and a Health &amp; Welfare LPA, (2) why having both matters, (3) what the process involves and roughly how long it takes, (4) what happens if I lose mental capacity WITHOUT having an LPA in place, and (5) the questions I should ask my solicitor?"
+          </div>
+          <p class="use-case-tip">✅ The Office of the Public Guardian (gov.uk/power-of-attorney) has authoritative guidance. A solicitor should handle the actual documents.</p>
+        </div>
+      </div>
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">11</span>
+          <span class="use-case-card__title">Writing Family History or Memoir</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">Capturing your memories and family history in writing is a gift to future generations. AI helps you shape raw memories into polished, readable prose.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "I want to write a piece about my childhood home — a terraced house in Middlesbrough in the 1960s. The details I remember: an outside toilet until 1967, a coal fire in the front room, a tin bath on Fridays, my grandmother living in the back bedroom, and the smell of baking every Saturday morning. I want to write this as a warm, vivid short piece (about 400 words) that captures the texture of that life. Please draft something in first person — I'll adapt it with my own memories and words."
+          </div>
+          <p class="use-case-tip">✅ Use the AI draft as a scaffold, then rewrite in your own voice with your own specific memories added. The result will be genuinely yours.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ─── FINANCE ─── -->
+    <div class="category-header"><span>💰</span> Finance &amp; Benefits (Cases 12–15)</div>
+
+    <div class="use-case-grid">
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">12</span>
+          <span class="use-case-card__title">Checking Your Benefit Entitlements</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">An estimated £19 billion in benefits goes unclaimed in the UK each year. Many older people don't know what they're entitled to. AI gives you an overview to start from.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "I am 73 years old, retired, and receive the State Pension of £168 per week. I live alone and own my home (no mortgage). My only other income is a small private pension of £95 per month. I have moderate arthritis in both knees which affects my mobility. Can you give me an overview of the main benefits I might be entitled to in the UK — things like Pension Credit, Attendance Allowance, Council Tax Reduction, and Warm Home Discount — and what the eligibility thresholds roughly are? I'll then check official sources to confirm and apply."
+          </div>
+          <p class="use-case-tip">✅ Use gov.uk's official benefit calculators and entitledto.co.uk to verify. Many councils also offer free benefit check-up services for older residents.</p>
+        </div>
+      </div>
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">13</span>
+          <span class="use-case-card__title">Understanding Your Pension Statement</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">Annual pension statements are full of jargon that obscures what the numbers actually mean for your retirement income. AI translates them clearly.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "Here is an extract from my annual pension statement from my defined contribution workplace pension. [Paste relevant sections.] I'm 63 and plan to retire at 67. Can you explain in plain English: (1) what the current fund value means in terms of likely monthly income at retirement, (2) what the 'transfer value' figure means and when that would be relevant, (3) what the projected value at retirement assumes, and (4) whether the charges mentioned seem reasonable? I'll then discuss this with a financial adviser."
+          </div>
+          <p class="use-case-tip">✅ MoneyHelper (moneyhelper.org.uk) offers free, impartial guidance on pensions. For personalised advice, use a regulated financial adviser.</p>
+        </div>
+      </div>
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">14</span>
+          <span class="use-case-card__title">Comparing Financial Products</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">Choosing between savings accounts, insurance policies, or care funding options is complex. AI helps you understand the landscape before you commit.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "I have £40,000 in a current account earning almost no interest. I'm 68 and this money is my emergency reserve — I don't want to tie it up for more than 2 years. Can you explain the main options for getting a better return with low risk — things like easy-access savings accounts, fixed-rate bonds (1–2 year), premium bonds, and cash ISAs? For each option, explain: the typical interest rate range, how quickly I can access the money, whether the money is protected (FSCS), and any important limitations."
+          </div>
+          <p class="use-case-tip">✅ For actual rates, check moneysavingexpert.com (Martin Lewis's site) which shows current best-buy tables updated daily.</p>
+        </div>
+      </div>
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">15</span>
+          <span class="use-case-card__title">Planning for Later Life Care Costs</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">Care home costs are one of the biggest financial shocks families face. Understanding the landscape early — even years in advance — allows for informed planning.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "I am 70 and in good health, but I want to understand care funding in England before it becomes urgent. Can you explain: (1) how means-testing for residential care works in England, (2) what the current capital threshold is (the amount above which you self-fund), (3) how the family home is treated in the means test, (4) what a 'deferred payment agreement' is, and (5) what questions I should ask a solicitor who specialises in later life planning? Plain English please."
+          </div>
+          <p class="use-case-tip">✅ Age UK (ageuk.org.uk) has excellent, regularly updated guides on care funding. For personalised advice, see a solicitor specialising in elderlaw.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ─── HOME & PRACTICAL ─── -->
+    <div class="category-header"><span>🏡</span> Home &amp; Practical (Cases 16–19)</div>
+
+    <div class="use-case-grid">
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">16</span>
+          <span class="use-case-card__title">Troubleshooting Home Technology</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">Your Wi-Fi router keeps dropping the connection. Your laptop runs very slowly. Your phone keeps running out of battery. AI is an excellent first-line technical support agent.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "My laptop (a Windows 11 HP laptop about 3 years old) has been running very slowly for the past few weeks. It takes over 2 minutes to start up, programmes freeze sometimes, and even typing can lag behind. I haven't installed anything new recently. Please walk me through the most common causes of this and the step-by-step fixes I should try first, starting with the simplest — and tell me at what point I should take it to a repair shop."
+          </div>
+          <p class="use-case-tip">✅ AI is great for simple fixes (clearing startup programmes, disk cleanup). For hardware faults, a local computer repair shop is usually affordable and reliable.</p>
+        </div>
+      </div>
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">17</span>
+          <span class="use-case-card__title">Home Adaptations for Accessibility</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">As mobility or health changes, home adaptations can make an enormous difference to independence. AI helps you understand the options and what support is available.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "My husband has recently been discharged from hospital after a hip replacement. He will be at home recovering for at least 8 weeks and will have limited mobility long-term. We have a Victorian terraced house with a steep staircase, a bath (no shower), and a first-floor bedroom. Can you: (1) suggest the key practical adaptations that would help for recovery and the longer term, (2) explain what a Disabled Facilities Grant is and who qualifies, and (3) advise on whether an Occupational Therapist assessment would be useful and how to get one?"
+          </div>
+          <p class="use-case-tip">✅ Contact your local council's adult social services for a free home assessment. The Disabled Facilities Grant can fund up to £30,000 of adaptations.</p>
+        </div>
+      </div>
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">18</span>
+          <span class="use-case-card__title">Managing Energy Bills and Efficiency</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">Energy costs are a major concern. AI can help you understand your options, identify what help is available, and plan improvements.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "My energy bills have increased significantly and I want to understand my options. I'm a retired homeowner (1970s semi-detached house, gas central heating, solid walls). My current annual bill is about £2,800. Can you explain: (1) what home insulation improvements would have the biggest impact on a house like mine, (2) what government schemes currently exist for energy efficiency grants for homeowners over 65, (3) whether switching supplier is worth considering, and (4) what 'smart meters' actually do and whether I should get one?"
+          </div>
+          <p class="use-case-tip">✅ Check gov.uk for the latest energy efficiency grant schemes (they change frequently). Ofgem's website has impartial guidance on switching suppliers.</p>
+        </div>
+      </div>
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">19</span>
+          <span class="use-case-card__title">Planning a Garden Project</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">Whether redesigning a border, planning a vegetable patch, or finding lower-maintenance solutions, AI is an excellent gardening companion — especially for planning before you buy.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "I want to redesign my back garden (about 8m × 6m, south-facing, clay soil in Yorkshire). I'm 71 and want something beautiful but much lower maintenance than I currently manage — I can only comfortably do light work. I love colour but particularly blues, purples, and whites. I'd like to keep a small lawn area but reduce the borders. Can you suggest: (1) a general layout concept, (2) 8–10 specific plant recommendations that are hardy, low-maintenance, and suit my colour preferences, (3) any structural changes (like raised beds or gravel areas) that would reduce maintenance, and (4) the best time of year to make these changes?"
+          </div>
+          <p class="use-case-tip">✅ The RHS (rhs.org.uk) has excellent free plant finders and soil guides specific to UK regions.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ─── FAMILY & SOCIAL ─── -->
+    <div class="category-header"><span>👨‍👩‍👧‍👦</span> Family, Social &amp; Learning (Cases 20–25)</div>
+
+    <div class="use-case-grid">
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">20</span>
+          <span class="use-case-card__title">Explaining Technology to Older Family Members</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">You've learned a lot in this course. Now you might be the family expert who helps a sibling, friend, or neighbour with technology. AI helps you explain things in the right way.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "My 85-year-old sister has just got her first smartphone and is struggling with it. She is not confident with technology at all and gets anxious easily. Can you write a one-page, very simple printed guide to using WhatsApp on an iPhone — just covering: (1) sending a text message, (2) making a voice call, and (3) taking and sending a photo. Use very large clear steps, no jargon, and friendly encouraging language. I'll print this out and laminate it for her."
+          </div>
+          <p class="use-case-tip">✅ Printed guides that live near the phone are more helpful than bookmarks or instructions on the phone itself.</p>
+        </div>
+      </div>
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">21</span>
+          <span class="use-case-card__title">Planning a Special Family Event</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">A significant anniversary, a family reunion, a milestone birthday. AI helps with the full planning from venue ideas to catering to speeches.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "We're planning a 50th wedding anniversary party for my parents in June. There will be about 40 guests ranging from ages 5 to 87. We want it at a venue near Stratford-upon-Avon with good disabled access. Budget is about £3,000 all in. Can you: (1) suggest the types of venue that typically work for this kind of event, (2) give me a planning timeline (what to book when), (3) suggest a rough running order for the day, and (4) give me ideas for personalising it to make it feel special rather than generic?"
+          </div>
+          <p class="use-case-tip">✅ AI is excellent for planning frameworks and checklists. For specific local venues, Bridebook and Google Maps searches will find real options near you.</p>
+        </div>
+      </div>
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">22</span>
+          <span class="use-case-card__title">Exploring a Historical Topic or Personal Interest</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">Learning something purely for enjoyment is one of the best uses of AI. It's a patient, knowledgeable tutor available at any hour.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "I grew up during the 1960s and I've been thinking about what life was really like in Britain during that decade — beyond the Beatles and the Swinging Sixties headlines. Can you tell me about: (1) what everyday life was actually like for a working-class family in, say, Manchester or Leeds, (2) what major changes happened during the decade that genuinely affected ordinary people (housing, health, immigration, the welfare state), and (3) what historians now consider the decade's most significant legacy? I enjoy detail and don't need it simplified."
+          </div>
+          <p class="use-case-tip">✅ This is a low-risk, high-enjoyment use of AI. For historical facts, do note that hallucination is possible — check key claims in a good book or the BBC History website.</p>
+        </div>
+      </div>
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">23</span>
+          <span class="use-case-card__title">Critically Evaluating a News Story or Claim</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">With misinformation widespread, AI can help you think through the reliability and context of a claim before sharing or acting on it.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "I've seen a post on Facebook claiming that [specific claim — e.g., 'the new COVID vaccine contains a microchip approved for tracking']. Before I share this or form a view, can you help me think through it critically: (1) Is this claim consistent with what scientific and government organisations have said? (2) What kind of evidence would be needed to support or refute it? (3) What are the reliable sources I should check? (4) What are the typical signs that a social media health claim is misleading?"
+          </div>
+          <p class="use-case-tip">✅ Full Fact (fullfact.org) is the UK's independent fact-checking charity. NHS.uk and gov.uk are authoritative for health and government claims.</p>
+        </div>
+      </div>
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">24</span>
+          <span class="use-case-card__title">Planning Extended Travel</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">A longer trip — a cruise, a multi-week visit to family abroad, a touring holiday — requires planning across logistics, health, insurance, and itinerary. AI handles all of it.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "My husband and I (ages 71 and 74) are planning a 3-week trip to New Zealand next March to visit our son in Christchurch and do some independent travel around the South Island. We're both fit but my husband has type 2 diabetes and takes metformin. We've never been to New Zealand. Can you help me plan comprehensively: (1) the key logistical considerations (visas, flight route, jet lag management), (2) health preparations including travel insurance for pre-existing conditions and what my husband should be aware of regarding his diabetes management across a very long flight, (3) a suggested 2-week South Island driving itinerary beyond Christchurch, and (4) the most useful practical tips for older first-time visitors."
+          </div>
+          <p class="use-case-tip">⚠️ Travel insurance for pre-existing conditions: get specialist quotes from providers like AllClear or Staysure. Always declare medical conditions fully.</p>
+        </div>
+      </div>
+
+      <div class="use-case-card">
+        <div class="use-case-card__header">
+          <span class="use-case-card__num">25</span>
+          <span class="use-case-card__title">Using AI as a Thinking Partner</span>
+        </div>
+        <div class="use-case-card__body">
+          <p class="use-case-card__scenario">Perhaps the most underused application: using AI to think through a difficult decision, work through a problem, or explore a dilemma. It's like having a patient, thoughtful friend who will consider any question without judgement.</p>
+          <div class="prompt-box">
+            <strong>Example Prompt</strong>
+            "I'm facing a difficult family situation and I want to think it through carefully. My 80-year-old mother lives alone 150 miles away. Her health has been deteriorating and I'm worried she isn't managing. She's fiercely independent and resistant to the idea of any help or changes. I live 2.5 hours away and work part-time. I have a brother who lives 20 minutes from her but is less proactive. I don't want to do nothing, but I also don't want to undermine her dignity and independence. Can you help me think through this — not by telling me what to do, but by: (1) mapping out the realistic options available to me, (2) identifying what information I'd want to gather before deciding anything, and (3) suggesting how I might have a constructive conversation with my mother about this?"
+          </div>
+          <p class="use-case-tip">✅ AI is genuinely useful as a thinking partner for complex, nuanced situations. It doesn't replace trusted humans — friends, family, professionals — but it can help you organise your thoughts before those conversations.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- COURSE COMPLETION -->
+    <div style="background: linear-gradient(135deg,#1e3a8a,#7c3aed); color:#fff; border-radius: 22px; padding: 44px 36px; text-align:center; margin: 52px 0 36px;">
+      <div style="font-size:4rem; margin-bottom: 18px;">🎓</div>
+      <h2 style="font-size:2rem; color:#fff; margin-bottom:14px;">Course Complete — Well Done!</h2>
+      <p style="font-size:1.1rem; opacity:0.92; max-width:560px; margin:0 auto 20px; line-height:1.7;">
+        You've covered 15 modules — from switching on a computer to understanding how Large Language Models are built, how tokens work, and how to apply AI meaningfully across your life.
+      </p>
+      <p style="font-size:1rem; opacity:0.82; max-width:480px; margin:0 auto 28px; line-height:1.65;">
+        That is a genuinely substantial body of knowledge. The digital world rewards the curious, and you've shown exactly that. Keep exploring — and keep being the thoughtful, critical user these tools need.
+      </p>
+      <a href="../index.html" class="btn btn--accent btn--lg" style="display:inline-flex;">🏠 Return to Course Home</a>
+    </div>
+
+    <div class="key-takeaways">
+      <h3>The Principles to Take Forward</h3>
+      <ul>
+        <li><span class="kt-check">✓</span> Context makes prompts powerful — the more you tell AI about your situation, the better its help</li>
+        <li><span class="kt-check">✓</span> Iteration is the tool — refine, follow up, and push back until you have exactly what you need</li>
+        <li><span class="kt-check">✓</span> AI is a research assistant, not an oracle — it informs, you decide</li>
+        <li><span class="kt-check">✓</span> Verify anything important before acting — hallucination is real, and confident ≠ correct</li>
+        <li><span class="kt-check">✓</span> Your life experience is irreplaceable — AI has breadth; you have depth, judgement, and wisdom</li>
+        <li><span class="kt-check">✓</span> Stay curious — AI is evolving rapidly, and the best way to stay current is to use it regularly</li>
+      </ul>
+    </div>
+
+    <div class="quiz-section">
+      <h3>Final Reflection</h3>
+      <p class="quiz-subtitle">Two final questions — more about thinking than remembering.</p>
+
+      <div class="quiz-question">
+        <p>1. You receive a Facebook message claiming a dangerous drug recall has been issued for a medication you take, linking to an unfamiliar website. What's your best response?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Stop taking the medication immediately to be safe
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Share it immediately so your family knows too
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> Check the MHRA website (gov.uk/mhra) and NHS.uk directly — not the linked site — before acting or sharing
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Exactly right. For medical safety claims, go directly to authoritative sources — MHRA, NHS.uk. Never act on or share unverified health information from social media."
+          data-incorrect="Always verify health safety claims directly with authoritative sources (MHRA at gov.uk/mhra, NHS.uk, your pharmacist) — not the site linked in the message. Never act on or share unverified health claims.">
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <p>2. Looking back at everything in this course — what is the single most important principle for using AI tools wisely?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Always use the most expensive paid tier for better accuracy
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Let AI make important decisions — it has more information than we do
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> Use AI to inform and assist your thinking — but keep yourself as the final decision-maker, and verify what matters
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="That's it exactly. AI augments your capability and knowledge — your judgement, values, and experience remain indispensable. The tool works for you, not the other way around."
+          data-incorrect="The core principle: AI informs and assists — you decide. Verify important claims. Your judgement and values remain the most important inputs to any significant decision.">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="module-nav">
+  <div class="module-nav__inner">
+    <a href="module-14.html" class="btn btn--outline">← Previous</a>
+    <button id="mark-complete-btn" class="mark-complete-btn" data-module="15">Mark as Complete ✓</button>
+    <a href="../index.html" class="btn btn--accent">🏠 Back to Home</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>💡 <strong>Tech for Life</strong> — Designed with care for 60+ learners</p>
+    <p>Congratulations on completing the course. Keep learning, keep exploring.</p>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

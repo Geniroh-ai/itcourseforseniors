@@ -25,21 +25,21 @@
   <div class="module-progress__inner">
     <span class="module-progress__label">Course Progress</span>
     <div class="progress-bar-wrap">
-      <div class="progress-bar-fill" style="width: 91%"></div>
+      <div class="progress-bar-fill" style="width: 73%"></div>
     </div>
-    <span class="module-progress__fraction">Module 11 of 12</span>
+    <span class="module-progress__fraction">Module 11 of 15</span>
   </div>
 </div>
 
 <div class="module-hero module-hero--advanced">
   <div class="module-hero__number">Module 11 · AI Deep Dive</div>
   <span class="module-hero__icon">💬</span>
-  <h1>Large Language Models — Chatbots Explained</h1>
-  <p class="module-hero__tagline">What is ChatGPT, really? How does it understand you and write back? Here's the clearest explanation you'll find anywhere.</p>
+  <h1>Large Language Models — A Deep Dive</h1>
+  <p class="module-hero__tagline">How ChatGPT, Gemini, and Claude actually work — the architecture, the training, what makes them impressive, and where the limits lie.</p>
   <div class="module-hero__chips">
     <span class="chip">🟣 AI Deep Dive</span>
-    <span class="chip">⏱ 15 minutes</span>
-    <span class="chip">📖 Reading</span>
+    <span class="chip">⏱ 20 minutes</span>
+    <span class="chip">📖 Concepts + Detail</span>
   </div>
 </div>
 
@@ -49,303 +49,396 @@
     <div class="objectives-box">
       <h3>What You'll Learn</h3>
       <ul>
-        <li>What a "Large Language Model" (LLM) is — in plain, jargon-free terms</li>
-        <li>How ChatGPT, Gemini, and Claude work at a strategic level</li>
-        <li>How these systems seem to "understand" language without truly thinking</li>
-        <li>The remarkable things LLMs can do — and their clear limitations</li>
-        <li>Why this technology is considered genuinely revolutionary</li>
+        <li>What distinguishes a Large Language Model from other AI systems</li>
+        <li>The Transformer architecture — the breakthrough behind modern LLMs</li>
+        <li>How "attention" lets LLMs understand context across long texts</li>
+        <li>What a token is and why it matters (preview — full coverage in Module 14)</li>
+        <li>The three stages of LLM development: pre-training, fine-tuning, alignment</li>
+        <li>A honest assessment of capabilities and limitations across all major tools</li>
+        <li>How AI companies differ in their approach and values</li>
       </ul>
     </div>
 
     <section>
-      <h2>A New Kind of AI Has Arrived</h2>
+      <h2>What Makes an LLM Different</h2>
       <p>
-        If you've heard of <strong>ChatGPT</strong>, you've heard of a Large Language Model (or LLM).
-        In late 2022, ChatGPT was released by a company called OpenAI, and the world's reaction was
-        one of stunned amazement. Millions of people tried it and found an AI that could hold a
-        natural conversation, write essays, explain complex topics simply, help with letters, answer
-        medical questions, and much more.
+        Before the current generation of AI, language systems were either rule-based (rigid and brittle)
+        or statistical (better, but limited). Earlier chatbots worked by matching your question to a
+        database of pre-written answers. If your question wasn't close to something already in the
+        database, the system failed.
       </p>
       <p>
-        Since then, several major LLMs have arrived: <strong>Gemini</strong> from Google,
-        <strong>Claude</strong> from Anthropic, <strong>Copilot</strong> from Microsoft,
-        and others. They are all broadly similar in what they do.
+        LLMs are fundamentally different. They don't match against templates. They <em>generate</em>
+        responses — word by word, building each response from scratch based on everything they learned
+        during training and everything you've told them in the current conversation. The result is
+        a system that can handle genuinely novel questions it has never encountered before.
       </p>
-      <p>
-        Understanding what these tools are — and what they aren't — is one of the most valuable things
-        you can learn right now, because they are becoming part of everyday life very quickly.
-      </p>
-    </section>
 
-    <section>
-      <h2>What Does "Large Language Model" Mean?</h2>
-      <p>Let's break down those three words:</p>
-
-      <div class="visual-card">
-        <h4>📖 Breaking Down the Name</h4>
-        <div class="step-list">
-          <div class="step-item">
-            <div class="step-num">📦</div>
-            <div class="step-body">
-              <h4>"Large"</h4>
-              <p>These models are enormous. ChatGPT was trained on hundreds of billions of words of text. The "model" itself — the set of learned connections — has hundreds of billions of parameters (mathematical values that were adjusted during training). This is what requires massive computing power to create.</p>
-            </div>
-          </div>
-          <div class="step-item">
-            <div class="step-num">🗣️</div>
-            <div class="step-body">
-              <h4>"Language"</h4>
-              <p>The model specialises in language — reading text, understanding it, and producing new text in response. It works with human language (words, sentences, meaning) rather than, say, images or audio primarily.</p>
-            </div>
-          </div>
-          <div class="step-item">
-            <div class="step-num">🧮</div>
-            <div class="step-body">
-              <h4>"Model"</h4>
-              <p>A "model" in AI is the trained system — a mathematical structure that has learned from data. It's like a very complex, distilled summary of everything it read during training, stored as billions of numbers.</p>
-            </div>
-          </div>
+      <div class="comparison-grid">
+        <div class="comparison-item">
+          <div class="ci-icon">🗂️</div>
+          <h4>Old Chatbots (Template-Based)</h4>
+          <p>"Hello! How can I help?" triggers a lookup: do I have a response for "hello"? Yes — return response #47. Fixed, rigid, easily confused by unusual phrasing.</p>
+        </div>
+        <div class="comparison-item">
+          <div class="ci-icon">🧠</div>
+          <h4>LLMs (Generative)</h4>
+          <p>Generate a response from scratch, token by token, based on learned patterns across billions of documents. Can handle unlimited phrasings, follow-up questions, and genuinely new topics.</p>
         </div>
       </div>
     </section>
 
     <section>
-      <h2>How Does It Actually Work?</h2>
+      <h2>The Transformer — The Architecture That Changed Everything</h2>
       <p>
-        You don't need to understand the mathematics, but the core idea is surprisingly accessible.
-        An LLM was trained by reading an enormous amount of text — books, articles, websites, Wikipedia,
-        academic papers — and learning to predict what word comes next in a sentence.
+        The breakthrough that made modern LLMs possible was published in a 2017 paper titled
+        <em>"Attention Is All You Need"</em> by researchers at Google. The architecture it described
+        is called the <strong>Transformer</strong>, and it solved a problem that had stumped AI
+        researchers for decades: how to process language with a sense of context.
+      </p>
+
+      <h3>The Context Problem</h3>
+      <p>
+        Consider this sentence: <em>"The bank was steep and covered in grass."</em> The word "bank"
+        could mean a financial institution or a riverbank. Humans resolve this instantly using context —
+        "steep" and "grass" tell us this is a riverbank. Earlier AI systems struggled with exactly
+        this kind of contextual disambiguation across long passages.
+      </p>
+
+      <h3>Attention — The Key Innovation</h3>
+      <p>
+        The Transformer solved this through a mechanism called <strong>self-attention</strong>. When
+        processing any word, the model simultaneously considers every other word in the context and
+        assigns each a relevance weight — how much attention should this word pay to every other word?
+      </p>
+      <p>
+        For the word "bank" in our sentence, the model learns to pay high attention to "steep" and
+        "grass" (which strongly signal a natural environment) and less to "the" and "was". This
+        attention is learned during training and operates across the entire input simultaneously,
+        not word by word.
       </p>
 
       <div class="callout callout--analogy">
-        <div class="callout__icon">📖</div>
+        <div class="callout__icon">🕵️</div>
         <div class="callout__body">
-          <h4>The "Next Word" Prediction Game</h4>
-          <p>Imagine you've read a million books. Someone says to you: "It was a dark and stormy ___." You'd almost certainly say "night." Not because you looked it up — but because you've absorbed enough language to recognise the pattern. LLMs do this at massive scale. Given your message, they predict the most natural and sensible response, word by word, billions of times a day.</p>
+          <h4>Reading a Room</h4>
+          <p>
+            Think about how a skilled detective processes a crime scene. They don't examine each object in isolation — they see everything at once and immediately notice which details are connected and relevant to each other. The bloodstain matters because of the footprints near it, which matter because of the unlocked window on the other side of the room. The Transformer's attention mechanism works similarly — it sees all the words simultaneously and learns which connections between them are most meaningful.
+          </p>
         </div>
       </div>
 
+      <h3>Why "Large"?</h3>
       <p>
-        But "predicting the next word" sounds too simple to explain a system that can write poetry,
-        explain quantum physics, and help with your tax return. Here's why it works so well:
+        Early Transformers were modest in size. The breakthrough came from scaling them up enormously.
+        Modern LLMs have hundreds of billions of parameters (the learned weights in the neural network).
+        GPT-4 is estimated to have over a trillion parameters, though the exact figure is not published.
+        Training these models requires thousands of specialised computer chips running for months.
+      </p>
+      <p>
+        Crucially, researchers discovered that as models were scaled up, they gained capabilities that
+        weren't explicitly trained for. A model trained to predict the next word, at sufficient scale,
+        spontaneously learned to do basic arithmetic, translate languages, write code, and reason through
+        problems. This "emergent capability" phenomenon surprised even the researchers building these systems.
+      </p>
+    </section>
+
+    <section>
+      <h2>A First Look at Tokens</h2>
+      <p>
+        LLMs don't process text as words — they process it as <strong>tokens</strong>. A token is roughly
+        a word, but it can be smaller (parts of long or unusual words) or sometimes larger (common short
+        words or punctuation). Understanding tokens becomes very practical when you're using these tools,
+        so they get their own dedicated module (Module 14). But here's the essential preview:
       </p>
       <ul>
-        <li>To predict language well, you have to understand a lot — grammar, facts, logic, context, tone</li>
-        <li>Training on enormous amounts of text forces the model to develop a rich internal representation of knowledge</li>
-        <li>The result is a model that appears to "understand" — not because it truly thinks, but because it has been exposed to so much human expression that it reflects it back remarkably well</li>
+        <li>The word <em>"cat"</em> is one token</li>
+        <li>The word <em>"unbelievable"</em> might be three tokens: <em>un</em> · <em>believ</em> · <em>able</em></li>
+        <li>A typical page of English text is roughly 400–600 tokens</li>
+        <li>The model processes everything — your questions and its own answers — as tokens</li>
+        <li>There is a maximum number of tokens the model can "hold in mind" at once — called the context window</li>
+      </ul>
+      <p>
+        Why does this matter? Because the context window determines how much of a conversation the
+        model can consider at once. And because many AI services charge based on the number of tokens
+        processed. Full details in Module 14.
+      </p>
+    </section>
+
+    <section>
+      <h2>The Three Stages of Building an LLM</h2>
+      <p>
+        Modern AI assistants like ChatGPT don't emerge from a single training run. They're built
+        in three distinct stages, each with a different purpose:
+      </p>
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Pre-Training — Building the Foundation</h4>
+            <p>The model is trained on an enormous corpus of text (trillions of words from books, websites, Wikipedia, academic papers, and more) to predict the next token. This builds broad world knowledge. It takes months and costs tens of millions of pounds. The result is a powerful but raw model — knowledgeable but not yet helpful in conversation.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Fine-Tuning — Learning to Converse</h4>
+            <p>The pre-trained model is further trained on examples of good conversations — questions and ideal answers, written by humans. This teaches it how to structure helpful responses, follow instructions, and engage in dialogue. The dataset is much smaller than pre-training data, but is carefully curated for quality.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Alignment — Making It Safe and Helpful</h4>
+            <p>Using RLHF (covered in Module 9), human raters evaluate thousands of responses and train the model to prefer helpful, honest, and harmless outputs over unhelpful or harmful ones. This is why ChatGPT declines certain requests and acknowledges its limitations — behaviour that was deliberately trained in, not a natural consequence of the architecture.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Capabilities — An Honest Assessment</h2>
+      <p>
+        Modern LLMs are genuinely remarkable tools. Here is an honest, detailed picture of what
+        they can do well:
+      </p>
+
+      <h3>Language and Communication</h3>
+      <ul>
+        <li><strong>Writing at any register</strong> — from formal legal language to casual chat, from a personal letter to a press release</li>
+        <li><strong>Editing and improvement</strong> — identifying weaknesses in text, suggesting rewrites, adjusting tone</li>
+        <li><strong>Translation</strong> — competent in dozens of languages, though specialised human translators remain superior for nuanced professional work</li>
+        <li><strong>Summarisation</strong> — condensing long documents to key points, with adjustable length and focus</li>
+        <li><strong>Simplification</strong> — re-expressing complex technical or legal language in plain English</li>
       </ul>
 
-      <div class="callout callout--info">
-        <div class="callout__icon">🤔</div>
-        <div class="callout__body">
-          <h4>Does It Actually "Understand"?</h4>
-          <p>This is one of the great debates in AI. LLMs don't understand in the way humans do — they have no consciousness, no feelings, no real-world experience. But they process language with such sophistication that the outputs are often indistinguishable from genuine understanding. The key thing for you to know: they are extremely useful, even if the "understanding" is different from ours.</p>
-        </div>
-      </div>
+      <h3>Knowledge and Analysis</h3>
+      <ul>
+        <li><strong>Broad factual knowledge</strong> — draws on the vast range of its training data. Excellent for general knowledge, history, science, culture</li>
+        <li><strong>Explanation</strong> — can explain complex topics at multiple levels of detail, adjusting to the audience</li>
+        <li><strong>Comparison</strong> — comparing options, analysing trade-offs, laying out pros and cons</li>
+        <li><strong>Research assistance</strong> — synthesising information on a topic into a coherent overview (though sources should always be verified)</li>
+      </ul>
+
+      <h3>Reasoning and Problem-Solving</h3>
+      <ul>
+        <li><strong>Step-by-step reasoning</strong> — can work through problems methodically when asked to "think step by step"</li>
+        <li><strong>Maths and logic</strong> — handles arithmetic, algebra, and logical reasoning reasonably well, though complex maths still benefits from verification</li>
+        <li><strong>Planning</strong> — producing itineraries, schedules, to-do lists, project outlines</li>
+        <li><strong>Brainstorming</strong> — generating many ideas quickly across virtually any domain</li>
+      </ul>
+
+      <h3>Creativity</h3>
+      <ul>
+        <li><strong>Creative writing</strong> — stories, poems, scripts, song lyrics — across styles and genres</li>
+        <li><strong>Ideation</strong> — suggesting names, concepts, approaches, angles</li>
+        <li><strong>Roleplay and simulation</strong> — acting as a character, simulating a conversation, practising an interview</li>
+      </ul>
     </section>
 
     <section>
-      <h2>What These Tools Are Remarkably Good At</h2>
+      <h2>Limitations — An Equally Honest Assessment</h2>
       <p>
-        The capabilities of modern LLMs are genuinely impressive. Here's a practical overview of what
-        they excel at:
+        The same systems that can write a compelling essay and explain quantum physics also have
+        well-documented failure modes. Knowing them makes you a smarter user:
       </p>
 
       <div class="step-list">
         <div class="step-item">
-          <div class="step-num">✍️</div>
+          <div class="step-num" style="background:#dc2626; font-size:0.8rem">HIGH</div>
           <div class="step-body">
-            <h4>Writing and Editing</h4>
-            <p>Drafting letters, emails, cards, complaints, formal requests. Proofreading and improving what you've already written. Writing in different styles — formal, friendly, humorous.</p>
+            <h4>Hallucination (Confident Fabrication)</h4>
+            <p>The model generates plausible-sounding text even when it has no reliable information. It may invent book titles, fabricate statistics, attribute false quotes to real people, and describe events that never happened — all in confident, fluent prose. This is the most serious limitation. Treat all factual claims in AI output as requiring verification for anything important.</p>
           </div>
         </div>
         <div class="step-item">
-          <div class="step-num">🔍</div>
+          <div class="step-num" style="background:#dc2626; font-size:0.8rem">HIGH</div>
           <div class="step-body">
-            <h4>Explaining Complex Things Simply</h4>
-            <p>Ask "Can you explain my pension statement in plain English?" or "What does this medical letter mean?" — and receive a clear, jargon-free explanation tailored to your level.</p>
+            <h4>Knowledge Cut-Off</h4>
+            <p>Training data has a cut-off date. The model genuinely doesn't know about events after that date. Some versions have web browsing tools added — but the base model's knowledge is frozen at training time.</p>
           </div>
         </div>
         <div class="step-item">
-          <div class="step-num">💡</div>
-          <div class="step-body">
-            <h4>Answering Questions</h4>
-            <p>General knowledge, historical facts, recipes, how-to guides, explanations of news events, comparisons of products. A knowledgeable companion on almost any topic.</p>
-          </div>
-        </div>
-        <div class="step-item">
-          <div class="step-num">🌍</div>
-          <div class="step-body">
-            <h4>Translation</h4>
-            <p>Translate text to and from dozens of languages — useful for reading foreign menus, understanding documents, or writing to someone abroad.</p>
-          </div>
-        </div>
-        <div class="step-item">
-          <div class="step-num">📋</div>
-          <div class="step-body">
-            <h4>Summarising</h4>
-            <p>Paste in a long document and ask for a brief summary. Extract the key points from a lengthy article, report, or letter.</p>
-          </div>
-        </div>
-        <div class="step-item">
-          <div class="step-num">💬</div>
-          <div class="step-body">
-            <h4>Conversation and Brainstorming</h4>
-            <p>Talk through a problem, get advice, brainstorm ideas, plan a holiday, plan a garden — the conversation flows naturally, and the AI asks follow-up questions to help you further.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Clear Limitations to Know About</h2>
-      <p>
-        To use LLMs wisely, you need to understand where they fall short. These are not minor quibbles —
-        they're important:
-      </p>
-
-      <div class="step-list">
-        <div class="step-item">
-          <div class="step-num" style="background:#dc2626">!</div>
-          <div class="step-body">
-            <h4>They Can Confidently State Wrong Information</h4>
-            <p>This is the most important limitation. LLMs sometimes generate incorrect facts stated as if they were true. Always verify important information — especially for medical, legal, financial, or historical facts.</p>
-          </div>
-        </div>
-        <div class="step-item">
-          <div class="step-num" style="background:#dc2626">!</div>
-          <div class="step-body">
-            <h4>Knowledge Has a Cut-Off Date</h4>
-            <p>LLMs are trained up to a certain date. They don't know about events after that point unless the system has been updated with web browsing (some do).</p>
-          </div>
-        </div>
-        <div class="step-item">
-          <div class="step-num" style="background:#d97706">⚠️</div>
+          <div class="step-num" style="background:#d97706; font-size:0.8rem">MED</div>
           <div class="step-body">
             <h4>No Real-Time Information</h4>
-            <p>Without web access, they can't check today's news, stock prices, sports results, or live service information.</p>
+            <p>Without web access, current prices, live sports results, today's news, and live service statuses are unknown. Always use authoritative real-time sources for this kind of information.</p>
           </div>
         </div>
         <div class="step-item">
-          <div class="step-num" style="background:#d97706">⚠️</div>
+          <div class="step-num" style="background:#d97706; font-size:0.8rem">MED</div>
           <div class="step-body">
-            <h4>No Memory Between Conversations</h4>
-            <p>Each new conversation typically starts fresh. The AI doesn't remember what you talked about last week unless you tell it again.</p>
+            <h4>No Persistent Memory</h4>
+            <p>Each new conversation typically starts fresh. The model has no memory of what you discussed last week. Some products are building "memory" features, but this is not universal.</p>
           </div>
         </div>
         <div class="step-item">
-          <div class="step-num" style="background:#d97706">⚠️</div>
+          <div class="step-num" style="background:#d97706; font-size:0.8rem">MED</div>
           <div class="step-body">
-            <h4>Not a Professional Substitute</h4>
-            <p>They can provide useful general information, but they are not your doctor, solicitor, or financial adviser. Use them to understand and prepare for conversations with real professionals — not to replace them.</p>
+            <h4>Sycophancy</h4>
+            <p>The model was trained on human ratings and humans tend to rate agreeable responses highly. This means AI can sometimes tell you what you want to hear rather than the most honest answer. If you push back on a correct response, the model may capitulate rather than hold its ground.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num" style="background:#059669; font-size:0.8rem">LOW</div>
+          <div class="step-body">
+            <h4>Context Window Limits</h4>
+            <p>In very long conversations, older parts of the conversation may "fall out" of the context window and be forgotten. Modern models have very large context windows (some handle entire novels), so this is rarely a practical problem for everyday use.</p>
           </div>
         </div>
       </div>
     </section>
 
     <section>
-      <h2>The Main Tools You Might Encounter</h2>
-      <div class="comparison-grid">
-        <div class="comparison-item">
-          <div class="ci-icon">🟢</div>
-          <h4>ChatGPT</h4>
-          <p>Made by OpenAI. The most widely known. Free version available at chat.openai.com. Excellent general capabilities. Paid version (ChatGPT Plus) adds more features.</p>
-        </div>
-        <div class="comparison-item">
-          <div class="ci-icon">💎</div>
-          <h4>Gemini</h4>
-          <p>Made by Google. Built into Google Search and available at gemini.google.com. Integrates well with Gmail and Google Docs. Good for tasks alongside Google services.</p>
-        </div>
-        <div class="comparison-item">
-          <div class="ci-icon">🔶</div>
-          <h4>Claude</h4>
-          <p>Made by Anthropic. Available at claude.ai. Known for being thoughtful, careful, and good at longer documents. Free tier available.</p>
-        </div>
-        <div class="comparison-item">
-          <div class="ci-icon">🪟</div>
-          <h4>Copilot</h4>
-          <p>Made by Microsoft (powered by OpenAI technology). Built into Windows 11, Microsoft 365, and Bing search. Very accessible if you use Windows computers.</p>
+      <h2>The Main Models Compared</h2>
+      <p>
+        The major LLM products each have distinct characters, shaped by their creators' values,
+        technical choices, and business objectives.
+      </p>
+
+      <div class="visual-card">
+        <h4>🔍 Current Major LLMs (as of 2025)</h4>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num" style="background:#10a37f; font-size:0.75rem">GPT</div>
+            <div class="step-body">
+              <h4>ChatGPT / GPT-4 (OpenAI)</h4>
+              <p>The model that launched the public AI moment. Extremely capable, versatile, and widely integrated into third-party products. Free tier (GPT-3.5) and paid tier (GPT-4o). Available at chat.openai.com. Also powers Microsoft Copilot.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="background:#4285f4; font-size:0.75rem">GEM</div>
+            <div class="step-body">
+              <h4>Gemini (Google)</h4>
+              <p>Google's flagship model family. Deeply integrated with Google Workspace (Docs, Gmail, Search). Gemini 1.5 and 2.0 have very large context windows (up to 1 million tokens) — excellent for processing long documents. Available at gemini.google.com.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="background:#cc785c; font-size:0.75rem">CLO</div>
+            <div class="step-body">
+              <h4>Claude (Anthropic)</h4>
+              <p>Created by a company founded with a specific focus on AI safety. Claude is known for being thoughtful, careful with claims, and particularly good at long documents and nuanced reasoning. Tends to be more cautious about expressing confident opinions. Available at claude.ai.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="background:#0078d4; font-size:0.75rem">COP</div>
+            <div class="step-body">
+              <h4>Copilot (Microsoft)</h4>
+              <p>Powered by OpenAI's models, deeply integrated into Windows 11, Microsoft 365 (Word, Excel, Outlook), and Bing. If you use a Windows computer or Microsoft Office, this is the most accessible entry point — it's built right in.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="background:#7c3aed; font-size:0.75rem">LLA</div>
+            <div class="step-body">
+              <h4>Llama (Meta / Open Source)</h4>
+              <p>Meta (Facebook's parent company) has released the weights of their Llama models openly. This means developers can download and run them locally, without sending data to any company. Powers many third-party applications.</p>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="callout callout--tip">
-        <div class="callout__icon">🚀</div>
+        <div class="callout__icon">🎯</div>
         <div class="callout__body">
-          <h4>Where to Start</h4>
-          <p>If you're on a Windows computer, try Microsoft Copilot — it's built in and well-supported. If you use Google for everything, try Gemini. For iPhone users, the next version of Siri is deeply powered by LLM technology. All are excellent starting points.</p>
+          <h4>Which Should You Use?</h4>
+          <p>
+            For most people, the most accessible option is the best starting point. <strong>Windows users</strong>: try Copilot (press the Windows key and search "Copilot"). <strong>Google users</strong>: try Gemini at gemini.google.com. <strong>iPhone/iPad users</strong>: try Claude (claude.ai) — it works beautifully in a browser. All have free tiers and don't require technical setup.
+          </p>
         </div>
       </div>
     </section>
 
     <section>
-      <h2>Why This Feels Like a Turning Point</h2>
+      <h2>How AI Companies Approach Safety and Ethics</h2>
       <p>
-        People who follow technology closely describe LLMs as the most significant technological
-        development since the invention of the internet — and possibly much more significant than that.
-        Here's why:
+        This is worth understanding because it affects how different products behave. AI safety is
+        a serious, active field of research — not a marketing term.
       </p>
       <ul>
-        <li><strong>Accessible to everyone</strong> — no technical skills needed. If you can type or speak, you can use it</li>
-        <li><strong>Works across nearly every domain</strong> — law, medicine, education, creative writing, coding, customer service, research</li>
-        <li><strong>Improving rapidly</strong> — each new version is substantially more capable than the last</li>
-        <li><strong>Changing how work is done</strong> — many professions are already using LLMs as tools that multiply their effectiveness</li>
+        <li><strong>Anthropic</strong> (Claude) was founded specifically around AI safety research. Their Constitutional AI approach trains models to be helpful, harmless, and honest using a set of principles.</li>
+        <li><strong>OpenAI</strong> (ChatGPT) publishes safety reports and has developed extensive content moderation. They've faced criticism for the pace of capability deployment vs. safety research.</li>
+        <li><strong>Google</strong> (Gemini) has published AI principles and has a dedicated AI safety team, though their commercial pressures are significant.</li>
+        <li><strong>Meta</strong> (Llama) takes an "open source" approach, arguing that transparency makes AI safer in the long run. Critics argue open source also removes guardrails.</li>
       </ul>
       <p>
-        You don't need to know how they work under the bonnet to benefit from them. In the final module,
-        we'll walk through exactly how you can use them in your daily life.
+        None of these companies has "solved" AI safety — it remains an open problem. But being aware
+        that these conversations are happening, and that different players have different incentives,
+        helps you be an informed and critical user.
       </p>
     </section>
 
     <div class="key-takeaways">
       <h3>Key Takeaways</h3>
       <ul>
-        <li><span class="kt-check">✓</span> A Large Language Model (LLM) is an AI trained on vast amounts of text that can converse, write, explain, and assist</li>
-        <li><span class="kt-check">✓</span> They work by predicting the most natural next word — at enormous scale and sophistication</li>
-        <li><span class="kt-check">✓</span> They are excellent at writing, explaining, summarising, translating, and answering questions</li>
-        <li><span class="kt-check">✓</span> They can be confidently wrong — always verify important factual claims</li>
-        <li><span class="kt-check">✓</span> ChatGPT, Gemini, Claude, and Copilot are the main tools — all have free versions you can try</li>
+        <li><span class="kt-check">✓</span> LLMs generate responses word-by-word rather than matching templates — enabling genuine flexibility</li>
+        <li><span class="kt-check">✓</span> The Transformer architecture's "attention" mechanism lets models understand context across entire texts</li>
+        <li><span class="kt-check">✓</span> LLMs process text as tokens — roughly word-sized chunks — with a maximum context window</li>
+        <li><span class="kt-check">✓</span> Building an LLM involves three stages: pre-training, fine-tuning, and alignment (RLHF)</li>
+        <li><span class="kt-check">✓</span> Hallucination, knowledge cut-offs, and sycophancy are the critical limitations to know</li>
+        <li><span class="kt-check">✓</span> ChatGPT, Gemini, Claude, and Copilot all have free tiers — start with whichever is most accessible to you</li>
+        <li><span class="kt-check">✓</span> AI safety is a real, serious field — different companies approach it with different philosophies</li>
       </ul>
     </div>
 
     <div class="quiz-section">
-      <h3>Quick Check</h3>
-      <p class="quiz-subtitle">Two questions on this key topic.</p>
+      <h3>Check Your Understanding</h3>
+      <p class="quiz-subtitle">Three questions — take your time.</p>
 
       <div class="quiz-question">
-        <p>1. What is the most important limitation to remember when using a chatbot like ChatGPT?</p>
+        <p>1. What was the key innovation of the Transformer architecture?</p>
         <div class="quiz-options">
           <button class="quiz-option" data-correct="false">
-            <span class="opt-icon">❌</span> It only works in English
+            <span class="opt-icon">❌</span> It was the first neural network ever created
           </button>
           <button class="quiz-option" data-correct="true">
-            <span class="opt-icon">✅</span> It can confidently state incorrect information — always verify important facts
+            <span class="opt-icon">✅</span> The "attention" mechanism — letting the model consider all words in context simultaneously
           </button>
           <button class="quiz-option" data-correct="false">
-            <span class="opt-icon">❌</span> It requires a paid subscription to use
+            <span class="opt-icon">❌</span> It added internet access to language models
           </button>
         </div>
         <div class="quiz-feedback"
-          data-correct="Correct and crucial! LLMs can sound very authoritative while being wrong. Verification is essential for anything important."
-          data-incorrect="The most important limitation: LLMs can be confidently wrong ('hallucination'). They work in many languages, and most have free tiers. But always verify important information from another source.">
+          data-correct="Exactly right. Attention allows the model to understand that 'bank' means something different in 'river bank' vs 'bank account' — by considering all surrounding words simultaneously."
+          data-incorrect="The Transformer's key innovation was 'attention' — processing all words simultaneously and weighing how relevant each word is to every other word in context.">
         </div>
       </div>
 
       <div class="quiz-question">
-        <p>2. Which of these tasks is an LLM like ChatGPT well-suited to help with?</p>
+        <p>2. What does "emergent capability" mean when describing large AI models?</p>
         <div class="quiz-options">
           <button class="quiz-option" data-correct="false">
-            <span class="opt-icon">❌</span> Checking today's live train times
+            <span class="opt-icon">❌</span> Capabilities that were specifically programmed in by the developers</span>
           </button>
           <button class="quiz-option" data-correct="true">
-            <span class="opt-icon">✅</span> Helping you draft a letter of complaint to a company
+            <span class="opt-icon">✅</span> Capabilities that appeared spontaneously as models were scaled up, not explicitly trained for
           </button>
           <button class="quiz-option" data-correct="false">
-            <span class="opt-icon">❌</span> Replacing your GP for medical advice
+            <span class="opt-icon">❌</span> New features added through software updates after release
           </button>
         </div>
         <div class="quiz-feedback"
-          data-correct="Exactly! Writing help — drafting, editing, and refining letters — is one of the very best uses of LLMs."
-          data-incorrect="Writing help (letters, emails, complaints) is a top LLM use case. They don't reliably have live data (train times), and they should not replace professional advice (medical, legal).">
+          data-correct="Correct. Researchers found that as they scaled models up, abilities like arithmetic, translation, and code writing appeared without anyone specifically teaching them — a genuinely surprising finding."
+          data-incorrect="Emergent capabilities are abilities that appeared spontaneously as models grew larger — things like arithmetic and code writing that nobody explicitly trained them to do.">
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <p>3. An AI chatbot confidently tells you that a particular author wrote a book that doesn't actually exist. What is this called?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> A software bug that needs to be reported
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> The AI deliberately testing whether you check its answers
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> Hallucination — the model generating plausible-sounding but false information
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Correct. Hallucination is when the model produces plausible-sounding but false content with apparent confidence. It's a known limitation, not a bug or deception."
+          data-incorrect="This is hallucination — a known limitation where the model produces confident, plausible-sounding text that isn't factually true. It's not intentional deception, but a structural property of how these models work.">
         </div>
       </div>
     </div>
@@ -357,7 +450,7 @@
   <div class="module-nav__inner">
     <a href="module-10.html" class="btn btn--outline">← Previous</a>
     <button id="mark-complete-btn" class="mark-complete-btn" data-module="11">Mark as Complete ✓</button>
-    <a href="module-12.html" class="btn btn--primary">Final Module →</a>
+    <a href="module-12.html" class="btn btn--primary">Next Module →</a>
   </div>
 </div>
 
@@ -366,7 +459,6 @@
     <p>💡 <strong>Tech for Life</strong> — Designed with care for 60+ learners</p>
   </div>
 </footer>
-
 <script src="../js/main.js"></script>
 </body>
 </html>

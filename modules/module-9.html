@@ -25,9 +25,9 @@
   <div class="module-progress__inner">
     <span class="module-progress__label">Course Progress</span>
     <div class="progress-bar-wrap">
-      <div class="progress-bar-fill" style="width: 75%"></div>
+      <div class="progress-bar-fill" style="width: 60%"></div>
     </div>
-    <span class="module-progress__fraction">Module 9 of 12</span>
+    <span class="module-progress__fraction">Module 9 of 15</span>
   </div>
 </div>
 
@@ -35,11 +35,11 @@
   <div class="module-hero__number">Module 09 · AI Foundations</div>
   <span class="module-hero__icon">🧠</span>
   <h1>How AI Learns</h1>
-  <p class="module-hero__tagline">The secret behind machine intelligence is surprisingly simple — it's all about learning from examples, just like we do.</p>
+  <p class="module-hero__tagline">Machine learning, neural networks, training data, fine-tuning — demystified. The ideas are genuinely fascinating once the jargon is cleared away.</p>
   <div class="module-hero__chips">
-    <span class="chip">🟣 AI Intro</span>
-    <span class="chip">⏱ 14 minutes</span>
-    <span class="chip">📖 Reading</span>
+    <span class="chip">🟣 AI Foundations</span>
+    <span class="chip">⏱ 18 minutes</span>
+    <span class="chip">📖 Reading + Concepts</span>
   </div>
 </div>
 
@@ -49,165 +49,377 @@
     <div class="objectives-box">
       <h3>What You'll Learn</h3>
       <ul>
-        <li>The basic idea behind how AI learns — "machine learning" explained simply</li>
-        <li>How pattern recognition works in everyday AI</li>
-        <li>What "training data" is and why it matters</li>
-        <li>Why AI sometimes makes mistakes — and what causes them</li>
-        <li>How "neural networks" mimic the brain (in simple terms)</li>
+        <li>The core idea behind machine learning — learning from examples rather than rules</li>
+        <li>How neural networks work — the architecture inspired by the brain</li>
+        <li>What training data is, and why its quality and diversity matters enormously</li>
+        <li>What "fine-tuning" means and how it shapes AI behaviour</li>
+        <li>How human feedback was used to make AI chatbots safer and more helpful (RLHF)</li>
+        <li>Why AI makes mistakes — and what specifically causes each type of error</li>
+        <li>The difference between "narrow AI" and more general systems</li>
       </ul>
     </div>
 
     <section>
-      <h2>Learning From Examples</h2>
+      <h2>The Fundamental Shift: Rules vs. Examples</h2>
       <p>
-        The most important thing to understand about modern AI is this: <strong>it learns from examples,
-        not from rules</strong>. This is called <strong>Machine Learning</strong>.
+        For most of computing history, programmers wrote <strong>explicit rules</strong>. Want to detect spam email?
+        You'd write: "If the subject line contains 'FREE MONEY' or 'CLICK NOW', mark as spam." This works for
+        obvious cases — but determined spammers simply avoided those phrases. The rules became an arms race,
+        and the programmers were always a step behind.
       </p>
       <p>
-        Traditional computer programs work on rules written by programmers: "IF the temperature is above 30°C,
-        THEN display 'Hot weather warning.'" Every situation has to be anticipated and written as a rule.
-        This is fine for simple, predictable situations — but hopeless for complex ones like recognising
-        a human face or understanding natural speech.
-      </p>
-      <p>
-        Machine learning takes a different approach: instead of programming every rule, you show the computer
-        thousands (or millions) of examples and let it figure out the patterns itself.
+        Machine learning took a completely different approach. Instead of writing rules, you show the
+        system thousands of examples — "this email is spam, this one isn't" — and let it figure out
+        the patterns itself. The result is a system that can generalise to spam it has never seen before,
+        because it has understood the underlying patterns rather than memorised a list of keywords.
       </p>
 
       <div class="callout callout--analogy">
-        <div class="callout__icon">👶</div>
+        <div class="callout__icon">👨‍⚕️</div>
         <div class="callout__body">
-          <h4>The Child Learning Analogy</h4>
-          <p>Think about how a child learns to recognise a cat. You don't hand them a manual saying "Look for pointed ears, whiskers, and four legs." Instead, you point at cats and say "cat!" enough times, and the child's brain develops an internal sense of what a cat looks like — even for cats they've never seen before. Machine learning works the same way: show the computer thousands of cat photos labelled "cat," and it learns to recognise cats on its own.</p>
+          <h4>The Medical Analogy</h4>
+          <p>
+            A junior doctor learns from a textbook of rules: "If blood pressure is above X and symptom Y is present, consider condition Z." A senior consultant with thirty years of experience has seen thousands of patients, and her diagnosis draws on pattern recognition that she couldn't fully write down even if asked. She notices something subtle — a way a patient holds themselves, a particular combination of mild indicators — that the textbook never mentioned. Machine learning aims to build that second kind of knowledge, from exposure to vast numbers of examples.
+          </p>
         </div>
       </div>
     </section>
 
     <section>
-      <h2>Pattern Recognition — The Heart of AI</h2>
+      <h2>Neural Networks — The Architecture That Changed Everything</h2>
       <p>
-        At its core, AI is extremely good at one thing: <strong>finding patterns in vast amounts of data</strong>.
-        Whether it's recognising your face, predicting the next word in a sentence, or detecting fraud on your
-        credit card — it's all about spotting patterns.
+        The specific technique that powers modern AI is called a <strong>neural network</strong>, and the
+        name is both accurate and slightly misleading. It was inspired by the structure of biological brains —
+        but it is a mathematical abstraction, not a simulation of actual neurons.
       </p>
 
-      <h3>How Pattern Recognition Works in Practice</h3>
+      <h3>The Basic Structure</h3>
+      <p>
+        A neural network is organised in <strong>layers</strong>. Imagine a factory assembly line with many
+        stations. Raw materials go in one end, and a finished product comes out the other. Each station
+        transforms what it receives before passing it on.
+      </p>
+      <ul>
+        <li><strong>Input layer</strong> — receives the raw data. For an image, this might be the colour value of every pixel. For language, it's the words or parts of words.</li>
+        <li><strong>Hidden layers</strong> — where the actual "thinking" happens. There can be dozens or hundreds of these. Each layer detects increasingly abstract patterns.</li>
+        <li><strong>Output layer</strong> — produces the result. "This photo contains a cat." "The sentiment of this review is positive." "The next word is probably 'the'."</li>
+      </ul>
+
+      <div class="visual-card">
+        <h4>🔍 How Layers Build Up Understanding</h4>
+        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:16px;">Take image recognition as an example. Each layer learns something more complex:</p>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num" style="font-size:0.7rem">Layer 1</div>
+            <div class="step-body">
+              <h4>Edges and Gradients</h4>
+              <p>The first hidden layers detect very simple features — horizontal lines, vertical lines, diagonal edges, areas of colour contrast.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="font-size:0.7rem">Layer 2</div>
+            <div class="step-body">
+              <h4>Shapes and Textures</h4>
+              <p>Combinations of edges form circles, curves, and textures. The network starts to detect things like "fur-like texture" or "circular eye shape."</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="font-size:0.7rem">Layer 3</div>
+            <div class="step-body">
+              <h4>Parts of Objects</h4>
+              <p>Combinations of shapes form recognisable parts — "an ear", "a snout", "a paw." Still not a whole animal, but components.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="font-size:0.7rem">Layer N</div>
+            <div class="step-body">
+              <h4>The Full Concept</h4>
+              <p>Deep layers combine all the parts into a confident recognition: "This is a cat" — even if it's a cartoon cat, a blurry cat, or a species of cat the network has never seen.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Connections and Weights</h3>
+      <p>
+        Every connection between nodes in adjacent layers has a <strong>weight</strong> — a number that
+        says how much influence one node has on the next. When a network is first created, these weights
+        are random. Training is the process of adjusting those weights until the network produces correct
+        outputs.
+      </p>
+      <p>
+        Think of it like tuning a million-dial radio receiver, where you're trying to pick up a specific
+        signal. At first everything is static. As you train, each dial gets gradually adjusted. After
+        enough adjustments, the signal comes through clearly. A large language model has hundreds of
+        <em>billions</em> of such dials.
+      </p>
+    </section>
+
+    <section>
+      <h2>Training — How the Network Learns</h2>
+      <p>
+        Training a neural network is an iterative process. It has three key steps that repeat millions of times:
+      </p>
+
       <div class="step-list">
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-body">
-            <h4>Collect many examples</h4>
-            <p>To teach AI to recognise cats, you need thousands of photos labelled "cat" and "not cat." The more diverse the examples, the better the AI will generalise.</p>
+            <h4>Forward Pass — Make a Prediction</h4>
+            <p>The network sees an example (say, a photo) and makes a prediction based on its current weights. Early in training, this prediction is essentially a guess.</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">2</div>
           <div class="step-body">
-            <h4>The AI looks for common patterns</h4>
-            <p>It analyses the photos and starts noticing what features tend to appear together in "cat" photos — certain shapes, textures, features — without being told what to look for.</p>
+            <h4>Calculate the Error</h4>
+            <p>The prediction is compared to the correct answer (which we know, because the training data is labelled). The difference between the prediction and the truth is called the <strong>loss</strong> or error.</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-body">
-            <h4>It makes predictions and adjusts</h4>
-            <p>When shown a new photo, it makes a guess. If it's wrong and the correct answer is given, it slightly adjusts its internal understanding. Over millions of examples, it gets very accurate.</p>
+            <h4>Backpropagation — Adjust the Weights</h4>
+            <p>A mathematical process called <strong>backpropagation</strong> traces the error backwards through the network and nudges each weight slightly in the direction that would have produced a better answer. This nudge is tiny — but repeated across billions of examples, it accumulates into genuine learning.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout--analogy">
+        <div class="callout__icon">⛳</div>
+        <div class="callout__body">
+          <h4>Golf and Feedback Loops</h4>
+          <p>
+            Imagine learning to putt in golf on a putting green. You hit the ball (forward pass). It misses left (error). You adjust your stance and aim slightly right for the next attempt (backpropagation). Over thousands of practice putts, your aim converges on something very accurate. The key ingredient is the feedback loop — knowing immediately whether you were right or wrong, and by how much. Neural network training is the same loop, but running millions of times per second on specialised computer chips.
+          </p>
+        </div>
+      </div>
+
+      <h3>What Training Data Actually Looks Like</h3>
+      <p>
+        For supervised learning (learning from labelled examples), training data comes in pairs:
+        <em>input</em> and <em>correct output</em>. For example:
+      </p>
+      <ul>
+        <li>Photo of a dog → labelled "dog"</li>
+        <li>Email → labelled "spam" or "not spam"</li>
+        <li>Medical X-ray → labelled "shows tumour" or "clear"</li>
+        <li>Customer review → labelled "positive", "neutral", or "negative"</li>
+        <li>Sentence with a missing word → the correct missing word</li>
+      </ul>
+      <p>
+        For language models, the task is simpler to describe but enormous in scale: given a sequence of
+        words, predict the next word. This is done on essentially all the text on the internet —
+        billions of sentences, with the "correct answer" being whatever word actually came next in the
+        original text.
+      </p>
+    </section>
+
+    <section>
+      <h2>Training Data — Quality, Quantity, and Diversity</h2>
+      <p>
+        The quality, quantity, and diversity of training data shapes the AI's capabilities, biases, and
+        blind spots more than almost anything else. This is why data is sometimes called "the new oil."
+      </p>
+
+      <h3>Why Quantity Matters</h3>
+      <p>
+        More data generally means a more capable model. GPT-4 (the model behind ChatGPT) was trained on
+        trillions of words — more text than any human could read in thousands of lifetimes. This exposure
+        gives the model breadth: it has "seen" material on astronomy, cooking, law, medicine, history,
+        poetry, programming, and virtually every other topic.
+      </p>
+
+      <h3>Why Quality Matters</h3>
+      <p>
+        A model trained on mostly poor-quality, inaccurate, or biased text will produce poor-quality,
+        inaccurate, or biased outputs. AI researchers spend enormous effort curating and filtering
+        training data. Even so, the internet contains misinformation, outdated facts, and human
+        prejudices — and AI absorbs these.
+      </p>
+
+      <h3>Why Diversity Matters</h3>
+      <p>
+        Early facial recognition systems were famously poor at recognising women and people with darker
+        skin tones. The reason was simple: the training datasets contained mostly photos of white men
+        in professional settings. The AI learned what it was shown. Diversity of training data directly
+        determines fairness and reliability across different use cases and populations.
+      </p>
+
+      <div class="callout callout--warning">
+        <div class="callout__icon">⚖️</div>
+        <div class="callout__body">
+          <h4>AI Inherits Human Biases</h4>
+          <p>
+            Because AI learns from human-generated data, it can reflect and amplify human biases present in that data. Research has shown that some AI systems have displayed biases in job screening, loan decisions, and medical diagnosis. This is an active area of research and regulation — and a good reason to treat AI outputs critically rather than as neutral truth.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Fine-Tuning — Specialising a General Model</h2>
+      <p>
+        Training a large language model from scratch costs tens of millions of pounds and months of
+        computing time. So instead of building specialist AI from zero, the common approach is to take
+        an already-trained general model and <strong>fine-tune</strong> it.
+      </p>
+      <p>
+        Fine-tuning means taking the base model and continuing to train it on a smaller, more specific
+        dataset to adjust its behaviour. Examples:
+      </p>
+      <ul>
+        <li>A general language model fine-tuned on medical literature becomes a medical assistant</li>
+        <li>A general model fine-tuned on legal documents becomes a legal research tool</li>
+        <li>A general model fine-tuned on customer service conversations becomes a helpdesk chatbot</li>
+        <li>A general model fine-tuned to follow instructions becomes an assistant like ChatGPT</li>
+      </ul>
+
+      <div class="callout callout--analogy">
+        <div class="callout__icon">🎓</div>
+        <div class="callout__body">
+          <h4>University vs. Specialist Training</h4>
+          <p>
+            Think of base model training as a general university education — you emerge with broad knowledge across many fields. Fine-tuning is like a postgraduate specialisation — you take that broad foundation and develop deep expertise in a specific area. The specialist training is faster and cheaper because it builds on what's already there.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>RLHF — Teaching AI to Be Helpful and Safe</h2>
+      <p>
+        One of the most important innovations behind modern AI chatbots is a technique called
+        <strong>Reinforcement Learning from Human Feedback (RLHF)</strong>. The name sounds technical,
+        but the concept is elegant and worth understanding.
+      </p>
+      <p>
+        A language model trained only on internet text will mimic whatever tone and content it saw
+        in that text — including toxic content, offensive language, and confident misinformation.
+        Early versions of these models were startlingly bad at being helpful in conversation.
+        RLHF was the key breakthrough that transformed them into useful assistants.
+      </p>
+
+      <h3>How RLHF Works</h3>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Generate many responses</h4>
+            <p>The model is shown a question and generates several different responses to it.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Human raters rank the responses</h4>
+            <p>Real human evaluators read the responses and rank them: "Response A is better than Response B, which is better than Response C." They score for helpfulness, accuracy, safety, and tone.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Train a "reward model"</h4>
+            <p>A second AI model is trained to predict what human raters would prefer — essentially learning human preferences from the ranking data.</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">4</div>
           <div class="step-body">
-            <h4>It generalises to new examples</h4>
-            <p>Eventually it can recognise a cat in a photo it's never seen — a cartoon cat, a fluffy cat, an unusual cat breed — because it's understood the concept, not memorised specific pictures.</p>
+            <h4>Use the reward model to improve the main model</h4>
+            <p>The main model is then trained to produce outputs that score highly according to the reward model — essentially learning to generate the kinds of responses humans prefer.</p>
           </div>
         </div>
       </div>
-    </section>
 
-    <section>
-      <h2>Training Data — The Food That Feeds AI</h2>
       <p>
-        The examples that AI learns from are called <strong>training data</strong>. The quality and quantity
-        of training data has an enormous impact on how well AI performs.
+        This process is repeated many times. The result is a model that is far more helpful, honest,
+        and less likely to produce harmful outputs than a raw language model trained purely on internet text.
+        ChatGPT, Claude, and Gemini all use versions of this technique.
       </p>
-      <ul>
-        <li><strong>More data = better AI</strong> — just as a doctor with 30 years of experience has seen more cases than one with 3, an AI trained on more examples learns more</li>
-        <li><strong>Better data = more accurate AI</strong> — if the training examples contain mistakes or biases, the AI will learn those too</li>
-        <li><strong>Diverse data = more fair AI</strong> — early facial recognition systems trained mostly on white male faces performed poorly on women and people of colour. This was a training data problem, not a technical one</li>
-      </ul>
 
       <div class="callout callout--info">
-        <div class="callout__icon">📚</div>
+        <div class="callout__icon">🤝</div>
         <div class="callout__body">
-          <h4>What Does AI Train On?</h4>
-          <p>Modern AI language models (like ChatGPT) have been trained on enormous amounts of text from the internet — books, articles, websites, Wikipedia, scientific papers, and more. This is like having read billions of books. That's why they can answer questions on almost any topic. But it also means they can absorb misinformation that existed in that text.</p>
+          <h4>Why This Matters to You</h4>
+          <p>
+            RLHF is why modern AI assistants feel so different from simply typing into a search engine. They've been specifically trained to hold conversations, acknowledge uncertainty, decline harmful requests, and explain things helpfully. That training involved thousands of hours of human feedback from real people judging real responses.
+          </p>
         </div>
       </div>
     </section>
 
     <section>
-      <h2>Neural Networks — Inspired by the Brain</h2>
+      <h2>Narrow AI vs. General AI</h2>
       <p>
-        The technology behind modern AI is called a <strong>neural network</strong>. It was inspired —
-        loosely — by how biological brains work.
+        It's useful to understand that all current AI — including the most impressive systems — is
+        what researchers call <strong>Narrow AI</strong> (or Artificial Narrow Intelligence, ANI).
+        It is extraordinarily capable within its domain, but lacks the flexible general intelligence
+        of a human.
       </p>
 
-      <div class="callout callout--analogy">
-        <div class="callout__icon">🧠</div>
-        <div class="callout__body">
-          <h4>A Very Simple Explanation</h4>
-          <p>Your brain is made of billions of connected cells called neurons. Information travels between neurons as electrical signals — and the strength of those connections changes as you learn. A neural network in a computer is a mathematical imitation of this: millions of connected mathematical "units" where the strength of connections adjusts as the system learns from examples. The more it's trained, the stronger the right connections become.</p>
+      <div class="comparison-grid">
+        <div class="comparison-item">
+          <div class="ci-icon">🎯</div>
+          <h4>Narrow AI (All current AI)</h4>
+          <p>Excellent at a specific task or range of tasks. Chess AI beats every human. Image AI identifies cancer on X-rays better than radiologists. But ask the chess AI to caption a photo — it can't. These systems are not generally intelligent.</p>
+        </div>
+        <div class="comparison-item">
+          <div class="ci-icon">🧠</div>
+          <h4>General AI (Hypothetical)</h4>
+          <p>A system that could apply flexible human-like reasoning across any domain — learning a new skill from scratch, applying knowledge from one area to solve problems in another, having genuine understanding. This does not yet exist. Current AI is not "thinking" in this sense.</p>
         </div>
       </div>
 
-      <p>You don't need to understand the mathematics involved — the key insight is that:</p>
-      <ul>
-        <li>Neural networks learn by adjusting millions of internal connections</li>
-        <li>"Deep learning" just means a neural network with many layers of these connections</li>
-        <li>The "depth" of layers allows the AI to learn increasingly complex patterns — simple shapes at first, then complex combinations</li>
-      </ul>
+      <p>
+        Large language models like ChatGPT feel surprisingly general — they can discuss cooking,
+        history, medicine, and poetry in the same conversation. But this breadth comes from the vast
+        range of text they trained on, not from true general intelligence. They are pattern-matching
+        across a huge learned representation, not reasoning from first principles.
+      </p>
     </section>
 
     <section>
-      <h2>Why AI Makes Mistakes</h2>
+      <h2>Why AI Makes the Specific Mistakes It Makes</h2>
       <p>
-        Even very sophisticated AI makes mistakes, and understanding why helps you use it wisely:
+        Understanding the causes of AI errors helps you use these tools much more wisely:
       </p>
-      <ul>
-        <li><strong>Gaps in training data</strong> — if AI was never trained on examples of a particular situation, it struggles to handle it. Like a doctor who's only ever treated adults being asked to treat a child.</li>
-        <li><strong>Misleading patterns</strong> — AI finds patterns, not truth. If the data contained biases or errors, the AI inherits them.</li>
-        <li><strong>Unusual situations</strong> — AI trained on normal situations can fail on unusual ones. A self-driving car trained in California might struggle in a Scottish snowstorm.</li>
-        <li><strong>"Hallucinations" in language AI</strong> — language AI sometimes generates plausible-sounding but incorrect information. It's completing a pattern of words without genuinely "knowing" if what it says is true.</li>
-        <li><strong>Knowledge cut-off dates</strong> — AI models are trained up to a certain date. They don't know what happened after that point.</li>
-      </ul>
 
-      <div class="callout callout--warning">
-        <div class="callout__icon">🎯</div>
-        <div class="callout__body">
-          <h4>A Tool, Not an Oracle</h4>
-          <p>AI is an impressive tool, but it is not omniscient. Approach its outputs the way you'd approach advice from a very well-read friend — helpful and often right, but not infallible. For anything important, verify with an expert.</p>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num" style="background:#dc2626">!</div>
+          <div class="step-body">
+            <h4>Hallucination — Confident Fabrication</h4>
+            <p>The model is trained to produce plausible next words. When it doesn't "know" something, it generates text that <em>sounds</em> like a confident, well-sourced answer rather than saying "I don't know." This is the most dangerous failure mode. Always verify facts from AI with authoritative sources.</p>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Reinforcement Learning — Learning Through Feedback</h2>
-      <p>
-        There's a third type of machine learning worth knowing about: <strong>reinforcement learning</strong>.
-        Rather than learning from fixed examples, the AI learns by trying things and getting rewards or
-        penalties — like training a dog with treats.
-      </p>
-      <p>
-        This is how AI learned to play games like Chess, Go, and video games at superhuman levels.
-        It tried millions of moves, got rewarded for winning and penalised for losing, and gradually
-        discovered strategies that no human had ever thought of.
-      </p>
-
-      <div class="callout callout--analogy">
-        <div class="callout__icon">🎮</div>
-        <div class="callout__body">
-          <h4>Like Learning a New Board Game</h4>
-          <p>When you learn a new board game, you start by making random moves, gradually noticing which moves lead to winning positions and which don't. Over many games, you develop a strategy. Reinforcement learning is the same process, but the computer can play millions of games in minutes.</p>
+        <div class="step-item">
+          <div class="step-num" style="background:#dc2626">!</div>
+          <div class="step-body">
+            <h4>Training Cut-Off</h4>
+            <p>The model has no knowledge of events after its training data was collected. Ask about recent news, current prices, or last week's match result — it cannot know. Some versions have web browsing added; many don't.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num" style="background:#d97706">⚠️</div>
+          <div class="step-body">
+            <h4>Distribution Shift</h4>
+            <p>When you ask about something very unlike anything in the training data — a very niche topic, a very unusual phrasing, or a context the model rarely saw — it performs worse. It's operating outside its "comfort zone."</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num" style="background:#d97706">⚠️</div>
+          <div class="step-body">
+            <h4>Sycophancy</h4>
+            <p>RLHF teaches models to generate responses humans rate highly — and humans sometimes prefer confident, agreeable responses over honest, hedged ones. This can make AI "people-pleasers" that tell you what you want to hear rather than what is most accurate.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num" style="background:#059669">ℹ️</div>
+          <div class="step-body">
+            <h4>Inherited Bias</h4>
+            <p>Biases present in the training data appear in the model's outputs. AI companies actively work to reduce this, but it cannot be entirely eliminated because the training data reflects human society, which contains biases.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -215,53 +427,75 @@
     <div class="key-takeaways">
       <h3>Key Takeaways</h3>
       <ul>
-        <li><span class="kt-check">✓</span> Machine learning teaches AI through examples, not pre-written rules</li>
-        <li><span class="kt-check">✓</span> AI finds patterns in data — the quality of that data shapes the quality of the AI</li>
-        <li><span class="kt-check">✓</span> Neural networks are mathematical systems loosely inspired by how brain neurons connect</li>
-        <li><span class="kt-check">✓</span> AI makes mistakes because of gaps in training, biased data, unusual situations, or knowledge cut-offs</li>
-        <li><span class="kt-check">✓</span> Reinforcement learning lets AI improve by trying things and learning from rewards and penalties</li>
+        <li><span class="kt-check">✓</span> Machine learning learns from examples rather than rules — giving it the ability to generalise to new situations</li>
+        <li><span class="kt-check">✓</span> Neural networks process data through many layers, each detecting increasingly abstract patterns</li>
+        <li><span class="kt-check">✓</span> Training adjusts billions of internal weights by repeatedly comparing predictions against correct answers</li>
+        <li><span class="kt-check">✓</span> Training data quality, quantity, and diversity directly determines the AI's capabilities and fairness</li>
+        <li><span class="kt-check">✓</span> Fine-tuning takes a general model and specialises it cheaply for a specific domain</li>
+        <li><span class="kt-check">✓</span> RLHF used human feedback to teach AI chatbots to be helpful, honest, and safe</li>
+        <li><span class="kt-check">✓</span> All current AI is "narrow" — impressive at specific tasks but not generally intelligent</li>
+        <li><span class="kt-check">✓</span> Hallucination, training cut-offs, sycophancy, and bias are the specific failure modes to watch for</li>
       </ul>
     </div>
 
     <div class="quiz-section">
-      <h3>Quick Check</h3>
-      <p class="quiz-subtitle">Let's make sure the key ideas have landed.</p>
+      <h3>Check Your Understanding</h3>
+      <p class="quiz-subtitle">These questions are designed to make you think — take your time.</p>
 
       <div class="quiz-question">
-        <p>1. How does machine learning teach AI to recognise cats in photos?</p>
+        <p>1. Why did machine learning replace rule-based approaches for tasks like spam detection?</p>
         <div class="quiz-options">
           <button class="quiz-option" data-correct="false">
-            <span class="opt-icon">❌</span> A programmer writes detailed rules: "look for whiskers, 4 legs, pointed ears"
+            <span class="opt-icon">❌</span> Because computers became cheaper
           </button>
           <button class="quiz-option" data-correct="true">
-            <span class="opt-icon">✅</span> It's shown thousands of labelled examples and learns the patterns itself
+            <span class="opt-icon">✅</span> Because rules can't anticipate every variation — learning from examples generalises much better
           </button>
           <button class="quiz-option" data-correct="false">
-            <span class="opt-icon">❌</span> It searches the internet for cat pictures whenever you ask
+            <span class="opt-icon">❌</span> Because programmers ran out of ideas for new rules
           </button>
         </div>
         <div class="quiz-feedback"
-          data-correct="Correct! Machine learning shows the AI many labelled examples, and it discovers the patterns on its own — no rigid rules needed."
-          data-incorrect="Machine learning works by showing AI thousands of labelled examples. The AI discovers patterns without being told what to look for.">
+          data-correct="Exactly right. The rule-based approach is brittle — it can only handle what the programmer anticipated. Machine learning generalises from patterns to handle situations it has never seen before."
+          data-incorrect="Rules are brittle — they can only handle what was explicitly anticipated. Machine learning generalises from patterns across thousands of examples, handling situations no rule ever covered.">
         </div>
       </div>
 
       <div class="quiz-question">
-        <p>2. Why might an AI language model give an incorrect but confident-sounding answer?</p>
+        <p>2. What is "hallucination" in the context of AI language models?</p>
         <div class="quiz-options">
           <button class="quiz-option" data-correct="false">
-            <span class="opt-icon">❌</span> Because it deliberately tries to deceive people
-          </button>
-          <button class="quiz-option" data-correct="true">
-            <span class="opt-icon">✅</span> Because it completes patterns of words without truly "knowing" if the content is accurate
+            <span class="opt-icon">❌</span> When the AI generates images from text descriptions
           </button>
           <button class="quiz-option" data-correct="false">
-            <span class="opt-icon">❌</span> Because it learned from only one source of information
+            <span class="opt-icon">❌</span> When the AI refuses to answer a question
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> When the AI generates false information stated confidently as fact
           </button>
         </div>
         <div class="quiz-feedback"
-          data-correct="Exactly right! This is called 'hallucination.' The AI generates plausible-sounding text without verifying its truth."
-          data-incorrect="AI 'hallucinations' happen because the model generates plausible text patterns without truly knowing what's accurate. It's a limitation, not intentional deception.">
+          data-correct="Correct — and it's the most important limitation to keep in mind. The model produces plausible-sounding text even when it doesn't 'know' the answer, rather than admitting uncertainty."
+          data-incorrect="Hallucination is when AI generates false information stated confidently as if it were fact. The model produces plausible-sounding text even when it has no reliable basis for what it's saying.">
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <p>3. What was the key purpose of Reinforcement Learning from Human Feedback (RLHF)?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> To make AI models train faster
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> To align AI outputs with what humans find helpful, honest, and safe
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> To give AI models access to real-time information
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Exactly. RLHF transformed raw language models into genuinely helpful assistants by training them on human preferences — which responses are better, more helpful, safer."
+          data-incorrect="RLHF used human ratings of AI responses to teach the model what 'good' looks like — helpful, honest, and safe. It's the key reason modern chatbots feel so different from simply searching the web.">
         </div>
       </div>
     </div>
@@ -282,7 +516,6 @@
     <p>💡 <strong>Tech for Life</strong> — Designed with care for 60+ learners</p>
   </div>
 </footer>
-
 <script src="../js/main.js"></script>
 </body>
 </html>

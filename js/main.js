@@ -27,6 +27,7 @@ function isModuleComplete(moduleNum) {
 /* ── Index page: apply "completed" class to cards ── */
 function initIndexPage() {
   const cards = document.querySelectorAll('.module-card[data-module]');
+  /* also count modules 13-15 which may not have cards yet on older index */
   const p = getProgress();
   let doneCount = 0;
   cards.forEach(card => {

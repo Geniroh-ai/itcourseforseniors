@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 14 — Tokens &amp; Context Windows | Tech for Life</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    .token-demo { display:flex; flex-wrap:wrap; gap:6px; margin:16px 0; }
+    .token {
+      display:inline-block; padding:5px 12px; border-radius:6px;
+      font-family: monospace; font-size:1rem; font-weight:700;
+      border: 2px solid; line-height:1;
+    }
+    .token--a { background:#dbeafe; border-color:#93c5fd; color:#1e3a8a; }
+    .token--b { background:#fce7f3; border-color:#f9a8d4; color:#831843; }
+    .token--c { background:#d1fae5; border-color:#6ee7b7; color:#065f46; }
+    .token--d { background:#fef3c7; border-color:#fcd34d; color:#92400e; }
+    .token--e { background:#ede9fe; border-color:#c4b5fd; color:#4c1d95; }
+    .token-label {
+      font-size:0.75rem; color:var(--text-muted); text-align:center;
+      margin-top:2px; font-weight:600;
+    }
+    .token-wrap { display:flex; flex-direction:column; align-items:center; }
+    .context-diagram {
+      background:var(--white); border-radius:var(--radius); padding:20px;
+      border:2px solid var(--border); margin:20px 0;
+    }
+    .ctx-bar {
+      height:40px; border-radius:8px; background: linear-gradient(90deg,#3b82f6,#8b5cf6);
+      margin-bottom:8px; display:flex; align-items:center; padding:0 12px;
+      color:#fff; font-weight:700; font-size:0.9rem;
+    }
+    .ctx-bar--used { background: linear-gradient(90deg,#3b82f6 var(--used),#e5e7eb var(--used)); }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../index.html" class="site-logo">
+      <span class="site-logo__icon">💡</span>
+      <span>Tech for Life<span class="site-logo__sub">A course for 60+ learners</span></span>
+    </a>
+    <nav class="site-nav">
+      <a href="../index.html" data-page="home">Home</a>
+      <a href="../index.html#modules" data-page="modules">All Modules</a>
+    </nav>
+  </div>
+</header>
+
+<div class="module-progress">
+  <div class="module-progress__inner">
+    <span class="module-progress__label">Course Progress</span>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" style="width: 93%"></div>
+    </div>
+    <span class="module-progress__fraction">Module 14 of 15</span>
+  </div>
+</div>
+
+<div class="module-hero module-hero--advanced">
+  <div class="module-hero__number">Module 14 · AI Deep Dive</div>
+  <span class="module-hero__icon">🔢</span>
+  <h1>Tokens &amp; Context Windows</h1>
+  <p class="module-hero__tagline">Why AI doesn't read the way we do — and what that means for how you use it effectively.</p>
+  <div class="module-hero__chips">
+    <span class="chip">🟣 AI Deep Dive</span>
+    <span class="chip">⏱ 16 minutes</span>
+    <span class="chip">📖 Concepts + Detail</span>
+  </div>
+</div>
+
+<div class="module-body">
+  <div class="module-content">
+
+    <div class="objectives-box">
+      <h3>What You'll Learn</h3>
+      <ul>
+        <li>What a token is — with real, visual examples</li>
+        <li>Why AI tokenises text rather than using whole words</li>
+        <li>What a context window is, and why it matters in practice</li>
+        <li>How context window size varies across different AI models</li>
+        <li>What happens when a conversation gets very long</li>
+        <li>What "temperature" is and how it affects AI creativity vs. accuracy</li>
+        <li>How tokens relate to cost and usage limits</li>
+      </ul>
+    </div>
+
+    <section>
+      <h2>Why AI Doesn't Read Like We Do</h2>
+      <p>
+        When you read text, you process it word by word (and sometimes phrase by phrase). Language models
+        process text differently — they break it down into units called <strong>tokens</strong> before
+        doing anything with it. Understanding tokens explains a surprising number of things about AI
+        behaviour that otherwise seem mysterious.
+      </p>
+      <p>
+        This module goes into more technical depth than most — because these concepts are genuinely
+        useful for getting the most from AI tools, and because they're more accessible than they first appear.
+      </p>
+    </section>
+
+    <section>
+      <h2>What Is a Token?</h2>
+      <p>
+        A token is the basic unit of text that a language model processes. It is <em>not</em> simply
+        a word, though many common words are single tokens. A token is better understood as a
+        <strong>commonly occurring sequence of characters</strong> — which in practice means:
+      </p>
+      <ul>
+        <li>Short common words are usually 1 token: <em>the, cat, run, a, of</em></li>
+        <li>Longer or rarer words are often split into 2–4 tokens: <em>un-believ-able, electro-magnet-ic</em></li>
+        <li>Punctuation and spaces are usually 1 token each</li>
+        <li>Numbers can vary: <em>42</em> might be 1 token; <em>2024</em> might be 1 or 2</li>
+        <li>Common short phrases or word endings are sometimes combined: <em>-ing, -tion, pre-</em></li>
+      </ul>
+      <p>
+        As a rough rule of thumb: <strong>1 token ≈ ¾ of an English word</strong>, or about 4 characters.
+        A typical page of English prose (around 400 words) is roughly 500–600 tokens.
+      </p>
+
+      <div class="visual-card">
+        <h4>🔍 Token Visualisation — Real Examples</h4>
+        <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:16px;">Each coloured block below is one token. Notice how longer words are split:</p>
+
+        <p style="font-weight:700; margin-bottom:8px; font-size:0.9rem;">Sentence: "The cat sat on the mat."</p>
+        <div class="token-demo">
+          <div class="token-wrap"><span class="token token--a">The</span><span class="token-label">1</span></div>
+          <div class="token-wrap"><span class="token token--b"> cat</span><span class="token-label">2</span></div>
+          <div class="token-wrap"><span class="token token--c"> sat</span><span class="token-label">3</span></div>
+          <div class="token-wrap"><span class="token token--d"> on</span><span class="token-label">4</span></div>
+          <div class="token-wrap"><span class="token token--e"> the</span><span class="token-label">5</span></div>
+          <div class="token-wrap"><span class="token token--a"> mat</span><span class="token-label">6</span></div>
+          <div class="token-wrap"><span class="token token--b">.</span><span class="token-label">7</span></div>
+        </div>
+        <p style="font-size:0.88rem; color:var(--text-muted);">7 tokens for 6 words — roughly 1 token per word for simple, common text.</p>
+
+        <hr style="border:none; border-top:1px solid var(--border); margin:20px 0;">
+
+        <p style="font-weight:700; margin-bottom:8px; font-size:0.9rem;">Sentence: "Electroencephalography is extraordinarily complicated."</p>
+        <div class="token-demo">
+          <div class="token-wrap"><span class="token token--a">El</span><span class="token-label">1</span></div>
+          <div class="token-wrap"><span class="token token--b">ectro</span><span class="token-label">2</span></div>
+          <div class="token-wrap"><span class="token token--c">enc</span><span class="token-label">3</span></div>
+          <div class="token-wrap"><span class="token token--d">eph</span><span class="token-label">4</span></div>
+          <div class="token-wrap"><span class="token token--e">alog</span><span class="token-label">5</span></div>
+          <div class="token-wrap"><span class="token token--a">raphy</span><span class="token-label">6</span></div>
+          <div class="token-wrap"><span class="token token--b"> is</span><span class="token-label">7</span></div>
+          <div class="token-wrap"><span class="token token--c"> extrao</span><span class="token-label">8</span></div>
+          <div class="token-wrap"><span class="token token--d">rdinarily</span><span class="token-label">9</span></div>
+          <div class="token-wrap"><span class="token token--e"> complicated</span><span class="token-label">10</span></div>
+          <div class="token-wrap"><span class="token token--a">.</span><span class="token-label">11</span></div>
+        </div>
+        <p style="font-size:0.88rem; color:var(--text-muted);">11 tokens for 4 words — rare, long medical/technical words use many more tokens.</p>
+
+        <hr style="border:none; border-top:1px solid var(--border); margin:20px 0;">
+
+        <p style="font-weight:700; margin-bottom:8px; font-size:0.9rem;">Prompt: "Act as a knowledgeable GP."</p>
+        <div class="token-demo">
+          <div class="token-wrap"><span class="token token--a">Act</span><span class="token-label">1</span></div>
+          <div class="token-wrap"><span class="token token--b"> as</span><span class="token-label">2</span></div>
+          <div class="token-wrap"><span class="token token--c"> a</span><span class="token-label">3</span></div>
+          <div class="token-wrap"><span class="token token--d"> know</span><span class="token-label">4</span></div>
+          <div class="token-wrap"><span class="token token--e">ledge</span><span class="token-label">5</span></div>
+          <div class="token-wrap"><span class="token token--a">able</span><span class="token-label">6</span></div>
+          <div class="token-wrap"><span class="token token--b"> GP</span><span class="token-label">7</span></div>
+          <div class="token-wrap"><span class="token token--c">.</span><span class="token-label">8</span></div>
+        </div>
+        <p style="font-size:0.88rem; color:var(--text-muted);">8 tokens. Note that "knowledgeable" breaks into 3 tokens: know · ledge · able.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Why Tokenise Rather Than Use Whole Words?</h2>
+      <p>
+        The tokenisation approach (using sub-word pieces rather than whole words) was a deliberate
+        design choice that solves several problems:
+      </p>
+      <ul>
+        <li>
+          <strong>Handles unknown words gracefully.</strong> If the model was trained only on whole words, it would have no idea what to do with a word it had never seen. With sub-word tokenisation, it can decompose the new word into familiar pieces — <em>un-usual-ness</em> — and handle it reasonably well.
+        </li>
+        <li>
+          <strong>Manages vocabulary size.</strong> There are effectively unlimited possible words in any living language. Sub-word tokens cap the vocabulary at a manageable size (typically 50,000–100,000 tokens) that covers all text efficiently.
+        </li>
+        <li>
+          <strong>Efficiency.</strong> Processing 500 tokens per page is far more tractable than maintaining a vocabulary of millions of whole words and word forms.
+        </li>
+      </ul>
+
+      <div class="callout callout--info">
+        <div class="callout__icon">🔤</div>
+        <div class="callout__body">
+          <h4>Why AI Sometimes Struggles with Spelling</h4>
+          <p>Here's an interesting side-effect of tokenisation: the model never sees individual letters directly, only token sequences. Asking an AI "how many 'r's are in 'strawberry'?" was famously problematic for early models — because the word is a single token or a few tokens, and the model has to reason about the internal letters of tokens it has learned as single units. More recent models handle this better, but it illustrates how differently AI processes text from how we do.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>The Context Window — Working Memory</h2>
+      <p>
+        Every language model has a <strong>context window</strong> — the maximum number of tokens
+        it can process at once. Everything inside the context window is what the model can "see"
+        and reason about when generating its next response. Everything outside it is, in effect,
+        forgotten.
+      </p>
+      <p>
+        The context window includes:
+      </p>
+      <ul>
+        <li>The system prompt (any standing instructions given to the model)</li>
+        <li>The entire conversation history so far</li>
+        <li>The current message you just sent</li>
+        <li>Any documents or text you've pasted in</li>
+        <li>The model's response as it's being generated</li>
+      </ul>
+
+      <div class="callout callout--analogy">
+        <div class="callout__icon">📋</div>
+        <div class="callout__body">
+          <h4>The Whiteboard Analogy</h4>
+          <p>
+            Think of the context window as a whiteboard in a meeting room. There's only so much space. You write things on the board as the conversation progresses. When the board fills up, you have to erase older material to make room for new. The model can only see what's currently on the board — anything erased is gone from its awareness.
+          </p>
+        </div>
+      </div>
+
+      <h3>Context Window Sizes Across Models (2024–2025)</h3>
+      <div class="visual-card">
+        <h4>📏 How Much Can Each Model Hold?</h4>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num" style="font-size:0.7rem;background:#10a37f">GPT</div>
+            <div class="step-body">
+              <h4>GPT-4o (ChatGPT)</h4>
+              <p>128,000 tokens ≈ approximately 96,000 words ≈ a long novel. Very large in practice — you'd rarely hit this limit in everyday use.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="font-size:0.7rem;background:#4285f4">GEM</div>
+            <div class="step-body">
+              <h4>Gemini 1.5 / 2.0</h4>
+              <p>Up to 1,000,000 tokens ≈ approximately 750,000 words ≈ about 8 average novels. Currently the largest context window available. Designed for processing entire codebases or document archives.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="font-size:0.7rem;background:#cc785c">CLO</div>
+            <div class="step-body">
+              <h4>Claude (Anthropic)</h4>
+              <p>200,000 tokens ≈ approximately 150,000 words. Excellent for processing long contracts, medical records, or multiple documents at once.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="font-size:0.7rem;background:#0078d4">COP</div>
+            <div class="step-body">
+              <h4>Copilot (Microsoft)</h4>
+              <p>Varies depending on the context (Word, Outlook, Bing chat). Powered by GPT-4o, so typically 128K tokens in dedicated chat interfaces.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon">📄</div>
+        <div class="callout__body">
+          <h4>What This Means in Practice</h4>
+          <p>With 128,000 tokens, you could paste in an entire book and ask questions about it. For most everyday uses — writing letters, having conversations, explaining documents — you will never come close to the limit. Context windows matter most when processing very long documents.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What Happens When the Context Window Fills Up?</h2>
+      <p>
+        In a very long conversation, there comes a point where the entire history no longer fits
+        in the context window. Different systems handle this differently:
+      </p>
+      <ul>
+        <li><strong>Truncation</strong> — the oldest messages are simply dropped. The model doesn't know the early part of the conversation happened.</li>
+        <li><strong>Summarisation</strong> — some systems automatically summarise older parts of the conversation before removing them, preserving the gist.</li>
+        <li><strong>Hard stop</strong> — some interfaces simply warn you that the conversation is too long and ask you to start a new one.</li>
+      </ul>
+
+      <div class="callout callout--warning">
+        <div class="callout__icon">⚠️</div>
+        <div class="callout__body">
+          <h4>Practical Signs You've Hit the Limit</h4>
+          <p>
+            If the AI seems to "forget" something important from early in your conversation, or starts contradicting what it agreed to earlier, it may have lost those early messages from its context window. The simplest fix: start a new conversation and briefly recap the most important context at the beginning.
+          </p>
+        </div>
+      </div>
+
+      <h3>The Attention Fade Problem</h3>
+      <p>
+        Even within the context window, there's a subtler effect: models tend to pay more attention
+        to the beginning and end of the context, and less to material in the middle. This is sometimes
+        called the <em>"lost in the middle"</em> phenomenon.
+      </p>
+      <p>
+        <strong>Practical implication:</strong> if you're pasting in a long document and asking a specific
+        question, put your question at the <em>end</em> of your message (after the document), and also
+        state the most important context at the beginning. The model is more likely to attend to both ends.
+      </p>
+    </section>
+
+    <section>
+      <h2>Temperature — Creativity vs. Accuracy</h2>
+      <p>
+        When an AI generates text, at each step it doesn't simply pick the single most probable next
+        token — it samples from a distribution. The <strong>temperature</strong> setting controls how
+        wide that distribution is.
+      </p>
+
+      <div class="comparison-grid">
+        <div class="comparison-item">
+          <div class="ci-icon">🧊</div>
+          <h4>Low Temperature (≈ 0.0–0.3)</h4>
+          <p>The model picks near-deterministically — choosing the highest probability tokens. Responses are <strong>consistent, predictable, and factual</strong>. Ask the same question twice and get nearly identical answers. Best for: factual questions, legal/medical information, code.</p>
+        </div>
+        <div class="comparison-item">
+          <div class="ci-icon">🔥</div>
+          <h4>High Temperature (≈ 0.8–1.5)</h4>
+          <p>The model samples more broadly from lower-probability options. Responses are <strong>varied, creative, and sometimes surprising</strong>. Ask the same question twice and get quite different answers. Best for: creative writing, brainstorming, generating alternatives.</p>
+        </div>
+      </div>
+
+      <div class="callout callout--analogy">
+        <div class="callout__icon">🎲</div>
+        <div class="callout__body">
+          <h4>The Dice Analogy</h4>
+          <p>
+            Imagine the AI choosing the next word by throwing a weighted dice. At low temperature, the dice is so heavily weighted toward the most probable word that it almost always lands there. At high temperature, the weighting is much flatter — the dice could plausibly land on many different options. Low temperature gives you consistency and precision. High temperature gives you variety and creativity. Both are useful, depending on what you need.
+          </p>
+        </div>
+      </div>
+
+      <h3>Do You Control Temperature Directly?</h3>
+      <p>
+        In consumer AI tools like ChatGPT or Claude, you typically don't set temperature manually.
+        The tool sets it for you, usually at a moderate value suited for general conversation. Some
+        interfaces let you choose between "Creative" and "Precise" modes — which is essentially
+        adjusting temperature behind the scenes.
+      </p>
+      <p>
+        You can influence behaviour in your prompt instead:
+      </p>
+      <ul>
+        <li>For more creative output: <em>"Be creative and surprising"</em> / <em>"Give me something unusual and unexpected"</em></li>
+        <li>For more precise output: <em>"Be factual and precise"</em> / <em>"Stick to established information, no speculation"</em> / <em>"If you're not certain, say so"</em></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Tokens and Cost</h2>
+      <p>
+        For users of consumer AI tools (ChatGPT free, Claude free, Copilot), tokens are largely
+        invisible — you use the tool within usage limits without counting tokens yourself. But it's
+        worth understanding the relationship for context:
+      </p>
+      <ul>
+        <li>AI providers price their services in tokens when selling to developers and businesses</li>
+        <li>As of 2025, typical costs for GPT-4o are around $0.005 per 1,000 input tokens — roughly a penny per 800 words of input</li>
+        <li>Output tokens (the AI's responses) are typically priced higher than input tokens</li>
+        <li>This explains why free-tier usage has limits, and why very long conversations may feel different from short ones</li>
+      </ul>
+
+      <div class="callout callout--info">
+        <div class="callout__icon">💰</div>
+        <div class="callout__body">
+          <h4>For Everyday Personal Use</h4>
+          <p>Free tiers on all major AI tools are generous enough for personal use. The vast majority of everyday tasks — writing letters, asking questions, having conversations — will comfortably fit within free limits. You would need to process very large volumes of text to approach meaningful cost considerations.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Putting It Together — Practical Implications</h2>
+      <p>
+        Knowing about tokens and context windows makes you a better AI user in concrete ways:
+      </p>
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Long documents — paste them in</h4>
+            <p>Modern context windows are large enough to hold entire contracts, medical letters, or reports. Paste the full text and ask the AI to summarise, explain, or highlight key points. You don't need to manually extract sections.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Start fresh for new topics</h4>
+            <p>Rather than accumulating a very long conversation, start a new chat when you change subject. This keeps the context clean and ensures the AI's full attention is on what's relevant now.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Recap at the start of long sessions</h4>
+            <p>If returning to a topic after days away, start a new conversation with a brief recap: "I'm continuing work on X from last week — the key context is Y." Don't assume the AI remembers previous sessions.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Position important instructions prominently</h4>
+            <p>For complex tasks, put your most important instructions at both the start and end of a long prompt. Due to the "lost in the middle" effect, these positions receive the most attention.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h4>Ask for precision when it matters</h4>
+            <p>For factual questions, add phrases like "be precise and factual" to push the model toward lower-temperature behaviour. For creative tasks, "be creative and varied" opens up more interesting outputs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="key-takeaways">
+      <h3>Key Takeaways</h3>
+      <ul>
+        <li><span class="kt-check">✓</span> A token is roughly ¾ of a word — common words are 1 token; long rare words can be 3–6 tokens</li>
+        <li><span class="kt-check">✓</span> Sub-word tokenisation lets AI handle any text, including words it has never seen before</li>
+        <li><span class="kt-check">✓</span> The context window is the AI's working memory — everything it can "see" at once</li>
+        <li><span class="kt-check">✓</span> Modern context windows (128K–1M tokens) can hold entire novels — most everyday tasks never hit the limit</li>
+        <li><span class="kt-check">✓</span> When context fills up, older content is lost — start fresh conversations when changing topics</li>
+        <li><span class="kt-check">✓</span> Temperature controls creativity vs. consistency — you can influence this through your prompt wording</li>
+        <li><span class="kt-check">✓</span> Models pay more attention to the beginning and end of long prompts — put key instructions in both places</li>
+      </ul>
+    </div>
+
+    <div class="quiz-section">
+      <h3>Check Your Understanding</h3>
+      <p class="quiz-subtitle">Three questions on this more technical module.</p>
+
+      <div class="quiz-question">
+        <p>1. Roughly how many tokens is a typical page of English text (about 400 words)?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> About 50 tokens
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> About 500–600 tokens
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> About 5,000 tokens
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Correct. The rule of thumb is roughly 1 token per ¾ of a word — so 400 words ≈ 533 tokens. A whole novel of 80,000 words would be roughly 100,000 tokens."
+          data-incorrect="About 500–600 tokens. The rule of thumb is roughly 1 token per ¾ of a word — so 400 words ≈ 500–600 tokens.">
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <p>2. You're in the middle of a very long conversation and the AI suddenly seems to have forgotten something important you discussed at the beginning. What is the most likely cause?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> The AI is deliberately ignoring earlier instructions
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> The conversation has grown too long and early messages have fallen out of the context window
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> A software error has deleted part of the conversation
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Exactly. The context window has finite space. In very long conversations, the oldest messages are dropped to make room for newer content. Starting fresh with a brief recap solves this."
+          data-incorrect="This is the context window filling up — the oldest messages are dropped to make room for newer ones. The AI isn't ignoring you; it simply no longer has access to those earlier messages.">
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <p>3. You need an AI to write a poem with surprising, unusual imagery. Which temperature approach is better?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Low temperature — for precise, predictable output
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> High temperature — for more varied, creative, and unexpected results
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Temperature has no effect on creative writing
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Correct! Higher temperature produces more varied, surprising outputs — ideal for creative tasks. In your prompt you could add: 'Be creative and surprising — avoid obvious imagery.'"
+          data-incorrect="High temperature is better for creative tasks — it samples more broadly from possible options, producing more varied and unexpected results. Add 'be creative and surprising' to your prompt to encourage this.">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="module-nav">
+  <div class="module-nav__inner">
+    <a href="module-13.html" class="btn btn--outline">← Previous</a>
+    <button id="mark-complete-btn" class="mark-complete-btn" data-module="14">Mark as Complete ✓</button>
+    <a href="module-15.html" class="btn btn--primary">Final Module →</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>💡 <strong>Tech for Life</strong> — Designed with care for 60+ learners</p>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>
