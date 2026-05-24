@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 24 — The Road Ahead | Tech for Life</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin: 26px 0;
+    }
+    @media (min-width: 720px) {
+      .scenario-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .scenario {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 22px 22px 20px;
+      border-top: 5px solid var(--primary);
+    }
+    .scenario--bright { border-top-color: var(--success); }
+    .scenario--mixed  { border-top-color: var(--warning); }
+    .scenario--dark   { border-top-color: #b91c1c; }
+    .scenario__label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 8px;
+    }
+    .scenario--bright .scenario__label { color: var(--success); }
+    .scenario--mixed  .scenario__label { color: var(--warning); }
+    .scenario--dark   .scenario__label { color: #b91c1c; }
+    .scenario h4 {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .scenario p {
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    .scenario p:last-child { margin-bottom: 0; }
+    .ethic-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 22px 26px;
+      margin: 18px 0;
+      border-left: 5px solid var(--purple);
+    }
+    .ethic-card h4 {
+      font-size: 1.1rem;
+      color: var(--purple);
+      margin-bottom: 8px;
+    }
+    .ethic-card p {
+      font-size: 0.96rem;
+      margin-bottom: 8px;
+      line-height: 1.65;
+    }
+    .ethic-card p:last-child { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../index.html" class="site-logo">
+      <span class="site-logo__icon">💡</span>
+      <span>Tech for Life<span class="site-logo__sub">A course for 60+ learners</span></span>
+    </a>
+    <nav class="site-nav">
+      <a href="../index.html" data-page="home">Home</a>
+      <a href="../index.html#modules" data-page="modules">All Modules</a>
+    </nav>
+  </div>
+</header>
+
+<div class="module-progress">
+  <div class="module-progress__inner">
+    <span class="module-progress__label">Course Progress</span>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" style="width: 100%"></div>
+    </div>
+    <span class="module-progress__fraction">Module 24 of 24 — Final Module!</span>
+  </div>
+</div>
+
+<div class="module-hero module-hero--beginner">
+  <div class="module-hero__number">Module 24 · AI in the Real World</div>
+  <span class="module-hero__icon">🧭</span>
+  <h1>The Road Ahead</h1>
+  <p class="module-hero__tagline">Where does all this lead — for jobs, families, democracy, and the kind of society we leave to our grandchildren? An honest look at three possible futures, the ethics we'll have to navigate, and a practical, calm playbook for how to adapt.</p>
+  <div class="module-hero__chips">
+    <span class="chip">🟢 Real-World AI</span>
+    <span class="chip">⏱ 22 minutes</span>
+    <span class="chip">🎓 Course Finale</span>
+  </div>
+</div>
+
+<div class="module-body">
+  <div class="module-content">
+
+    <div class="objectives-box">
+      <h3>What This Module Covers</h3>
+      <ul>
+        <li>Three plausible long-term scenarios — bright, mixed, and dark — for where AI takes us</li>
+        <li>The seven biggest ethical issues that humanity has to navigate, with honest framing</li>
+        <li>A practical, calm playbook for how to adapt — as an individual, as a family, and as a citizen</li>
+        <li>What good and bad signals to watch for in the years ahead</li>
+        <li>A closing word — a gentle handover from this course back into the rest of your life</li>
+      </ul>
+    </div>
+
+    <div class="callout callout--info">
+      <div class="callout__icon">🎓</div>
+      <div class="callout__body">
+        <h4>A note on this module</h4>
+        <p>
+          Nobody — not engineers, not regulators, not journalists, not the CEOs of AI companies — knows
+          for certain how this story plays out. The honest thing to do is lay out the credible
+          possibilities, sketch the choices in front of us, and offer a steady way of holding it all. The
+          aim isn't to alarm you or to reassure you; it's to leave you better equipped to think about it
+          for yourself.
+        </p>
+      </div>
+    </div>
+
+    <section>
+      <h2>Three Possible Futures</h2>
+      <p>
+        Most serious thinking about AI's long-term impact lands in one of three broad scenarios. None is
+        guaranteed; the actual future will probably mix elements from all three.
+      </p>
+
+      <div class="scenario-grid">
+        <div class="scenario scenario--bright">
+          <div class="scenario__label">🌅 The bright case</div>
+          <h4>A renaissance of the possible</h4>
+          <p>AI accelerates medicine to the point where cancer is largely manageable and most genetic diseases are treatable by the 2040s. Personalised education lifts global literacy and numeracy. Clean fusion energy arrives faster than expected. Translation makes language barriers disappear. Loneliness in old age is partly addressed by sophisticated AI companions integrated with human carers. Work becomes shorter and more meaningful as the dull bits get automated.</p>
+          <p><strong>What it requires:</strong> good regulation, widespread access to AI tools, careful management of the transition for displaced workers, and active stewardship of public information.</p>
+        </div>
+
+        <div class="scenario scenario--mixed">
+          <div class="scenario__label">⛅ The mixed (and most likely) case</div>
+          <h4>Brilliant in places, painful in others</h4>
+          <p>AI delivers genuine medical and scientific breakthroughs, but unevenly — the wealthy benefit first, and access takes decades to broaden. Some jobs disappear quickly; new ones appear, but the transition costs real people real years. Misinformation gets worse before it gets better. Privacy continues to erode. A handful of large tech and AI companies grow even more powerful. We muddle through with imperfect rules, slowly figured out after problems appear.</p>
+          <p><strong>What it requires:</strong> active citizenship, ongoing regulation, and a great deal of patience. This is approximately where the introduction of electricity, cars, and the internet each landed in their early decades.</p>
+        </div>
+
+        <div class="scenario scenario--dark">
+          <div class="scenario__label">🌑 The dark case</div>
+          <h4>Bad outcomes if we get it wrong</h4>
+          <p>AI-generated content (text, audio, video, fake news) overwhelms what's true. Democratic elections become hard to run honestly. A small number of companies and governments control AI systems used to surveil and manipulate populations. Economic dislocation outpaces society's ability to absorb it, fuelling unrest. Critical AI systems fail in ways no one understands. Worst tail risks: misuse for bio or cyber weapons; loss of control over very powerful systems.</p>
+          <p><strong>What it requires to avoid:</strong> serious regulation now, international cooperation, transparency from AI companies, and a public that demands these things rather than passively trusting either the firms or the governments.</p>
+        </div>
+      </div>
+
+      <div class="callout callout--analogy">
+        <div class="callout__icon">⚖️</div>
+        <div class="callout__body">
+          <h4>How to hold three scenarios at once</h4>
+          <p>
+            The trick is not to pick one and commit to it as prophecy. The mixed scenario is the historically
+            normal pattern — that is where this is most likely to land. But which version of mixed depends on
+            choices being made now, by governments, companies, and citizens (including you). The bright case
+            is genuinely possible. So is the dark case. Both are worth working toward, and against,
+            respectively.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>The Seven Ethical Questions Humanity Now Faces</h2>
+      <p>
+        Strip out the noise, and the conversation about AI ethics comes down to roughly seven questions.
+        None has a settled answer; all are being actively fought over in courts, parliaments, newsrooms,
+        and classrooms.
+      </p>
+
+      <div class="ethic-card">
+        <h4>1 · Work — what happens to jobs?</h4>
+        <p>Some jobs (basic copy-writing, simple coding, routine legal review, first-line customer service, certain translation work) are clearly being reshaped already. Other jobs (most skilled trades, healthcare, education, caring, much of management) look much harder to fully automate. The honest picture: not "AI takes all jobs" or "AI takes none," but a real and uneven reshaping over the next decade or two — with the people whose work is most exposed deserving meaningful support during the transition.</p>
+        <p><strong>What's at stake:</strong> whether the productivity gains are shared broadly or captured narrowly. Politics, not technology, will mostly decide this.</p>
+      </div>
+
+      <div class="ethic-card">
+        <h4>2 · Truth — can we still tell what's real?</h4>
+        <p>Image, audio, and video generation are now good enough that an ordinary person cannot reliably tell a fake from a real recording. This has obvious consequences for journalism, elections, the justice system, and personal trust. Some societies are responding with mandatory labelling, watermarking, and "content provenance" standards that record where a video actually came from.</p>
+        <p><strong>What's at stake:</strong> the shared sense of reality that democracy and ordinary trust both depend on.</p>
+      </div>
+
+      <div class="ethic-card">
+        <h4>3 · Power — who controls these systems?</h4>
+        <p>The most capable AI models today are built by a small number of companies — OpenAI, Anthropic, Google, Meta, Microsoft, plus a handful of Chinese rivals. They sit in private hands. The infrastructure they run on is mostly owned by three cloud companies (AWS, Azure, Google Cloud). This concentration of capability in private hands is a genuine concern — for competition, for democracy, and for the resilience of the systems we are coming to depend on.</p>
+        <p><strong>What's at stake:</strong> whether AI becomes more like the internet (broadly distributed, open in many places) or more like the global airline industry (controlled by a handful of large players).</p>
+      </div>
+
+      <div class="ethic-card">
+        <h4>4 · Creators — who owns the work AI learned from?</h4>
+        <p>Modern AI models were trained on essentially the entire public internet — including books, journalism, photographs, music, software, and art that real human beings created over centuries. None of these creators were asked, paid, or credited. Lawsuits from the New York Times, the Author's Guild, Getty Images, and others are working their way through the courts. The answers will shape how the next generation of AI is built, and who gets paid for what.</p>
+        <p><strong>What's at stake:</strong> the livelihoods of writers, artists, journalists, and photographers — and whether human creative work has a sustainable future alongside infinite synthetic content.</p>
+      </div>
+
+      <div class="ethic-card">
+        <h4>5 · Privacy — what do these systems know about you?</h4>
+        <p>To work well, AI needs data. Lots of data. Often very personal data. The medical AI that catches your cancer needs your scans; the navigation app that beats traffic needs your location; the email assistant that drafts your replies needs your inbox. Each is a reasonable trade in isolation. The aggregate — that a few companies now know an astonishing amount about your life — is worth being aware of, and pushing back on through regulation where appropriate.</p>
+        <p><strong>What's at stake:</strong> the basic right to a private inner life, and protection from manipulation by systems that know you better than you know yourself.</p>
+      </div>
+
+      <div class="ethic-card">
+        <h4>6 · Children — what does growing up with AI do to a young mind?</h4>
+        <p>A child born in 2025 will grow up with AI tutors, AI friends, AI-curated everything. We have no good evidence yet of what this does to learning, attention, social development, or mental health — the experiment is happening on this generation in real time. Schools and parents are improvising. Some early signs (declining reading and writing skills in some studies; increased anxiety in some demographics) are concerning; some (genuinely useful tutoring for those who can access it) are hopeful.</p>
+        <p><strong>What's at stake:</strong> whether the next generation grows up using AI as a tool or being used by it as a product.</p>
+      </div>
+
+      <div class="ethic-card">
+        <h4>7 · Safety — what about the truly powerful systems still to come?</h4>
+        <p>The most thoughtful researchers, including many at the AI companies themselves, take seriously the possibility that systems significantly more capable than today's may be hard to control, hard to predict, and dangerous if misused. National governments (the UK and US have set up AI Safety Institutes) and international bodies are starting to grapple with this. It is not science fiction; it is a live concern being actively worked on. Whether the field gets this right will matter enormously.</p>
+        <p><strong>What's at stake:</strong> in the long tail, the most consequential question of the century.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>How to Adapt — A Practical Playbook</h2>
+      <p>
+        Faced with all of the above, what do you actually <em>do</em> as an individual? Here is a calm,
+        grown-up playbook in three parts.
+      </p>
+
+      <h3>For yourself</h3>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Use AI tools — at your own pace, on your own terms</h4>
+            <p>You have now completed 23 modules of this course. You are equipped to use these tools far better than most. Try the chatbots. Ask the questions you'd ask a friend who happens to be a polymath. The point is not to become "good at AI" — it is to keep AI as a tool that works for you, rather than something happening to you.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Develop the verification reflex</h4>
+            <p>For any claim that matters — medical, legal, financial, historical — get it from at least one authoritative source as well as the chatbot. Build the habit until it is automatic. This single habit will protect you from the vast majority of AI's failure modes.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Protect your attention</h4>
+            <p>The AI inside your social media feeds, news apps, and video platforms is built to keep you engaged, not to keep you well. Limit the time you spend on those particular surfaces. Use ad-blockers. Treat the recommendation algorithm as you'd treat a slot machine — fine for a few minutes, dangerous to live inside.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Keep human skills sharp</h4>
+            <p>The skills that will continue to matter — and may matter more, not less, as AI grows — are the human ones: real conversation, listening properly, judgement, taste, care, presence, manual dexterity, music, cooking, gardening, looking after living things. None of these are going anywhere. Pour time into them.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>For your family</h3>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h4>Be the technologically literate elder</h4>
+            <p>Most older adults around you don't know what's in this course. Help where you can — recognise an AI-generated scam call, explain why a "too good to be true" investment ad probably is, help a friend set up a chatbot for legitimate purposes. Knowledge held privately doesn't help anyone.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <h4>Talk with younger relatives about how they use AI</h4>
+            <p>Grandchildren are using AI in ways that will surprise you. Ask them, openly and without judgement. Their world is different; understanding it is a way of staying close. You may also be able to offer perspective — when AI is a brilliant homework helper, when it is a way to avoid actually learning, when it is replacing the friendship a teenager needs.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">7</div>
+          <div class="step-body">
+            <h4>Keep the things that matter offline</h4>
+            <p>Photos that matter, papers that matter, voice recordings of loved ones — make sure at least one copy lives on a hard drive or in a folder you control, not only in the cloud. A small thing; reassuring to do.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>For society</h3>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">8</div>
+          <div class="step-body">
+            <h4>Vote on it</h4>
+            <p>The choices being made about AI — how it's regulated, who pays tax on it, what protections workers and creators get, how children are protected — are political choices. They will be made well or badly depending on whether voters care. Care.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">9</div>
+          <div class="step-body">
+            <h4>Support institutions doing the slow careful work</h4>
+            <p>Quality journalism, public-service broadcasting, libraries, museums, universities, the courts — these are the institutions that will absorb the shocks and translate AI's impacts into something humane. They were under-funded before AI made their job harder. Subscribe to a newspaper. Visit a library. Pay for the BBC. These are not nostalgic acts; they are practical defences of a working society.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">10</div>
+          <div class="step-body">
+            <h4>Be patient with each other</h4>
+            <p>The transition will not be smooth. Friends will lose jobs in ways that aren't their fault. Family members will be taken in by AI-generated scams or false stories. Grandchildren will sometimes get things wrong in ways that look strange to you. Adults need to keep treating each other as adults, with grace, through what is going to be a complicated decade. Probably the most important thing on this whole list.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What to Watch For</h2>
+      <p>
+        As the years go by, here are the signals worth paying attention to:
+      </p>
+
+      <div class="comparison-grid">
+        <div class="comparison-item">
+          <div class="ci-icon">🟢</div>
+          <h4>Good signs</h4>
+          <p>Working AI labelling laws. New jobs and industries appearing alongside ones that shrink. Major scientific announcements (a cancer therapy, a clean-energy breakthrough). AI tools genuinely helping older adults. Open-source models that anyone can inspect and run. Stronger privacy protections.</p>
+        </div>
+        <div class="comparison-item">
+          <div class="ci-icon">🔴</div>
+          <h4>Worrying signs</h4>
+          <p>Elections substantively affected by AI-generated misinformation. A single large AI provider suffering a major failure that takes critical services down. AI used by governments to suppress dissent. Children's mental-health metrics getting demonstrably worse. Concentration of profit in fewer and fewer hands without redistribution.</p>
+        </div>
+      </div>
+
+      <p>
+        Neither column is fully realised; both are partially realised. The next decade is the one that
+        decides which direction the trend lines run. That is genuinely an important period to be paying
+        attention.
+      </p>
+    </section>
+
+    <section>
+      <h2>A Closing Word — From the Author of This Course</h2>
+      <p>
+        You started 24 modules ago with a quiet promise: that none of this needed to feel mysterious or
+        intimidating. Whatever brought you here — curiosity, a grandchild's prompt, a need to stay
+        confident in a world that keeps changing — you've come out the other side with a working
+        understanding of the digital world that most people, of any age, do not have.
+      </p>
+      <p>
+        You can hold a clear-headed view of what AI does and doesn't do. You can use a chatbot well, and
+        you can spot when it's making things up. You can explain to a friend what "the cloud" really is,
+        what "https" actually means, why your phone unlocks when it sees your face, and where AI is at
+        work in their life that they hadn't noticed. You know roughly how we got here, and the rough
+        shape of where it might go next. You are equipped to be a thoughtful citizen of a digital
+        century — and to help others be the same.
+      </p>
+      <p>
+        The future of technology will not be decided in laboratories and boardrooms alone. It will be
+        decided by people who choose to pay attention, who insist on understanding, and who treat each
+        other gently through change. You are one of those people now. Genuinely well done.
+      </p>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon">🎉</div>
+        <div class="callout__body">
+          <h4>You have finished the entire course</h4>
+          <p>
+            Twenty-four modules. From "what is a mouse" to "what does this all mean." Walk away from the
+            screen for a bit. Make a cup of tea. Tell someone you love what you learned. This site isn't
+            going anywhere — come back to any module any time the details get hazy. And whatever the next
+            decade brings, you'll meet it with eyes open and shoulders back.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="key-takeaways">
+      <h3>Key Takeaways</h3>
+      <ul>
+        <li><span class="kt-check">✓</span> The honest long-term picture is three possible futures: bright (medical and scientific renaissance), mixed (uneven progress with real costs), or dark (misinformation and concentration of power) — and which we get depends on choices being made now</li>
+        <li><span class="kt-check">✓</span> Seven big ethical questions sit at the centre: work, truth, power, creators, privacy, children, and the safety of powerful future systems</li>
+        <li><span class="kt-check">✓</span> For yourself: use AI on your terms, develop a verification reflex, protect your attention, keep human skills sharp</li>
+        <li><span class="kt-check">✓</span> For your family: be the technologically literate elder; talk openly with younger relatives; keep what matters offline somewhere</li>
+        <li><span class="kt-check">✓</span> For society: vote on AI choices, support quality journalism and public institutions, treat each other patiently through a complicated decade</li>
+        <li><span class="kt-check">✓</span> Good signs to watch: working regulation, open-source alternatives, scientific breakthroughs. Worrying signs: AI-driven misinformation, single-provider outages, concentration without redistribution</li>
+        <li><span class="kt-check">✓</span> The most important quality for the years ahead is not technical literacy but patience and grace — with the technology, with the institutions, and with each other</li>
+      </ul>
+    </div>
+
+    <div class="quiz-section">
+      <h3>The Final Check</h3>
+      <p class="quiz-subtitle">Three questions to close 24 modules of work.</p>
+
+      <div class="quiz-question">
+        <p>1. Which of the three long-term scenarios is most historically likely?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> The bright case — AI cures everything and lifts everyone
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> The mixed case — brilliant in places, painful in others, with the actual outcome depending on choices made now
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> The dark case — total collapse of trust and democracy
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Right. Every major technology — electricity, cars, the internet — has landed in the messy middle in its early decades. The exact shape of that mixed outcome is still being shaped by the choices of voters, regulators, companies, and ordinary users."
+          data-incorrect="The mixed case is the historical pattern for every major technology. Where we land within 'mixed' depends on the choices being made right now. Both bright and dark possibilities are real; mixed is most likely.">
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <p>2. What is the single most useful personal habit for navigating an AI-saturated world?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Avoiding all AI tools entirely
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> The verification reflex — checking any AI-sourced claim that matters against at least one authoritative source
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Always agreeing with the chatbot to avoid arguments
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Exactly. This one habit — verify what matters — protects you from the most dangerous failure mode (confident hallucinations) and keeps AI as a tool you control rather than a source you trust blindly."
+          data-incorrect="The verification reflex — checking important AI-sourced claims against authoritative sources — is the single highest-value habit. Avoidance leaves you cut off from genuinely useful tools; blind trust exposes you to AI's most dangerous failure mode.">
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <p>3. According to this module, what is the most important quality for the decade ahead?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Mastering every new AI tool as it appears
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Becoming a software engineer
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> Patience and grace — with the technology, with institutions, and especially with each other through a complicated transition
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Right. Technical literacy matters, but the decade ahead will test something deeper — our willingness to treat each other well through uneven change. Patience and grace are the most underrated AI-era skills."
+          data-incorrect="Technical fluency helps — but patience and grace are what will get us through. People will lose jobs, fall for scams, get things wrong. The most useful quality is treating each other as adults, with care, while the world figures itself out.">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="module-nav">
+  <div class="module-nav__inner">
+    <a href="module-23.html" class="btn btn--outline">← Previous</a>
+    <button id="mark-complete-btn" class="mark-complete-btn" data-module="24">Mark as Complete ✓</button>
+    <a href="../index.html#modules" class="btn btn--accent">🏠 Back to All Modules</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>💡 <strong>Tech for Life</strong> — Designed with care for 60+ learners</p>
+    <p>You've finished all 24 modules. Genuinely, properly, completely well done.</p>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>
