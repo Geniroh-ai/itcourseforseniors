@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 17 — How Chatbots Pay Attention | Tech for Life</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../index.html" class="site-logo">
+      <span class="site-logo__icon">💡</span>
+      <span>Tech for Life<span class="site-logo__sub">A course for 60+ learners</span></span>
+    </a>
+    <nav class="site-nav">
+      <a href="../index.html" data-page="home">Home</a>
+      <a href="../index.html#modules" data-page="modules">All Modules</a>
+    </nav>
+  </div>
+</header>
+
+<div class="module-progress">
+  <div class="module-progress__inner">
+    <span class="module-progress__label">Course Progress</span>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" style="width: 94%"></div>
+    </div>
+    <span class="module-progress__fraction">Module 17 of 18</span>
+  </div>
+</div>
+
+<div class="module-hero module-hero--advanced">
+  <div class="module-hero__number">Module 17 · Behind the Magic</div>
+  <span class="module-hero__icon">🎯</span>
+  <h1>How Chatbots Pay Attention</h1>
+  <p class="module-hero__tagline">Every modern chatbot — ChatGPT, Claude, Gemini, Copilot — is built on one elegant idea: a trick called <em>attention</em>. Once you've seen it, the whole field stops feeling magical and starts feeling clever.</p>
+  <div class="module-hero__chips">
+    <span class="chip">🟣 Behind the Magic</span>
+    <span class="chip">⏱ 18 minutes</span>
+    <span class="chip">📖 The Big Idea</span>
+  </div>
+</div>
+
+<div class="module-body">
+  <div class="module-content">
+
+    <div class="objectives-box">
+      <h3>What You'll Learn</h3>
+      <ul>
+        <li>Why "order matters" is the hidden challenge inside everything a chatbot does</li>
+        <li>The problem older AI had with long sentences — and why it kept forgetting</li>
+        <li>The YouTube-search analogy that explains "attention" in one go</li>
+        <li>Why the 2017 paper "Attention Is All You Need" changed everything</li>
+        <li>How the same idea now lives inside chatbots, image generators, protein-folding tools, and your phone's autocomplete</li>
+      </ul>
+    </div>
+
+    <div class="callout callout--info">
+      <div class="callout__icon">🎓</div>
+      <div class="callout__body">
+        <h4>About this module</h4>
+        <p>Second of three "Behind the Magic" deep-dives, inspired by MIT's introductory deep-learning course (6.S191). The actual mechanism inside ChatGPT is a few pages of mathematics; the idea behind that mathematics is something you've done every time you've searched YouTube.</p>
+      </div>
+    </div>
+
+    <section>
+      <h2>The Ball and the Trajectory</h2>
+      <p>
+        Picture a still photograph of a ball, suspended in mid-air. Where does it go next? You cannot possibly
+        know — it could be rising, falling, drifting sideways, struck from any direction. A single snapshot is
+        not enough to predict anything.
+      </p>
+      <p>
+        Now suppose I show you three consecutive photographs: the ball low and to the left, then a bit higher
+        and more central, then higher and to the right. The next position becomes almost obvious. The
+        <strong>sequence</strong> — the order in which the snapshots arrive — is what unlocks the prediction.
+      </p>
+
+      <div class="callout callout--analogy">
+        <div class="callout__icon">⚾</div>
+        <div class="callout__body">
+          <h4>Why this matters for chatbots</h4>
+          <p>
+            Language is exactly the same. A single word, on its own, tells you very little. The same word means
+            different things in different places. "I'll <em>book</em> a table" and "the <em>book</em> on the
+            table" share a word but not a meaning. To understand any sentence, you must read it in order — and
+            you must remember what came earlier when you reach what comes later. That is the central
+            problem of language AI.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Order Is Meaning</h2>
+      <p>
+        Here is a sentence that demonstrates the point starkly:
+      </p>
+      <ul>
+        <li><strong>"The food was good, not bad at all."</strong> — a compliment.</li>
+        <li><strong>"The food was bad, not good at all."</strong> — an insult.</li>
+      </ul>
+      <p>
+        Identical words, in a different order, and the meaning has reversed. An AI that simply weighed words
+        like ingredients in a bag would have no chance of distinguishing the two. Whatever it does, it must
+        respect <em>which word came in which position, in relation to which other words</em>.
+      </p>
+      <p>
+        Other obvious sequences: a song (notes in order make a tune; the same notes shuffled make noise),
+        a heartbeat (rhythm matters), the stock market (today's price relative to yesterday's), the weather
+        (a falling pressure means rain coming, a rising one means it clearing). Anything that unfolds in time
+        is a sequence, and predicting what comes next means making sense of what came before.
+      </p>
+    </section>
+
+    <section>
+      <h2>The "Goldfish Memory" Problem</h2>
+      <p>
+        Before 2017, the standard approach was to march through a sentence one word at a time, carrying along
+        a small internal "notebook" of what had been seen so far. By the time the AI reached the end of a long
+        paragraph, it had to compress everything important from the start into that small notebook — and most
+        of it had been forgotten or smudged.
+      </p>
+      <p>
+        Imagine being asked to read a 500-page novel aloud, one word at a time, while writing your understanding
+        of the plot on a single index card. By page 400 your index card is hopelessly inadequate. That was AI's
+        goldfish memory problem — and it meant chatbots of that era could not hold a real conversation, could not
+        translate long passages without losing the thread, and could not answer a question that depended on
+        something said many sentences earlier.
+      </p>
+
+      <div class="callout callout--warning">
+        <div class="callout__icon">🐠</div>
+        <div class="callout__body">
+          <h4>The cost of forgetfulness</h4>
+          <p>
+            This wasn't a small inconvenience — it was the wall that AI assistants kept running into. The
+            cleverness was there in principle, but the model could not <em>hold on</em> to enough of the
+            conversation to be genuinely useful. Then, in 2017, a small team of researchers at Google
+            published a paper that changed the rules.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>The YouTube Analogy — Attention Explained</h2>
+      <p>
+        Here is the single best way to picture what "attention" does. You already use it every day.
+      </p>
+      <p>
+        Imagine you go to YouTube and search for <em>"deep learning."</em> What happens behind the scenes?
+      </p>
+
+      <div class="visual-card">
+        <h4>🔎 Three things that meet</h4>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num">Q</div>
+            <div class="step-body">
+              <h4>Query — what you're looking for</h4>
+              <p>The words you typed: <em>"deep learning."</em> This is your <strong>query</strong>.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">K</div>
+            <div class="step-body">
+              <h4>Keys — labels on what's available</h4>
+              <p>Every video in YouTube's library has a title — its <strong>key</strong>. "A beautiful sea turtle." "Kobe Bryant's best fadeaway." "Introduction to deep learning."</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">V</div>
+            <div class="step-body">
+              <h4>Values — the things themselves</h4>
+              <p>Behind each title is the actual video — the <strong>value</strong>. What you ultimately want delivered.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        YouTube compares your <em>query</em> against every <em>key</em> in its library and asks: how well does
+        this title match what you typed? The sea turtle video is elegant, but it does not match. Kobe Bryant's
+        fadeaway is brilliant, but it does not match either. "Introduction to deep learning" matches very well.
+        So it returns the corresponding <em>value</em> — that video — at the top of your results.
+      </p>
+
+      <div class="callout callout--analogy">
+        <div class="callout__icon">🧠</div>
+        <div class="callout__body">
+          <h4>And that is exactly what a chatbot does, on every word</h4>
+          <p>
+            Inside a modern chatbot, for every single word in your sentence, the system performs that same
+            three-step dance — query, key, value. It compares every word to every other word and scores how
+            relevant each is to each. The word "it" in the sentence "I picked up the cup but it was cracked"
+            gets matched strongly against "cup" — because that's what "it" refers to. The whole sentence is
+            understood by figuring out, for every word, which other words deserve the most attention.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Why It Was a Breakthrough</h2>
+      <p>
+        The original 2017 paper had a deliberately bold title: <em>"Attention Is All You Need."</em> The claim
+        was that you didn't need the slow, word-by-word marching of older systems at all. Attention alone — done
+        well, at scale — was sufficient.
+      </p>
+      <p>
+        Three things changed at once:
+      </p>
+      <ol>
+        <li><strong>The goldfish memory disappeared.</strong> The system can look at every word in your input at once and decide which matter most for any given task. Nothing has to be squeezed through a tiny notebook.</li>
+        <li><strong>Everything could happen in parallel.</strong> Instead of plodding through the sentence in order, modern chips can compute attention over all the words simultaneously. This turned out to be a dramatic speed-up, which meant much bigger models became feasible.</li>
+        <li><strong>The same idea generalised everywhere.</strong> The same trick works on words in a sentence, pixels in an image, notes in a piece of music, atoms in a protein. One architecture, many problems.</li>
+      </ol>
+
+      <div class="callout callout--info">
+        <div class="callout__icon">🏷️</div>
+        <div class="callout__body">
+          <h4>The "T" in GPT</h4>
+          <p>
+            The architecture from that 2017 paper is called the <strong>Transformer</strong>. That is the "T" in
+            GPT — the family that ChatGPT is built from. Claude, Gemini, Copilot, Mistral, Llama — every single
+            one of these big chatbots is, underneath the branding, a transformer running this attention trick on
+            a colossal scale.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Many Spotlights at Once</h2>
+      <p>
+        In practice, a single sentence has many different threads of meaning running through it at once. Take a
+        film scene: there might be Iron Man in the foreground, an alien spaceship hovering in the sky, and a
+        landmark building in the middle distance — all worth noticing, for different reasons. You don't pick one
+        and ignore the others.
+      </p>
+      <p>
+        Modern chatbots use what's called <strong>multi-head attention</strong> — the model runs the attention
+        process not once but many times in parallel, each "head" learning to focus on a different kind of
+        relationship. One head might learn to track which pronouns refer to which people. Another might learn to
+        spot when one clause is contradicting another. A third might learn to keep track of who is speaking. All
+        these spotlights play across the same sentence at the same time, and their conclusions are combined.
+      </p>
+
+      <div class="callout callout--analogy">
+        <div class="callout__icon">🔦</div>
+        <div class="callout__body">
+          <h4>Several readers, one page</h4>
+          <p>
+            Think of a book club where four readers each highlight a page in a different colour — one highlights
+            characters, one highlights places, one highlights emotions, one highlights time references. When they
+            compare notes, the whole structure of the page becomes vivid. That is multi-head attention.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>The Same Idea, Everywhere</h2>
+      <p>
+        The most extraordinary thing about attention is how far it has spread beyond the chatbots that made it
+        famous. Once you have a way to look at a whole collection of pieces and figure out which ones matter to
+        which, you can apply it to almost anything:
+      </p>
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">📝</div>
+          <div class="step-body">
+            <h4>Language</h4>
+            <p>Chatbots, translation, summarisation, email autocomplete, voice assistants. All transformers.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">🖼️</div>
+          <div class="step-body">
+            <h4>Vision</h4>
+            <p>"Vision transformers" now compete with the magnifying-glass approach from Module 16 for tasks like medical imaging and self-driving perception.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">🧬</div>
+          <div class="step-body">
+            <h4>Biology</h4>
+            <p>Proteins are sequences of amino acids; DNA is a sequence of bases. Transformer-based tools (DeepMind's AlphaFold among them) have predicted the 3D structure of essentially every known protein.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">🎵</div>
+          <div class="step-body">
+            <h4>Music and audio</h4>
+            <p>Music-generation tools, podcast transcription, voice cloning — all built on attention over sequences of sound.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">🏥</div>
+          <div class="step-body">
+            <h4>Medicine</h4>
+            <p>Predicting how patients will respond to treatments, analysing electronic health records as sequences of events.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Today: A Chatbot in Your Pocket</h2>
+      <p>
+        When ChatGPT first appeared in late 2022, the smallest version of the model still required serious
+        cloud computers to run. By 2025–26, capable models had shrunk to the point where the same family of
+        technology runs entirely offline, on a single phone, with no internet connection required. One MIT
+        lecturer holds up a phone in airplane mode running an open-source model that scores better than the
+        original ChatGPT on standard benchmarks. The fundamental engine — attention, learnt at scale — fits in
+        your pocket.
+      </p>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon">💡</div>
+        <div class="callout__body">
+          <h4>The takeaway you can carry around</h4>
+          <p>
+            The next time you type something into ChatGPT or Claude and it responds in a way that genuinely
+            seems to understand you, picture what is actually happening: every word in your message is being
+            compared to every other word, scored for relevance, and the most useful relationships are guiding
+            the next word the system writes. It is not understanding the way you understand. It is a very
+            elaborate, very disciplined spotlight — that is what attention is.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="key-takeaways">
+      <h3>Key Takeaways</h3>
+      <ul>
+        <li><span class="kt-check">✓</span> Language is a sequence — and the order of the words is most of the meaning</li>
+        <li><span class="kt-check">✓</span> Older AI marched through sentences one word at a time and forgot the beginning by the time it reached the end</li>
+        <li><span class="kt-check">✓</span> Attention is the YouTube-search trick applied inside a sentence: a query, keys, and values, scored against each other</li>
+        <li><span class="kt-check">✓</span> The 2017 "Attention Is All You Need" paper introduced the Transformer — the architecture behind every modern chatbot</li>
+        <li><span class="kt-check">✓</span> Multi-head attention runs several spotlights at once, each spotting a different kind of relationship</li>
+        <li><span class="kt-check">✓</span> The same idea now reads proteins, medical records, images, and music — not just text</li>
+        <li><span class="kt-check">✓</span> The engine that powers ChatGPT now fits on a single phone, with no internet connection needed</li>
+      </ul>
+    </div>
+
+    <div class="quiz-section">
+      <h3>Check Your Understanding</h3>
+      <p class="quiz-subtitle">Take your time — and try the trickier ones twice if you need to.</p>
+
+      <div class="quiz-question">
+        <p>1. Why is the order of words in a sentence such a hard problem for AI?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Because computers cannot store words in order
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> Because the same words in a different order can mean completely different things — and the AI must respect that
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Because different languages have different alphabets
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Exactly. 'Good, not bad' and 'bad, not good' use the same words in different orders to mean opposite things. The AI cannot bag up words like ingredients; it must read them in sequence."
+          data-incorrect="The meaning of a sentence depends entirely on the order of its words. 'Good, not bad' and 'bad, not good' have the same ingredients but opposite meaning. That is the central challenge attention solves.">
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <p>2. In the YouTube analogy for attention, what is the "query"?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> The thing you are looking for — for example, the words you typed into the search bar
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> The video you eventually watch
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> The list of titles of every video on YouTube
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Right. The query is what you're looking for; titles are the keys; the videos themselves are the values. Inside a chatbot, every word plays each of these roles in turn as it tries to make sense of the whole sentence."
+          data-incorrect="The query is what you're searching for. The titles are 'keys'. The videos themselves are 'values'. A chatbot does this same three-way matching internally for every word of your sentence.">
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <p>3. What did the 2017 paper "Attention Is All You Need" change?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> It made chatbots possible by giving them access to the internet
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> It showed that the attention mechanism, alone, was enough to handle language — replacing the slow, forgetful approaches that came before
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> It introduced the first AI that could play chess
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Exactly. The Transformer architecture from that paper underlies every modern chatbot — ChatGPT, Claude, Gemini, and the rest. It removed the 'goldfish memory' problem and let models scale up dramatically."
+          data-incorrect="The paper introduced the Transformer architecture, which showed that attention alone — without the older, slower mechanisms — could handle language. Every modern chatbot is built on this idea.">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="module-nav">
+  <div class="module-nav__inner">
+    <a href="module-16.html" class="btn btn--outline">← Previous</a>
+    <button id="mark-complete-btn" class="mark-complete-btn" data-module="17">Mark as Complete ✓</button>
+    <a href="module-18.html" class="btn btn--primary">Next Module →</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>💡 <strong>Tech for Life</strong> — Designed with care for 60+ learners</p>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

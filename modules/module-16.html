@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 16 — How Computers See | Tech for Life</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../index.html" class="site-logo">
+      <span class="site-logo__icon">💡</span>
+      <span>Tech for Life<span class="site-logo__sub">A course for 60+ learners</span></span>
+    </a>
+    <nav class="site-nav">
+      <a href="../index.html" data-page="home">Home</a>
+      <a href="../index.html#modules" data-page="modules">All Modules</a>
+    </nav>
+  </div>
+</header>
+
+<div class="module-progress">
+  <div class="module-progress__inner">
+    <span class="module-progress__label">Course Progress</span>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" style="width: 89%"></div>
+    </div>
+    <span class="module-progress__fraction">Module 16 of 18</span>
+  </div>
+</div>
+
+<div class="module-hero module-hero--advanced">
+  <div class="module-hero__number">Module 16 · Behind the Magic</div>
+  <span class="module-hero__icon">👁️</span>
+  <h1>How Computers See</h1>
+  <p class="module-hero__tagline">Face ID unlocks your phone. Your photo library finds every picture of the grandchildren. Hospital scanners catch cancers a human eye might miss. The same idea sits behind all of it — and it is surprisingly simple to picture.</p>
+  <div class="module-hero__chips">
+    <span class="chip">🟣 Behind the Magic</span>
+    <span class="chip">⏱ 16 minutes</span>
+    <span class="chip">📖 Concept Deep Dive</span>
+  </div>
+</div>
+
+<div class="module-body">
+  <div class="module-content">
+
+    <div class="objectives-box">
+      <h3>What You'll Learn</h3>
+      <ul>
+        <li>What a picture actually looks like to a computer — and why it is just a spreadsheet of numbers</li>
+        <li>How a computer builds up understanding the way an artist sketches — edges first, then shapes, then a face</li>
+        <li>What a "filter" does, and the simple sliding-magnifying-glass trick at the heart of image AI</li>
+        <li>Why this is the technology behind Face ID, photo search, medical scans, and self-driving cars</li>
+        <li>Where this kind of AI still gets things wrong — and what that means for you</li>
+      </ul>
+    </div>
+
+    <div class="callout callout--info">
+      <div class="callout__icon">🎓</div>
+      <div class="callout__body">
+        <h4>About this module</h4>
+        <p>This is the first of three "Behind the Magic" deep-dive modules, inspired by MIT's introductory course on deep learning (6.S191). The lectures are aimed at engineering students, but the ideas underneath are everyday-language ideas. Here we keep the ideas and leave the maths firmly at the door.</p>
+      </div>
+    </div>
+
+    <section>
+      <h2>A Picture Is a Spreadsheet</h2>
+      <p>
+        The first surprise about computer vision is that computers don't really see at all. They don't have eyes,
+        and they don't see colour the way you do. When a computer "looks" at a photograph of Abraham Lincoln, what
+        it actually receives is a giant grid of numbers — one number for each tiny dot in the picture (a pixel),
+        each number representing how bright that dot is.
+      </p>
+      <p>
+        A black-and-white photograph is one such grid: zero is pitch black, one is brilliant white, and every
+        shade in between is somewhere on that scale. A colour photograph is just three of those grids stacked
+        on top of each other — one for red, one for green, one for blue.
+      </p>
+
+      <div class="callout callout--analogy">
+        <div class="callout__icon">🎨</div>
+        <div class="callout__body">
+          <h4>Paint-by-numbers, in reverse</h4>
+          <p>
+            Imagine taking any photograph and turning it into a paint-by-numbers grid — every square holding a
+            single number for "how bright is this square?" That spreadsheet is exactly what a computer receives.
+            The whole achievement of image AI is teaching a computer to look at that spreadsheet of numbers and
+            say "this is a face" — or "this is a stop sign" — or "this is a tumour."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>The Way a Sketch Artist Draws</h2>
+      <p>
+        Watch a court sketch artist or a portrait painter work. They almost never start by drawing a whole face.
+        They start with a few lines — the line of the jaw, the line of the cheekbone, the angle of the nose. Then
+        they fill in shapes — an eye socket, the curve of a mouth. Then those shapes become a face. The whole emerges
+        from the parts, in layers.
+      </p>
+      <p>
+        Image AI works the same way. A modern image-recognition system is a stack of many layers, each one
+        looking at the previous layer's output and pulling out something a little more complex:
+      </p>
+
+      <div class="visual-card">
+        <h4>🪜 The ladder a computer climbs</h4>
+        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:16px;">Watch what each layer is actually looking for, going from the raw photo upwards.</p>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num" style="font-size:0.7rem">Layer 1</div>
+            <div class="step-body">
+              <h4>Lines and Edges</h4>
+              <p>The very first layer notices simple things — a horizontal line here, a diagonal there, a sharp change from light to dark. Nothing meaningful yet — just the raw outline-detector you'd use to start any sketch.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="font-size:0.7rem">Layer 2</div>
+            <div class="step-body">
+              <h4>Corners and Curves</h4>
+              <p>Lines meeting at angles become corners. Lines bending become curves. The layer doesn't know what anything <em>is</em> yet, but it knows there's a corner here and a curve there.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="font-size:0.7rem">Layer 3</div>
+            <div class="step-body">
+              <h4>Familiar Parts</h4>
+              <p>Particular arrangements of curves and corners become recognisable parts. A round shape with two small darker patches and a curve underneath — that combination looks like an eye. A rectangle with four corners — that could be a door, or a license plate.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="font-size:0.7rem">Layer 4+</div>
+            <div class="step-body">
+              <h4>The Whole Object</h4>
+              <p>An eye, plus a nose, plus a mouth, in roughly the right configuration — that is a face. Four wheels, two headlights, a license plate, a windscreen — that is a car. The top layers combine the parts into a confident answer.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        Crucially, <em>nobody tells</em> the system what an eye is, or what a wheel is. We hand it millions of
+        photographs labelled "face" or "not a face" and let it discover for itself which patterns matter. After
+        enough training, the lower layers settle on edge-detectors and curve-detectors, the middle layers settle
+        on eye-detectors and wheel-detectors, and the top layers settle on face-detectors and car-detectors. The
+        ladder builds itself.
+      </p>
+    </section>
+
+    <section>
+      <h2>The Magnifying Glass Trick</h2>
+      <p>
+        How does a layer actually look for a particular pattern — say, a diagonal line — across a whole
+        photograph? You might imagine the computer staring at the entire grid at once, but it actually does
+        something much more like what a detective does with a magnifying glass.
+      </p>
+      <p>
+        The computer holds a small pattern — say a tiny 3-by-3 grid representing "what a diagonal line looks like
+        in a few pixels" — and slides it across the photograph, one small step at a time. At each position it
+        asks: "How well does the pattern under my magnifying glass match this little template I'm holding?" The
+        answer for every position becomes a new picture — a map of "where is this pattern strongest in the original
+        photograph?"
+      </p>
+
+      <div class="callout callout--analogy">
+        <div class="callout__icon">🔍</div>
+        <div class="callout__body">
+          <h4>One filter, one hunt</h4>
+          <p>
+            Each filter is a tiny picture in its own right — one might be a 45-degree diagonal, one might be a
+            cross, one might be a curve. The computer learns hundreds of these tiny pictures during training, and
+            then it slides every one of them across every photograph it sees. The output is hundreds of "where
+            is this pattern?" maps, which the next layer then treats as <em>its</em> input. Lines become corners
+            become eyes — all using the same magnifying-glass trick at every layer.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        Before this technique existed, researchers had to hand-write the filters themselves — they would
+        manually design a "vertical edge detector" or a "sharpen-the-image filter." Modern image AI learns
+        its own filters from data. We don't tell it what to look for; we tell it what the answer is, and it
+        figures out the looking.
+      </p>
+    </section>
+
+    <section>
+      <h2>Where This Lives in Your Daily Life</h2>
+      <p>
+        This is not a future technology — it is the technology sitting quietly inside dozens of everyday tools.
+        A short tour:
+      </p>
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">📱</div>
+          <div class="step-body">
+            <h4>Face ID on your phone</h4>
+            <p>Every time you pick up your phone and it unlocks by looking at you, this is what's happening — a stack of layers turning a grid of pixels into "yes, this is the registered owner."</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">🖼️</div>
+          <div class="step-body">
+            <h4>Photo library search</h4>
+            <p>Open your phone's photo app and search "dog" or "beach" or your granddaughter's name. The app is running an image classifier in the background on every photo, tagging what it sees.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">🏥</div>
+          <div class="step-body">
+            <h4>Medical scans</h4>
+            <p>The most striking early result was on mammograms — a study showed an AI system <em>outperforming expert radiologists</em> at detecting breast cancer in screening images. Today, similar systems help spot diabetic retinopathy in eye scans, skin cancers in dermatology photos, and lung problems on chest X-rays. The AI is a second pair of (very patient, never-tired) eyes, not a replacement for the doctor.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">🚗</div>
+          <div class="step-body">
+            <h4>Self-driving cars</h4>
+            <p>A self-driving car has cameras as its main "eyes." It uses this layered, sliding-filter trick to identify, for every fraction of a second, what is in front of it: a pedestrian, a cyclist, a stop sign, a red light, a pothole. As one MIT researcher puts it, the car "drives the way a human does — with eyes, not with maps."</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">📦</div>
+          <div class="step-body">
+            <h4>Sorting parcels, checking quality on factory lines</h4>
+            <p>The same technology reads addresses on parcels, spots defective chocolate bars on a conveyor belt, and watches for ripe fruit in robotic harvesters. Anywhere a human used to stand and look, this can take a turn.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Beyond "What" — "Where" and "Exactly Which Pixels"</h2>
+      <p>
+        Basic image recognition gives one answer for the whole picture — "this is a taxi." But many real-world
+        tasks need more than that. A self-driving car can't just say "there are pedestrians in this scene"; it
+        needs to know <em>where</em> they are. A radiologist's AI assistant can't just say "there's a tumour"; it
+        needs to draw an outline around it.
+      </p>
+
+      <div class="comparison-grid">
+        <div class="comparison-item">
+          <div class="ci-icon">🏷️</div>
+          <h4>Classification</h4>
+          <p>Looks at the whole image and gives one label: "this is a cat." Useful for searching photos or recognising a face.</p>
+        </div>
+        <div class="comparison-item">
+          <div class="ci-icon">🎯</div>
+          <h4>Detection</h4>
+          <p>Finds every object of interest and draws a box around each. Used by self-driving cars to track every pedestrian and vehicle simultaneously.</p>
+        </div>
+      </div>
+
+      <p>
+        A third level — <strong>segmentation</strong> — labels every single pixel: this pixel is part of a cow,
+        this one is grass, this one is sky. Surgeons use this to mark out a tumour's exact boundary. Self-driving
+        cars use it to find the precise edge of the road. The same magnifying-glass-and-layers trick scales up
+        gracefully from "what" to "where" to "exactly which pixels."
+      </p>
+    </section>
+
+    <section>
+      <h2>Where It Still Stumbles</h2>
+      <p>
+        Image AI is genuinely powerful — but it is not infallible, and the ways it fails are worth knowing about.
+      </p>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num" style="background:#d97706">⚠️</div>
+          <div class="step-body">
+            <h4>It can be fooled by things it has never seen before</h4>
+            <p>A Tesla on autopilot once collided with a construction barrier because that exact configuration had not appeared in its training data. The car had been trained on Google Street View images of the road from before the barrier was put up. Image AI is excellent at the world it has been shown; outside that world, it can be confidently wrong.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num" style="background:#d97706">⚠️</div>
+          <div class="step-body">
+            <h4>It can be biased by its training photos</h4>
+            <p>Early facial recognition systems performed noticeably worse on women and on people with darker skin tones — because the training photos had been disproportionately of white men. AI vision sees what it has been shown. Diverse training data is essential, and the field is still catching up.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num" style="background:#d97706">⚠️</div>
+          <div class="step-body">
+            <h4>Tiny adversarial tweaks can completely confuse it</h4>
+            <p>Researchers have shown that adding a sprinkle of carefully-chosen static — invisible to your eye — to a photo of a panda makes the system confidently call it a gibbon. To you the picture is unchanged; to the computer, it has become a different animal entirely. We'll look at this more in Module 18.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon">🧭</div>
+        <div class="callout__body">
+          <h4>What this means for you</h4>
+          <p>
+            When your phone's Face ID lets you in, when your camera app guesses a friend's name, when a doctor
+            mentions an "AI screening" — there is no magic. It is a stack of layers, each running a magnifying
+            glass over numbers, learnt from millions of examples. Marvellous, yes. Infallible, no. Treat it as a
+            very useful tool that sometimes makes a confident mistake, and verify when the stakes are high.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="key-takeaways">
+      <h3>Key Takeaways</h3>
+      <ul>
+        <li><span class="kt-check">✓</span> To a computer, a picture is just a grid of numbers — one for each pixel's brightness</li>
+        <li><span class="kt-check">✓</span> Image AI works in layers: first lines, then shapes, then parts, then full objects — like a sketch artist building up a face</li>
+        <li><span class="kt-check">✓</span> Each layer slides a small "filter" (a tiny pattern) across the picture, looking for that pattern at every position — the magnifying-glass trick</li>
+        <li><span class="kt-check">✓</span> The system <em>learns its own filters</em> from millions of labelled examples — nobody hand-codes "what an eye looks like"</li>
+        <li><span class="kt-check">✓</span> This same idea powers Face ID, photo search, medical screening, self-driving cars, and factory inspection</li>
+        <li><span class="kt-check">✓</span> Vision AI is powerful but can fail on unfamiliar situations, biased training data, or carefully-crafted "adversarial" tricks</li>
+      </ul>
+    </div>
+
+    <div class="quiz-section">
+      <h3>Check Your Understanding</h3>
+      <p class="quiz-subtitle">Take your time — there's no rush.</p>
+
+      <div class="quiz-question">
+        <p>1. What does a photograph actually look like to a computer?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> A 3D model the computer builds in its memory
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> A grid of numbers — one number per pixel, representing brightness
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> A list of objects the camera identified at the moment the photo was taken
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Exactly — paint-by-numbers, in reverse. The whole achievement of image AI is teaching a computer to look at that spreadsheet of numbers and recognise something meaningful in it."
+          data-incorrect="A computer never receives 'a photograph' the way you see one. It receives a grid of brightness values — one number per pixel, possibly with three grids stacked for colour. Everything else is built on top of that.">
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <p>2. How does image AI build up to recognising a face?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> In layers — first lines and edges, then shapes, then familiar parts (eyes, nose), then the whole face
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> By comparing the photo to a huge library of every face it has ever seen
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> By measuring the distances between facial features with a virtual ruler
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Right. This layered approach — edges to shapes to parts to the whole — is the central insight of image AI, and it mirrors how a sketch artist actually draws."
+          data-incorrect="Image AI works in layers, building from very simple features (edges) up to complex ones (whole faces). Each layer takes the previous layer's output and finds something a step more meaningful in it.">
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <p>3. What is a "filter" in this context?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> A way of blurring an image to remove noise
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> A small pattern the system slides across the photograph, hunting for matches
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> A list of unsuitable images the AI is told to ignore
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Yes — think of each filter as a magnifying glass with a particular pattern on it, sliding across the photograph to mark every place that pattern appears."
+          data-incorrect="A filter here is a tiny pattern (perhaps a 3×3 grid representing a diagonal line). The system slides it across the picture and notes where the pattern matches strongly. Image AI learns hundreds of these filters automatically.">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="module-nav">
+  <div class="module-nav__inner">
+    <a href="module-15.html" class="btn btn--outline">← Previous</a>
+    <button id="mark-complete-btn" class="mark-complete-btn" data-module="16">Mark as Complete ✓</button>
+    <a href="module-17.html" class="btn btn--primary">Next Module →</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>💡 <strong>Tech for Life</strong> — Designed with care for 60+ learners</p>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

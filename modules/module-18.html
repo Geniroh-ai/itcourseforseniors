@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 18 — Learning by Doing & Generating Images | Tech for Life</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../index.html" class="site-logo">
+      <span class="site-logo__icon">💡</span>
+      <span>Tech for Life<span class="site-logo__sub">A course for 60+ learners</span></span>
+    </a>
+    <nav class="site-nav">
+      <a href="../index.html" data-page="home">Home</a>
+      <a href="../index.html#modules" data-page="modules">All Modules</a>
+    </nav>
+  </div>
+</header>
+
+<div class="module-progress">
+  <div class="module-progress__inner">
+    <span class="module-progress__label">Course Progress</span>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" style="width: 100%"></div>
+    </div>
+    <span class="module-progress__fraction">Module 18 of 18</span>
+  </div>
+</div>
+
+<div class="module-hero module-hero--advanced">
+  <div class="module-hero__number">Module 18 · Behind the Magic</div>
+  <span class="module-hero__icon">🎲</span>
+  <h1>Learning by Doing &amp; Generating Images</h1>
+  <p class="module-hero__tagline">Some of the most striking AI achievements — beating world champions at chess and Go, generating photo-realistic images from a sentence, polishing ChatGPT's manners — come from two more ideas worth knowing. We'll also look honestly at where these systems still go wrong.</p>
+  <div class="module-hero__chips">
+    <span class="chip">🟣 Behind the Magic</span>
+    <span class="chip">⏱ 22 minutes</span>
+    <span class="chip">📖 The Final Chapter</span>
+  </div>
+</div>
+
+<div class="module-body">
+  <div class="module-content">
+
+    <div class="objectives-box">
+      <h3>What You'll Learn</h3>
+      <ul>
+        <li>What "reinforcement learning" is — and why it powers AlphaGo, robot dogs, and ChatGPT's manners</li>
+        <li>How modern image generators like DALL-E and Midjourney actually conjure a picture from a sentence</li>
+        <li>Why chatbots "hallucinate" — and why that won't ever entirely go away</li>
+        <li>How tiny, invisible tricks can completely fool an image AI — and what that means for safety</li>
+        <li>A grounded, honest view of where we are with AI in 2026</li>
+      </ul>
+    </div>
+
+    <div class="callout callout--info">
+      <div class="callout__icon">🎓</div>
+      <div class="callout__body">
+        <h4>About this module</h4>
+        <p>This is the third and final "Behind the Magic" deep-dive, again inspired by MIT's introductory deep-learning course. The three big ideas of modern AI — pattern recognition (Module 16), attention (Module 17), and learning by doing — together explain most of what you've been reading about in the news.</p>
+      </div>
+    </div>
+
+    <section>
+      <h2>Part 1 · Learning by Doing</h2>
+
+      <h3>The Apple Analogy</h3>
+      <p>
+        Imagine a child growing up in a world where no one ever tells them what is healthy. There is no
+        nutrition label, no parent explaining "apples are good for you." There is only the child, the food
+        within reach, and how they feel after eating it. Eat enough apples, and you notice you have energy.
+        Eat enough sweets, and you notice you feel terrible later. Over years, without a single label, the child
+        learns what is worth eating.
+      </p>
+      <p>
+        That is <strong>reinforcement learning</strong>. There are no labelled examples saying "this answer is
+        right." There is only the world — a situation, an action you take in it, and a consequence you experience
+        as a reward (good) or a punishment (bad). The system learns by trying things and noticing what happens.
+      </p>
+
+      <div class="callout callout--analogy">
+        <div class="callout__icon">🚲</div>
+        <div class="callout__body">
+          <h4>The child on a bicycle</h4>
+          <p>
+            A child learning to ride a bicycle is doing exactly this. They see the world (state — the road
+            ahead, the angle they're leaning). They take an action (turn the handlebar, pedal harder). They
+            receive a reward (still upright!) or a punishment (skinned knee). Over enough wobbles, the right
+            instinct settles in — without anyone ever writing down the physics of cycling.
+          </p>
+        </div>
+      </div>
+
+      <h3>Rewards Can Be a Long Time Coming</h3>
+      <p>
+        The hard part of learning this way is that the consequence of an action sometimes shows up much later.
+        In chess you might make a brilliant move in move 4 — but the reward (winning) only arrives twenty moves
+        later. The system has to learn to credit the early move for the eventual win. The same is true of most
+        long-running decisions in life: today's choice of what to eat, save, or read may not pay off for years.
+      </p>
+
+      <h3>The Story Everyone Tells: Breakout, AlphaGo, and ChatGPT</h3>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">🧱</div>
+          <div class="step-body">
+            <h4>The Breakout "tunnel"</h4>
+            <p>An early reinforcement-learning experiment had a computer play the old arcade game Breakout (you knock bricks out of a wall with a bouncing ball). After enough practice the system did something no human had taught it — it learned to deliberately punch a tunnel through one side of the wall, sending the ball behind the bricks where it would bounce around scoring points for free. The machine had discovered a strategy on its own. This became the moment many researchers realised reinforcement learning was special.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">♟️</div>
+          <div class="step-body">
+            <h4>AlphaGo beats the world champion</h4>
+            <p>The board game Go has more possible positions than there are atoms in the universe. For decades it was considered out of reach for computers. Then DeepMind built AlphaGo — which first studied master human games, then played itself millions of times to keep improving. In 2016 it defeated the world champion 4–1, with one move (the famous "move 37") that human commentators initially thought was a mistake, then realised was a stroke of brilliance no human would have considered.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">🚗</div>
+          <div class="step-body">
+            <h4>Self-driving cars — but safely</h4>
+            <p>You can't teach a self-driving car the way you teach an arcade game — you cannot afford to crash a few thousand times. So most of the learning happens inside a photo-realistic simulator, where the car can have a bad day, learn from it, and try again with no real consequences. Only after it performs well in simulation does it move onto closed test tracks, then public roads.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">👍</div>
+          <div class="step-body">
+            <h4>The thumbs you give a chatbot</h4>
+            <p>Notice the little 👍 and 👎 buttons next to a chatbot's responses? Those are training data. Your thumbs feed into a reinforcement-learning system that nudges the model toward responses people like and away from responses people dislike. This technique — called <strong>RLHF</strong>, Reinforcement Learning from Human Feedback — is the reason ChatGPT, Claude, and Gemini feel polished, polite, and helpful, rather than the raw, sometimes-shocking machines they would otherwise be. Every user is, in a quiet way, a teacher.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Part 2 · Generating Images from Sentences</h2>
+      <p>
+        Type "an astronaut riding a horse in a watercolour style" into DALL-E, Midjourney, or Stable Diffusion,
+        and a picture appears that, until five years ago, would have taken a human illustrator a day to produce.
+        How? The answer is another lovely idea: <strong>diffusion</strong>.
+      </p>
+
+      <h3>The Polaroid in Reverse</h3>
+      <p>
+        Picture a vintage Polaroid photograph — the kind that develops slowly in front of you. When it first
+        comes out of the camera, the image is just a square of grey-brown fog. Over a minute, the fog gradually
+        resolves: shapes emerge, then faces, then sharp detail. A clear image was hiding under the fog all along
+        — the fog is merely peeled back.
+      </p>
+      <p>
+        A diffusion model does something almost exactly like that, but in reverse of how it learnt. The system
+        starts with pure television-static noise — a square of nothing. Then, step by step, it removes a little
+        of the noise, then a little more, then a little more, until a clear, coherent image emerges. It is
+        sculpting an image out of randomness, one careful chip at a time.
+      </p>
+
+      <div class="callout callout--analogy">
+        <div class="callout__icon">🗿</div>
+        <div class="callout__body">
+          <h4>"I just remove everything that is not the angel"</h4>
+          <p>
+            Michelangelo, when asked how he could carve an angel from a block of marble, supposedly answered: "I
+            saw the angel in the marble and carved until I set him free." That is the diffusion picture exactly.
+            The image you want is somewhere inside the noise; the model has been trained to know which chips of
+            noise to remove, one at a time, until what remains is your image.
+          </p>
+        </div>
+      </div>
+
+      <h3>How It Learnt to Do This</h3>
+      <p>
+        The training trick is almost upside-down. The computer was shown thousands of photographs being slowly
+        destroyed — pure photograph at step 1, slightly fuzzy at step 2, fuzzier at step 3, and so on, until
+        nothing but static remained at the end. The system's job during training was to learn how to undo
+        <em>one step</em> of that destruction at a time. Once it could undo one step, it could chain those steps
+        together — start with pure static and unwind the destruction all the way back, producing a brand new
+        photograph that was never in the training data.
+      </p>
+
+      <h3>What the Words Do</h3>
+      <p>
+        When you type "a cat in a top hat," those words are converted into a kind of numerical scent. At every
+        step of the noise-removal process, that scent gently steers the system toward "more cat-and-top-hat" and
+        away from "less cat-and-top-hat." After dozens of guided steps, what emerges is an image matching your
+        description. The same machinery can be steered toward a watercolour style, a photographic style, a
+        cartoon style, or a particular artist's style — whatever the words ask for.
+      </p>
+
+      <div class="callout callout--info">
+        <div class="callout__icon">🧬</div>
+        <div class="callout__body">
+          <h4>The same trick designs new medicines</h4>
+          <p>
+            Diffusion models are not just for art. Scientists now use exactly this technique to design new drug
+            molecules and new protein structures — sculpting them atom by atom out of noise, steered by what the
+            molecule should do. One of the most active areas of computational biology in 2026 is "generative
+            chemistry," built on diffusion.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Part 3 · An Honest Look at What Still Goes Wrong</h2>
+      <p>
+        None of this is magic, and being clear-eyed about the failure modes is part of using these tools wisely.
+        Four worth keeping in mind:
+      </p>
+
+      <h3>1. Hallucinations Are Built-In, Not a Bug</h3>
+      <p>
+        A chatbot will sometimes invent a court case, a study, a quotation, or a fact that does not exist —
+        delivered in the same confident voice it uses for everything else. This is called <em>hallucination</em>,
+        and recent research has shown it is not a flaw to be patched out: it is a mathematical consequence of
+        how these systems work. A model that produces fluent next words must sometimes produce a fluent next
+        word that happens to be wrong. <strong>Fluent does not mean right.</strong>
+      </p>
+
+      <div class="callout callout--warning">
+        <div class="callout__icon">⚠️</div>
+        <div class="callout__body">
+          <h4>The rule that follows</h4>
+          <p>
+            Any factual claim from a chatbot that <em>matters</em> — a medical dosage, a legal precedent, a
+            historical date, a financial figure — should be verified against an authoritative source before you
+            act on it. Use the chatbot to draft and explore; use a primary source to confirm.
+          </p>
+        </div>
+      </div>
+
+      <h3>2. The Dog with the Green Ear</h3>
+      <p>
+        A research team built an AI to add colour to old black-and-white photographs. It did a beautiful job on
+        most pictures. On one photograph of a dog, however, it painted the tongue red — perfect — but the ear
+        came out faintly <em>green</em>. The reason? The training photos contained an enormous number of dogs
+        with their tongues out, so the model had learnt to expect "tongue here" and "green ear here" in
+        combination. The bias of the training set quietly leaked into the output.
+      </p>
+      <p>
+        That is a gentle example. The serious versions involve facial recognition that works worse for women
+        and people with darker skin, loan-approval systems that perpetuate historical lending biases, and
+        hiring tools that have learned the prejudices of decades of past hiring decisions. AI inherits the
+        biases of the data it learns from — and that is one of the most important policy and regulatory
+        challenges of the decade.
+      </p>
+
+      <h3>3. Out-of-Distribution: The Tesla and the Construction Barrier</h3>
+      <p>
+        In 2018 a fatal accident in California involved a Tesla running on autopilot. The car drove at full
+        speed into a concrete construction barrier in the middle of a freeway. Investigation found that the
+        barrier had been put up after the satellite images used to train the car had been captured — the system
+        had never been shown that exact situation. When AI faces something genuinely outside its training, it
+        does not say "I don't know"; it confidently does the wrong thing. The technical term is
+        <em>out-of-distribution</em>. The human term is dangerous.
+      </p>
+
+      <h3>4. Adversarial Tricks — When Invisible Noise Breaks Everything</h3>
+      <p>
+        Researchers have shown that adding a sprinkling of carefully-chosen static — invisible to the human eye —
+        to a photograph of a panda makes an image AI confidently classify it as a gibbon. The image looks
+        absolutely identical to you and me. The computer sees something completely different. This isn't a bug
+        in one particular system — it is a vulnerability that almost every image AI has, and exactly the kind of
+        thing that, in the wrong hands, could be used to fool a self-driving car or a face-unlock system.
+      </p>
+
+      <div class="callout callout--analogy">
+        <div class="callout__icon">🎭</div>
+        <div class="callout__body">
+          <h4>What is real to a computer is not what is real to you</h4>
+          <p>
+            Computers see numbers, not pictures. A change too small for human eyes to notice can be a huge swing
+            in those numbers. That gap between human perception and computer perception is the door through which
+            adversarial tricks walk. It is also the reason serious AI deployment — in cars, in medical devices,
+            in security systems — is engineered with extra layers of checking, not relied on alone.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>A Quiet Closing Thought</h2>
+      <p>
+        Across these three "Behind the Magic" modules, you've seen the three big ideas of modern AI: a layered
+        ladder for understanding images (Module 16), an attention-based spotlight for understanding language
+        (Module 17), and learning by doing for solving open-ended problems (this module). These are the engines
+        humming inside almost everything labelled "AI" today.
+      </p>
+      <p>
+        None of these techniques is intelligence in the human sense. None of them understands what it is doing,
+        wonders why it exists, or has experiences. They are extraordinarily sophisticated pattern machines,
+        running at extraordinary speed on extraordinary amounts of data. That is genuinely impressive — and it
+        is genuinely limited. Keeping both halves of that sentence in mind is, perhaps, the most important
+        single piece of AI literacy a thoughtful person can carry around in 2026.
+      </p>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon">✨</div>
+        <div class="callout__body">
+          <h4>Congratulations — you've finished the course</h4>
+          <p>
+            From "what is a computer" in Module 1 to the inner workings of ChatGPT in Module 18, you've walked
+            through more ground than most people will ever cover. You now know more about how these tools work
+            than the vast majority of the people who use them every day. Use that knowledge gently — to help
+            friends and family who feel overwhelmed by all of this, and to remind anyone who calls AI magic
+            that it is, in the end, a clever trick with numbers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="key-takeaways">
+      <h3>Key Takeaways</h3>
+      <ul>
+        <li><span class="kt-check">✓</span> Reinforcement learning is learning by trial and error — actions, consequences, rewards — like a child on a bicycle</li>
+        <li><span class="kt-check">✓</span> It powers AlphaGo, robot dogs, self-driving simulators, and the polish on ChatGPT (via the thumbs-up / thumbs-down feedback)</li>
+        <li><span class="kt-check">✓</span> Diffusion models generate images by gradually removing noise from pure static, like Michelangelo carving an angel from marble</li>
+        <li><span class="kt-check">✓</span> Words in your prompt steer that noise-removal toward a picture matching your description</li>
+        <li><span class="kt-check">✓</span> The same technique now designs new molecules and proteins, not just art</li>
+        <li><span class="kt-check">✓</span> Hallucinations are a mathematical consequence of how chatbots work — always verify factual claims that matter</li>
+        <li><span class="kt-check">✓</span> AI inherits the biases of its training data; "out-of-distribution" situations are where it fails most dangerously</li>
+        <li><span class="kt-check">✓</span> Invisible adversarial tweaks can fool image AI completely — the computer's view of "real" is not yours</li>
+        <li><span class="kt-check">✓</span> Today's AI is sophisticated pattern-matching, not understanding — magnificent, limited, and worth knowing how to use</li>
+      </ul>
+    </div>
+
+    <div class="quiz-section">
+      <h3>Final Check — You've Earned This One</h3>
+      <p class="quiz-subtitle">Three questions that bring it all together.</p>
+
+      <div class="quiz-question">
+        <p>1. What is the core idea of reinforcement learning?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Learning by being shown the correct answer for every example
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> Learning by trying things in a world and noticing which actions are rewarded
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Learning by copying the most popular answer on the internet
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Exactly. No labels, just consequences. A child on a bicycle, an AI playing Breakout, a self-driving car in a simulator — all the same idea."
+          data-incorrect="In reinforcement learning there are no labelled examples. The system tries actions, sees what happens, and gradually learns which actions lead to rewards. Like learning to ride a bike by wobbling.">
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <p>2. How does an image generator like DALL-E or Midjourney create a picture?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> By finding the closest matching image on the internet and editing it
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> By drawing every pixel in order from left to right, like a typewriter
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> By starting with pure visual static and gradually removing the noise, step by step, until an image appears
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Right — like a Polaroid developing, or like Michelangelo chipping an angel from marble. The words you type steer the noise-removal toward an image that matches your description."
+          data-incorrect="Diffusion models start from pure television-static noise and gradually remove that noise, step by step, until a coherent image emerges. The prompt steers the process toward what you asked for.">
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <p>3. Why is "hallucination" by a chatbot considered a built-in feature rather than just a bug?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Because chatbots are designed to deceive users
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> Because a system trained to produce fluent next words will, mathematically, sometimes produce fluent next words that happen to be wrong
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Because the engineers haven't tried hard enough to fix it
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Exactly. Fluency and accuracy are not the same thing. Confident-sounding wrong answers are a mathematical consequence of the architecture — which is why verifying important facts against authoritative sources matters."
+          data-incorrect="Hallucinations come from how the underlying maths works — a system trained to predict plausible next words will sometimes produce plausible-sounding wrong answers. The rule that follows: always verify factual claims that matter.">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="module-nav">
+  <div class="module-nav__inner">
+    <a href="module-17.html" class="btn btn--outline">← Previous</a>
+    <button id="mark-complete-btn" class="mark-complete-btn" data-module="18">Mark as Complete ✓</button>
+    <a href="../index.html#modules" class="btn btn--primary">Back to All Modules →</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>💡 <strong>Tech for Life</strong> — Designed with care for 60+ learners</p>
+    <p>You've finished all 18 modules. Genuinely well done.</p>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>
