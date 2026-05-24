@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 19 — How the Internet Actually Works | Tech for Life</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../index.html" class="site-logo">
+      <span class="site-logo__icon">💡</span>
+      <span>Tech for Life<span class="site-logo__sub">A course for 60+ learners</span></span>
+    </a>
+    <nav class="site-nav">
+      <a href="../index.html" data-page="home">Home</a>
+      <a href="../index.html#modules" data-page="modules">All Modules</a>
+    </nav>
+  </div>
+</header>
+
+<div class="module-progress">
+  <div class="module-progress__inner">
+    <span class="module-progress__label">Course Progress</span>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" style="width: 90%"></div>
+    </div>
+    <span class="module-progress__fraction">Module 19 of 21</span>
+  </div>
+</div>
+
+<div class="module-hero module-hero--intermediate">
+  <div class="module-hero__number">Module 19 · The Bigger Picture</div>
+  <span class="module-hero__icon">🌐</span>
+  <h1>How the Internet Actually Works</h1>
+  <p class="module-hero__tagline">You've used the internet for years. But what really happens between the moment you type bbc.co.uk and the moment the page appears? The honest answer is one of the most beautiful stories in modern engineering — and it's easier to picture than you'd think.</p>
+  <div class="module-hero__chips">
+    <span class="chip">🟠 The Bigger Picture</span>
+    <span class="chip">⏱ 16 minutes</span>
+    <span class="chip">📖 Concept Module</span>
+  </div>
+</div>
+
+<div class="module-body">
+  <div class="module-content">
+
+    <div class="objectives-box">
+      <h3>What You'll Learn</h3>
+      <ul>
+        <li>What the internet physically is — cables, antennas, and (surprisingly) lots of undersea fibre</li>
+        <li>How a message gets "chopped up" into postcards and reassembled on the other side</li>
+        <li>What an IP address is, and how DNS turns "bbc.co.uk" into a number a computer can find</li>
+        <li>The exact sequence of events that unfolds in the half-second between pressing Enter and seeing a page</li>
+        <li>Why "the internet is down" almost always means a server is down, not the actual internet</li>
+      </ul>
+    </div>
+
+    <section>
+      <h2>The Internet Is a Physical Thing</h2>
+      <p>
+        The word "internet" sounds floaty and invisible — as if your messages just hover in the air. They
+        don't. The internet is one of the most enormous pieces of physical infrastructure humans have ever
+        built. Almost all of it lives in three places:
+      </p>
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">🌊</div>
+          <div class="step-body">
+            <h4>Cables under the sea</h4>
+            <p>Roughly <strong>99% of intercontinental internet traffic</strong> travels along undersea fibre-optic cables — strands of glass thinner than a hair, laid across the floor of every ocean. There are over 500 of these cables, totalling over a million kilometres. When you watch a YouTube clip in the UK that's hosted in California, the light carrying that video really has crossed the Atlantic, under the water.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">🏢</div>
+          <div class="step-body">
+            <h4>Cables on land</h4>
+            <p>Those undersea cables come ashore at landing stations, where they connect to a country's own network of fibre. From there, smaller cables run alongside motorways and railways to cities, then to neighbourhoods, then — through your local exchange — to your house.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">📡</div>
+          <div class="step-body">
+            <h4>Wireless for the last bit</h4>
+            <p>The wireless parts — Wi-Fi in your home, the 4G/5G signal between your phone and a mast — only cover the very last leg of the journey. The vast majority of the internet is wires.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout--analogy">
+        <div class="callout__icon">🛣️</div>
+        <div class="callout__body">
+          <h4>The internet looks more like a motorway than a cloud</h4>
+          <p>
+            Think of the global internet as a road network. Undersea cables are the motorways between
+            continents. National fibre lines are A-roads. Your local exchange is a town high street. Your
+            home Wi-Fi is the path leading up to your front door. Everything physical, everything connected,
+            and — astonishingly — most of it laid by hand on the ocean floor by a fleet of specialised ships.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>The Postcard Trick</h2>
+      <p>
+        Here is the first big idea that makes the internet work: nothing travels in one big lump. Every email
+        you send, every photo you upload, every video you watch, is chopped up into thousands of tiny pieces
+        called <strong>packets</strong>. Each packet is sent off separately, may take a different route, and
+        is reassembled at the other end.
+      </p>
+
+      <div class="callout callout--analogy">
+        <div class="callout__icon">📮</div>
+        <div class="callout__body">
+          <h4>A novel sent as 10,000 postcards</h4>
+          <p>
+            Imagine you want to send a friend an entire novel through the post. You don't fit it in one
+            envelope — instead, you tear each page into snippets, write each snippet on its own postcard,
+            number them ("page 3, snippet 47 of 200"), and write your friend's address on every single one.
+            You drop the whole pile in the postbox. The postal system routes each postcard via whatever
+            path is fastest at that moment. Some take the train through Birmingham, some go via Bristol —
+            it doesn't matter. When all the postcards arrive at your friend's house, they sort them by
+            number and reassemble the book.
+          </p>
+          <p>
+            That is exactly what the internet does, billions of times per second. A YouTube video is a
+            massive stack of postcards. A web page is a smaller stack. An email is just a few.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        This was a radical idea when it was invented in the 1960s. The phone system at the time worked
+        completely differently — it set up a single dedicated line for each call. Packets-on-postcards
+        proved to be vastly more efficient and far more resilient: if one cable goes down, the postcards
+        just route around it. Built deliberately so that even a partial collapse couldn't take the whole
+        thing offline.
+      </p>
+    </section>
+
+    <section>
+      <h2>Every Computer Needs an Address</h2>
+      <p>
+        For postcards to find their destination, you need addresses. On the internet, every device —
+        every laptop, phone, smart TV, the BBC's web server — has a unique address called an
+        <strong>IP address</strong>. It looks something like this:
+      </p>
+
+      <div class="visual-card">
+        <h4>📍 What an IP address looks like</h4>
+        <p style="font-family:monospace; font-size:1.2rem; background:#f3f4f6; padding:14px 18px; border-radius:8px; text-align:center; margin:10px 0;">
+          151.101.0.81
+        </p>
+        <p style="font-size:0.92rem; color:var(--text-muted); margin:0;">Four numbers, each between 0 and 255, separated by dots. Like a phone number for a computer.</p>
+      </div>
+
+      <p>
+        Every postcard your computer sends has two IP addresses written on it: the destination (where it
+        is going) and the return address (so a reply can come back). Without these, nothing would arrive.
+      </p>
+
+      <h3>But Who Wants to Memorise Numbers?</h3>
+      <p>
+        Nobody types "151.101.0.81" when they want to read the news. They type "bbc.co.uk." But the network
+        works in numbers, not names. So something has to translate. That something is the
+        <strong>Domain Name System</strong>, almost always called <strong>DNS</strong>.
+      </p>
+
+      <div class="callout callout--analogy">
+        <div class="callout__icon">📞</div>
+        <div class="callout__body">
+          <h4>DNS is the internet's phone book</h4>
+          <p>
+            When you type "bbc.co.uk" into your browser, the first thing that happens — before anything
+            else — is your computer quietly asks a DNS server: "Excuse me, what's the IP address for
+            bbc.co.uk?" The DNS server checks its giant directory and answers: "151.101.0.81." Only
+            then does your computer actually send any postcards. The whole exchange takes thousandths of
+            a second and you never notice it happening. But DNS is the reason you don't need to memorise
+            numbers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What Happens in the Half-Second After You Press Enter</h2>
+      <p>
+        Let's slow it all the way down. You type <em>bbc.co.uk</em> and press Enter. Here is what happens
+        in the next 500 milliseconds:
+      </p>
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Phone-book lookup (DNS)</h4>
+            <p>Your computer asks a DNS server: "What's the IP address for bbc.co.uk?" It gets back something like 151.101.0.81. (≈ 20 milliseconds)</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Postcards to the BBC</h4>
+            <p>Your computer sends a tiny stack of postcards saying "please send me the page at /." They leave your house via Wi-Fi to your router, then via the cable your ISP installed, then through your ISP's network, then across the country to wherever BBC's nearest server lives. (≈ 30–80 milliseconds)</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>BBC's server replies — also in postcards</h4>
+            <p>BBC's server receives the request, gathers up the page (which is itself thousands of pieces of text, images, code), chops it all into postcards, and sends them back to your return address. (≈ 80–200 milliseconds)</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Your browser reassembles the page</h4>
+            <p>The postcards arrive at your house, possibly in a different order than they were sent. Your browser sorts them, stitches them back together, and renders the page on your screen — text, photos, headlines, all in their proper places. (≈ 100–300 milliseconds)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout--info">
+        <div class="callout__icon">🌍</div>
+        <div class="callout__body">
+          <h4>What sets the speed limit</h4>
+          <p>
+            Light travels fast, but it isn't instant. The hard ceiling on internet speed is the speed of
+            light along the cables. A round trip from London to New York is roughly 60 milliseconds — the
+            time light takes to make that journey, twice. Modern websites are designed around this: big
+            companies place copies of their content in dozens of countries (called "edge servers") so that
+            the cable journey is short for everyone.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Wi-Fi, Mobile Data, and Why They Feel Different</h2>
+      <p>
+        From the perspective of the internet, Wi-Fi and mobile data (4G, 5G) are just two different ways
+        for that last little hop between your device and the wider network. After that, they meet the
+        same fibre and the same postcards.
+      </p>
+
+      <div class="comparison-grid">
+        <div class="comparison-item">
+          <div class="ci-icon">🏠</div>
+          <h4>Wi-Fi</h4>
+          <p>The router in your home creates a short-range wireless signal — usually fast and unlimited, but it only reaches as far as the front door.</p>
+        </div>
+        <div class="comparison-item">
+          <div class="ci-icon">📱</div>
+          <h4>Mobile Data</h4>
+          <p>Your phone talks to a much taller antenna on a nearby mast, run by your phone provider (EE, O2, Vodafone, etc). Works anywhere with signal, but you pay by the gigabyte.</p>
+        </div>
+      </div>
+
+      <p>
+        When you walk out of the house and your phone "switches over" to mobile data, you don't notice
+        anything change — but underneath, your phone has dropped the Wi-Fi connection and started talking
+        to a mast instead. Everything else stays the same.
+      </p>
+    </section>
+
+    <section>
+      <h2>"The Internet Is Down" — Why It Usually Isn't</h2>
+      <p>
+        When you can't load a website and someone says "the internet is down," they're almost always wrong.
+        The internet itself — that vast tangled motorway of cables — is built to be impossible to take
+        down all at once. It was designed in the 1960s specifically so that even bombing parts of it
+        couldn't kill the whole thing.
+      </p>
+      <p>
+        What's usually down is one of three things:
+      </p>
+      <ul>
+        <li><strong>Your router or Wi-Fi</strong> — the little box in your home has frozen and a quick power-cycle (unplug for 30 seconds, plug back in) often fixes it.</li>
+        <li><strong>Your ISP</strong> — the company that connects your home to the internet is having a local problem. Check downdetector.com or your ISP's status page.</li>
+        <li><strong>A specific website's servers</strong> — Netflix, Instagram, your bank's app — whoever you're trying to reach is having trouble. The rest of the internet is fine.</li>
+      </ul>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon">🔧</div>
+        <div class="callout__body">
+          <h4>The 30-second rule</h4>
+          <p>
+            Before calling your ISP or assuming the worst, try this: turn your router off at the wall,
+            wait a full 30 seconds, and turn it back on. This solves a startling fraction of "the
+            internet is broken" problems. The router has time to clear its memory, get a fresh address
+            from your ISP, and start clean.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>A Small Thing Worth Knowing About Security</h2>
+      <p>
+        Remember the "https://" at the start of web addresses? The little padlock icon? Those two things
+        together mean your postcards have been put inside locked boxes before they leave your device.
+        Anyone watching the cables in between sees a stack of locked boxes — they can tell you're sending
+        something, but they can't read the contents. Only the destination has the key.
+      </p>
+      <p>
+        Without "https" (just plain "http"), the postcards are exactly that — open postcards, readable by
+        anyone who handles them. This is why your bank, your email, and any sensible website always uses
+        "https." Modern browsers warn you loudly if a site doesn't. Heed the warning.
+      </p>
+    </section>
+
+    <div class="key-takeaways">
+      <h3>Key Takeaways</h3>
+      <ul>
+        <li><span class="kt-check">✓</span> The internet is overwhelmingly physical — most of it is fibre-optic cable, including over a million kilometres under the world's oceans</li>
+        <li><span class="kt-check">✓</span> Every message you send is chopped into thousands of small "packets" — like sending a novel as 10,000 numbered postcards</li>
+        <li><span class="kt-check">✓</span> Every device has an IP address (a unique number); DNS is the phone book that turns "bbc.co.uk" into that number</li>
+        <li><span class="kt-check">✓</span> In the half-second after you press Enter: DNS lookup, postcards to the server, server replies in more postcards, browser reassembles the page</li>
+        <li><span class="kt-check">✓</span> Wi-Fi and mobile data are just two ways of doing the last short hop to your device — everything beyond that is the same wires</li>
+        <li><span class="kt-check">✓</span> "The internet is down" almost always means your router, your ISP, or a specific website — not the actual internet</li>
+        <li><span class="kt-check">✓</span> "https" puts your postcards inside locked boxes — always check the padlock for anything sensitive</li>
+      </ul>
+    </div>
+
+    <div class="quiz-section">
+      <h3>Check Your Understanding</h3>
+      <p class="quiz-subtitle">Three quick questions.</p>
+
+      <div class="quiz-question">
+        <p>1. What is a "packet" in the context of the internet?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> A bundle of files you download in one go
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> A tiny piece of a larger message — like one postcard in a stack of thousands
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> A monthly internet bill from your ISP
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Right. Everything you send or receive on the internet — emails, photos, videos — is chopped into thousands of small packets, each sent separately, reassembled at the other end."
+          data-incorrect="A packet is a small piece of a larger message. The internet works by chopping everything up into thousands of these and routing each one independently — like sending a novel as a stack of numbered postcards.">
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <p>2. What does DNS do?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> Translates human-friendly names like "bbc.co.uk" into the numerical addresses computers actually use
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Protects your computer from viruses
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Controls how fast your internet connection runs
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Exactly. DNS is the internet's phone book — you ask 'what is bbc.co.uk's number?' and it answers with an IP address your computer can actually contact."
+          data-incorrect="DNS — Domain Name System — is the lookup service that turns website names into IP addresses. Every time you type a website name, your computer quietly asks DNS for the corresponding number before it can connect.">
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <p>3. What does "https" (and the padlock icon) actually mean?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> The website has been verified as factually accurate
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> The data travelling between your computer and the website is encrypted — locked, so no one in between can read it
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> The website is the most popular in its category
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Correct. The padlock is about secure transit — locked boxes, not open postcards. It does NOT verify that the website is honest, accurate, or trustworthy — only that nobody in the middle can eavesdrop on the data."
+          data-incorrect="The padlock means encryption — the data in transit is locked. It does not mean the site is accurate, popular, or even legitimate. A scam site can have https; check the address itself carefully too.">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="module-nav">
+  <div class="module-nav__inner">
+    <a href="module-18.html" class="btn btn--outline">← Previous</a>
+    <button id="mark-complete-btn" class="mark-complete-btn" data-module="19">Mark as Complete ✓</button>
+    <a href="module-20.html" class="btn btn--primary">Next Module →</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>💡 <strong>Tech for Life</strong> — Designed with care for 60+ learners</p>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

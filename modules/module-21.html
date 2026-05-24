@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 21 — The Story So Far | Tech for Life</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    .timeline {
+      position: relative;
+      margin: 32px 0;
+      padding-left: 28px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 6px;
+      bottom: 6px;
+      width: 3px;
+      background: linear-gradient(180deg, var(--primary), var(--accent));
+      border-radius: 2px;
+    }
+    .era {
+      position: relative;
+      margin-bottom: 30px;
+      padding-left: 24px;
+    }
+    .era::before {
+      content: '';
+      position: absolute;
+      left: -27px;
+      top: 8px;
+      width: 16px;
+      height: 16px;
+      background: var(--white);
+      border: 3px solid var(--primary);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(29,78,216,0.15);
+    }
+    .era--key::before {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(234,88,12,0.20);
+    }
+    .era__date {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .era--key .era__date { color: var(--accent); }
+    .era__title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .era__body {
+      font-size: 0.96rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .era__body p { font-size: 0.96rem; margin-bottom: 8px; }
+    .era__body p:last-child { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../index.html" class="site-logo">
+      <span class="site-logo__icon">💡</span>
+      <span>Tech for Life<span class="site-logo__sub">A course for 60+ learners</span></span>
+    </a>
+    <nav class="site-nav">
+      <a href="../index.html" data-page="home">Home</a>
+      <a href="../index.html#modules" data-page="modules">All Modules</a>
+    </nav>
+  </div>
+</header>
+
+<div class="module-progress">
+  <div class="module-progress__inner">
+    <span class="module-progress__label">Course Progress</span>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" style="width: 100%"></div>
+    </div>
+    <span class="module-progress__fraction">Module 21 of 21 — Final Module!</span>
+  </div>
+</div>
+
+<div class="module-hero module-hero--intermediate">
+  <div class="module-hero__number">Module 21 · The Bigger Picture</div>
+  <span class="module-hero__icon">📜</span>
+  <h1>The Story So Far</h1>
+  <p class="module-hero__tagline">From room-sized machines built with punch cards to a chatbot in your pocket — the last 80 years of computing in one guided walk. Most of this happened in your lifetime.</p>
+  <div class="module-hero__chips">
+    <span class="chip">🟠 The Bigger Picture</span>
+    <span class="chip">⏱ 18 minutes</span>
+    <span class="chip">📖 The Big Picture</span>
+  </div>
+</div>
+
+<div class="module-body">
+  <div class="module-content">
+
+    <div class="objectives-box">
+      <h3>What You'll Learn</h3>
+      <ul>
+        <li>The eight or so big leaps that shaped today's digital world — and roughly when each happened</li>
+        <li>How each leap built on the one before, rather than coming from nowhere</li>
+        <li>Why the same pattern keeps repeating: elite tool → mass adoption → invisible utility</li>
+        <li>Where today's AI moment sits in the bigger arc — and what it does and doesn't change</li>
+      </ul>
+    </div>
+
+    <div class="callout callout--info">
+      <div class="callout__icon">🎓</div>
+      <div class="callout__body">
+        <h4>Why this matters</h4>
+        <p>A great deal of tech anxiety comes from feeling like everything is changing suddenly, all the time. The truth is the opposite — almost every "sudden" change has been quietly underway for years or decades. Putting today's tools on a timeline makes them feel less mysterious, and often less alarming.</p>
+      </div>
+    </div>
+
+    <section>
+      <h2>A Walk Through the Past 80 Years</h2>
+
+      <div class="timeline">
+
+        <div class="era">
+          <div class="era__date">1940s–1950s · The room-sized machine</div>
+          <div class="era__title">The mainframe era</div>
+          <div class="era__body">
+            <p>The first electronic computers filled entire rooms, weighed several tonnes, and were programmed by physically rewiring them or feeding in stacks of cardboard "punch cards." Only universities, governments, and the largest corporations could afford them. A computer was a shared resource — dozens of people queued for time on the single machine in the building.</p>
+            <p>If you used a computer at all in this era, you almost certainly did not see it. You handed your punch cards to an operator and got your printout back the next day.</p>
+          </div>
+        </div>
+
+        <div class="era">
+          <div class="era__date">1969 · The seed</div>
+          <div class="era__title">ARPANET — the internet's first message</div>
+          <div class="era__body">
+            <p>A small team funded by the U.S. Department of Defence connected four computers — at UCLA, Stanford, UC Santa Barbara, and the University of Utah — into the first packet-switched network. The very first message was meant to be "LOGIN," but the system crashed after the first two letters. So the first message ever sent over what would become the internet was, accidentally, "LO."</p>
+            <p>Nobody outside a small circle of researchers paid any attention. The seed of every email, every web page, every YouTube video, every TikTok, was planted that night.</p>
+          </div>
+        </div>
+
+        <div class="era era--key">
+          <div class="era__date">1976–1981 · One computer per person</div>
+          <div class="era__title">The personal computer revolution</div>
+          <div class="era__body">
+            <p>Until the mid-1970s the very idea of a "personal" computer was almost a contradiction in terms. Then Steve Wozniak and Steve Jobs built the Apple I in a Californian garage (1976) and the Apple II shortly after. IBM launched the IBM PC in 1981. Microsoft was founded to write software for these machines, and famously licensed its operating system to anyone who wanted to copy IBM's hardware.</p>
+            <p>By the late 1980s a desk in an office almost always had a computer on it. The mainframe didn't disappear, but the centre of gravity had moved. The big shift: a computer stopped being something a community shared and became something an individual owned.</p>
+          </div>
+        </div>
+
+        <div class="era era--key">
+          <div class="era__date">1989–1993 · The web is born</div>
+          <div class="era__title">Tim Berners-Lee invents the World Wide Web at CERN</div>
+          <div class="era__body">
+            <p>A British physicist working at CERN in Switzerland wrote a memo proposing a simple system for sharing documents across the existing internet, using something he called <strong>hypertext</strong> — text with clickable links to other text. He built the first web browser, the first web page, and the first web server. In 1993 CERN released the whole thing to the world for free, without patenting anything.</p>
+            <p>That single decision — to give the web away — is one of the most consequential acts of generosity in modern history. Every website you have ever visited, every email link you have ever clicked, every Google search you have ever done, sits on the foundation Berners-Lee chose not to charge for.</p>
+          </div>
+        </div>
+
+        <div class="era">
+          <div class="era__date">1995–2000 · Dial-up and the dotcom boom</div>
+          <div class="era__title">Ordinary households start going online</div>
+          <div class="era__body">
+            <p>Modems hissed and beeped over phone lines at unbearable speeds — and yet, suddenly, hundreds of millions of people had email addresses. AOL, Yahoo, eBay, and Amazon were born. Companies raced to launch a website with a ".com" in its name, sometimes with no business plan attached. In March 2000 the resulting bubble burst, wiping out trillions in stock value — but the underlying habit of "going online" did not reverse. People stayed.</p>
+          </div>
+        </div>
+
+        <div class="era">
+          <div class="era__date">1998 · The library catalogue of the world</div>
+          <div class="era__title">Google</div>
+          <div class="era__body">
+            <p>Two Stanford PhD students, Larry Page and Sergey Brin, noticed that older search engines ranked results badly. They invented a way to rank web pages based on how many other pages linked to them — essentially treating links as votes. Their search worked so much better than the competition that within five years it had become the default way most of humanity found things on the internet. "Just Google it" entered the language.</p>
+          </div>
+        </div>
+
+        <div class="era era--key">
+          <div class="era__date">2007 · The computer in your pocket</div>
+          <div class="era__title">The iPhone</div>
+          <div class="era__body">
+            <p>On 9 January 2007, Steve Jobs walked onto a stage in San Francisco and announced three new products: a touchscreen iPod, a phone, and an internet communicator. After holding the joke just long enough, he revealed it was a single device. The iPhone was not the first smartphone — but it was the first that combined a multi-touch screen, a real web browser, and an app store, in a way ordinary people could use without instructions.</p>
+            <p>Within a decade, almost every adult on the planet was carrying one. More computing power than the entire NASA had during the moon landings now fits in everyone's pocket. The phone became the universal remote control for daily life: photos, navigation, banking, dating, news, messaging, taxis, takeaway. Almost nothing in modern life has been untouched by this.</p>
+          </div>
+        </div>
+
+        <div class="era">
+          <div class="era__date">2006–2015 · The cloud takeover</div>
+          <div class="era__title">Files leave your computer</div>
+          <div class="era__body">
+            <p>Amazon launched <strong>Amazon Web Services</strong> in 2006, originally to rent out spare computing capacity. The bet paid off so dramatically that AWS now generates much of Amazon's profit. In the same window: Dropbox, Google Drive, iCloud, Microsoft OneDrive. The hard disk in your laptop quietly stopped being the place where most of your stuff lived. Module 20 covered this in detail.</p>
+          </div>
+        </div>
+
+        <div class="era">
+          <div class="era__date">2008–2015 · The social media decade</div>
+          <div class="era__title">Facebook, YouTube, Twitter, Instagram, WhatsApp</div>
+          <div class="era__body">
+            <p>Facebook opened to the public in 2006, YouTube was acquired by Google in 2006, Twitter launched in 2006, WhatsApp in 2009, Instagram in 2010. By 2015 several of these were measured in billions of users. The way humans share news, photos, opinions, and outrage was fundamentally and probably permanently changed. This era also surfaced — for the first time at scale — questions about misinformation, mental health, and political manipulation that we are still grappling with.</p>
+          </div>
+        </div>
+
+        <div class="era">
+          <div class="era__date">2020 · The forced rehearsal</div>
+          <div class="era__title">COVID and the leap into remote everything</div>
+          <div class="era__body">
+            <p>The pandemic compressed a decade of digital adoption into a few months. Grandparents who had never used video calling were on Zoom with the grandchildren by April. Schools, hospitals, courts, parliaments, and offices ran from home. Online grocery delivery, telemedicine, contactless payments — all leapt forward. Some of it has since rolled back; much of it hasn't.</p>
+          </div>
+        </div>
+
+        <div class="era era--key">
+          <div class="era__date">November 2022 · The chatbot moment</div>
+          <div class="era__title">ChatGPT is released</div>
+          <div class="era__body">
+            <p>OpenAI launched ChatGPT as a free research demonstration on 30 November 2022. It crossed one million users in five days — faster than any consumer product in history. It crossed 100 million users in two months. For the first time, anyone with an internet connection could have a fluent conversation with a machine, and the machine would write essays, explain physics, debug code, draft emails, and (sometimes) confidently make things up.</p>
+            <p>The underlying technology had existed for years (the Transformer architecture from 2017 — see Module 17). What ChatGPT did was wrap it in a conversation. That was the shift that woke the world up to AI.</p>
+          </div>
+        </div>
+
+        <div class="era">
+          <div class="era__date">2023–2025 · The race</div>
+          <div class="era__title">AI in every app, AI in every product</div>
+          <div class="era__body">
+            <p>Microsoft poured tens of billions into OpenAI and embedded ChatGPT-style assistants into Office, Bing, and Windows. Google launched Gemini. Anthropic launched Claude. Meta released Llama as an open-source model anyone could run. China launched its own rivals (Qwen, DeepSeek). By 2025 every major piece of consumer software was offering "AI features": Photoshop, Gmail, Spotify, even refrigerators. Image generators (DALL-E, Midjourney, Stable Diffusion) flooded the internet with synthetic images and video.</p>
+            <p>Schools and governments scrambled to write policies. Newspapers debated whether AI-written articles needed labelling. Artists sued. Lawyers were caught citing made-up cases. The pattern was familiar from past tech revolutions: enormous promise and very real costs, mixed up together, with the rules being written as we went along.</p>
+          </div>
+        </div>
+
+        <div class="era era--key">
+          <div class="era__date">2026 · Where we are now</div>
+          <div class="era__title">A capable assistant in your pocket — and a lot of unfinished questions</div>
+          <div class="era__body">
+            <p>By 2026 it is normal to have a capable AI assistant on your phone, often working offline. Image and video generators produce results indistinguishable from real recordings. AI is helping doctors read scans, scientists design molecules, and translators bridge languages in real time. The benefits are tangible.</p>
+            <p>The unanswered questions are also very real: how should information sourced from AI be presented in journalism and education? How do we keep elections honest when anyone can produce a convincing fake video? What rights should creative people have when their work is used as training data? What jobs will look like in a decade. These will be the great social and political conversations of the next several years.</p>
+            <p>You — having walked through this course — now know more than most about what's actually happening inside these tools. That is genuinely useful, both for using them well yourself and for following the public debate with a clear head.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <h2>The Pattern That Keeps Repeating</h2>
+      <p>
+        Walk that timeline a second time, and you start to notice the same pattern over and over:
+      </p>
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Elite tool</h4>
+            <p>A new technology arrives. It is expensive, complicated, and used by specialists — scientists, the military, large corporations. The mainframe in 1955. The internet in 1985. The mobile phone in 1990. AI in 2018.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Consumer breakthrough</h4>
+            <p>Someone packages it so that ordinary people can use it without instructions. The Apple II. The web browser. The iPhone. ChatGPT. The numbers explode.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Mass adoption</h4>
+            <p>Within roughly a decade, it becomes normal. Not having one feels strange. The early adopters who explained it patiently to everyone else become the new normal.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Invisible utility</h4>
+            <p>Eventually you stop noticing it. Few people think about electricity. Few think about the post. Few think about indoor plumbing. The same thing has happened with email, with mobile phones, with Wi-Fi. It is happening to "the cloud" right now, and it will happen to AI within the next decade or two.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout--analogy">
+        <div class="callout__icon">🌊</div>
+        <div class="callout__body">
+          <h4>Why this is reassuring</h4>
+          <p>
+            Each of these waves felt overwhelming while it was happening. The arrival of the personal
+            computer was overwhelming. The arrival of the internet was overwhelming. The arrival of the
+            smartphone was overwhelming. In every case the population eventually adapted — older people
+            adapted too, sometimes at their own pace and that's perfectly fine — and the world settled
+            into using the new tool sensibly. The AI moment will follow the same pattern. You don't need
+            to keep up with every announcement; you need to understand the shape, and you do.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What Comes Next (Roughly)</h2>
+      <p>
+        Predicting technology more than a few years ahead is a fool's game — but the credible candidates
+        for "what's next" in the second half of the 2020s tend to be:
+      </p>
+      <ul>
+        <li><strong>AI assistants that act, not just answer.</strong> Today's chatbots tell you what to do. Tomorrow's may make the booking, send the email, and file the form themselves. This is the active area called "AI agents."</li>
+        <li><strong>Glasses that overlay information on the world</strong> — sometimes called augmented reality. Several large companies are betting that some version of this becomes the next iPhone-style platform.</li>
+        <li><strong>Personal robots</strong> — humanoid or otherwise — finally graduating from research labs to homes and warehouses, very possibly powered by the same kinds of AI you've learned about in this course.</li>
+        <li><strong>Better medicine</strong> — AI-discovered drugs, AI-read scans, AI-personalised treatments. Of all the directions, this is the one most likely to add measurable years to lives.</li>
+        <li><strong>Hard policy fights</strong> over disinformation, copyright, jobs, elections, and the concentration of power in a handful of tech companies. Less photogenic, no less important.</li>
+      </ul>
+      <p>
+        None of these is certain. All of them are plausible. And — like every wave that came before —
+        each will, in time, become invisible utility for those who choose to use it, while those who
+        don't will get along perfectly well.
+      </p>
+    </section>
+
+    <section>
+      <h2>A Closing Thought</h2>
+      <p>
+        You started this course in Module 1 with a quiet promise: that none of this needed to feel
+        mysterious or intimidating. Twenty modules later, you have walked from "what is a mouse" all
+        the way to "what happens inside ChatGPT" and "what is the cloud, really." You can have an
+        informed opinion on the things in the news. You can help a friend or grandchild make sense
+        of a confusing tech moment. You can use a chatbot well, and you can spot when it's making
+        things up.
+      </p>
+      <p>
+        Modern technology is not magic. It is the cumulative work of millions of people over eighty
+        years, layered carefully on top of each other. Most of it is more clever than it is complicated.
+        And — as you now know — when something feels like magic, it usually means somebody has done
+        a very good job of hiding the wires.
+      </p>
+
+      <div class="callout callout--tip">
+        <div class="callout__icon">🎉</div>
+        <div class="callout__body">
+          <h4>Congratulations — really, properly, well done</h4>
+          <p>
+            You've finished the whole course. Twenty-one modules is a lot of ground. Whatever brought
+            you here, you've come out the other side with a real, working understanding of the digital
+            world. Carry that lightly, share it generously, and come back to any module any time the
+            details get hazy. This site isn't going anywhere.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="key-takeaways">
+      <h3>Key Takeaways</h3>
+      <ul>
+        <li><span class="kt-check">✓</span> Computing went from "one room-sized machine many people share" (1950s) to "many devices each person owns" (1980s) to "every device connected to a global network" (1990s onward)</li>
+        <li><span class="kt-check">✓</span> The web (1989, Tim Berners-Lee at CERN) was given away free — one of the most consequential acts of generosity in modern history</li>
+        <li><span class="kt-check">✓</span> The iPhone (2007) made the computer-in-your-pocket idea finally usable by anyone, and reshaped daily life within a decade</li>
+        <li><span class="kt-check">✓</span> Cloud, social media, and AI each followed: arrive in research, then become consumer products, then become normal</li>
+        <li><span class="kt-check">✓</span> ChatGPT (November 2022) was AI's "iPhone moment" — the moment the technology became something ordinary people used directly</li>
+        <li><span class="kt-check">✓</span> Every wave of technology has followed the same arc: elite tool → consumer breakthrough → mass adoption → invisible utility</li>
+        <li><span class="kt-check">✓</span> You don't need to keep up with every news headline — you need to understand the shape, and you now do</li>
+      </ul>
+    </div>
+
+    <div class="quiz-section">
+      <h3>The Final Check</h3>
+      <p class="quiz-subtitle">Three questions to close the course.</p>
+
+      <div class="quiz-question">
+        <p>1. Who invented the World Wide Web — and importantly, what did they decide to do with it?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Bill Gates, and he sold it to Microsoft for billions
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> Tim Berners-Lee at CERN, and he gave it away for free without patenting it
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Steve Jobs, and he bundled it with the first iPhone
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Right. A British physicist working in Switzerland invented the web and chose to give it away. Every website you've ever visited rests on that decision."
+          data-incorrect="Tim Berners-Lee invented the World Wide Web at CERN (the European particle physics lab) in 1989, and CERN released it to the world in 1993 with no patents. That gift made everything that followed possible.">
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <p>2. Why is the release of ChatGPT (November 2022) considered a milestone, given the underlying technology existed for years before?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> It was the first AI ever built
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> It was the first time anyone, without specialist knowledge, could have a fluent conversation with an AI — and 100 million people did so within two months
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> It was the moment AI became more intelligent than humans
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Exactly. The underlying Transformer technology was from 2017. What ChatGPT did was wrap it in a friendly chat box — and that's what woke the world up. The fastest consumer product to reach 100 million users in history."
+          data-incorrect="ChatGPT's breakthrough was accessibility — not the underlying technology, which already existed. It was the moment AI stopped being a research curiosity and became a tool ordinary people could use. 100 million users in two months made it the fastest consumer product launch in history.">
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <p>3. What is the recurring pattern across every major technology in the timeline?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Each one was invented by the same handful of companies
+          </button>
+          <button class="quiz-option" data-correct="true">
+            <span class="opt-icon">✅</span> Each starts as an elite tool, becomes a consumer breakthrough, gets mass adoption, then quietly becomes invisible utility
+          </button>
+          <button class="quiz-option" data-correct="false">
+            <span class="opt-icon">❌</span> Each one took exactly fifty years to become widely used
+          </button>
+        </div>
+        <div class="quiz-feedback"
+          data-correct="Right. The same arc keeps repeating — and recognising it makes the present moment far less overwhelming. AI is somewhere between 'consumer breakthrough' and 'mass adoption' right now, and will be 'invisible utility' within a decade or so."
+          data-incorrect="The pattern is: elite tool (specialist users), then consumer breakthrough (someone makes it usable), then mass adoption, then invisible utility (you stop noticing it). It applies to electricity, telephones, the internet, mobile phones, and now AI.">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="module-nav">
+  <div class="module-nav__inner">
+    <a href="module-20.html" class="btn btn--outline">← Previous</a>
+    <button id="mark-complete-btn" class="mark-complete-btn" data-module="21">Mark as Complete ✓</button>
+    <a href="../index.html#modules" class="btn btn--accent">🏠 Back to All Modules</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>💡 <strong>Tech for Life</strong> — Designed with care for 60+ learners</p>
+    <p>You've finished all 21 modules. Genuinely, properly well done.</p>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>
