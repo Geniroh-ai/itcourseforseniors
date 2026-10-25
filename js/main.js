@@ -89,7 +89,7 @@ function initQuiz() {
 function highlightNav() {
   const path = window.location.pathname;
   document.querySelectorAll('.site-nav a').forEach(a => {
-    if (path.endsWith('index.html') || path === '/' || path.endsWith('/itcourseforseniors/')) {
+    if (path.endsWith('index.html') || path.endsWith('/')) {
       if (a.dataset.page === 'home') a.classList.add('active');
     } else if (path.includes('module-')) {
       if (a.dataset.page === 'modules') a.classList.add('active');
